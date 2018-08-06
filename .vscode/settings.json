@@ -1,0 +1,4 @@
+{
+    "phpserver.relativePath": "./webroot"
+    // "phpserver.relativePath": "./src"
+}
