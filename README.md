@@ -1,22 +1,16 @@
-# CakePHP 3 - BlogMVC
+# CakePHP Blog
 
-A simple CakePHP 3 application to see how CakePHP 3 works !
+Przykłady konwersji kodu schematów yii, CakePHP i Symfony na bazie przykładów wymienionych frameworków
 
-## Installation
+### Celem aplikacji jest pokazanie jak można przenieść aplikację z innego frameworka.
+Aplikacja wykorzystuje przykłady tworzenia blogu z wykorzystaniem **SQLite**.
+Szczegóły znajdują się na stronych frameworków:
 
-1. Download [Composer](http://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `composer install`.
-3. Edit `config/app.php` with your databases informations (Search "Datasources")
-4. Run 
-```bash
-bin/cake migrations migrate
-bin/cake migrations seed
-```
-You can now either use your machine's webserver to view the default home page, or start
-up the built-in webserver with:
+- **[yii]** https://www.yiiframework.com/doc/blog/1.1/pl/start.design
+- **[CakePHP]** https://book.cakephp.org/3.0/en/tutorials-and-examples/blog/blog.html
+- **[Symfonia]** https://auth0.com/blog/symfony-tutorial-building-a-blog-part-1/
 
-```bash
-bin/cake server -p 8765
-```
-
-Then visit `http://localhost:8765` to see the welcome page.
+### Podzielona jest na 3 etapy:
+1. **stworzenie** - aplikacja odczytu danych dla 3 schematów baz danych na przyładzie z CakePHP
+2. **konwersja** - schemat kodu kontrolera i interfejsu tak jak w wymienionych przykładach zgodnie z założeniami.
+3. **optymalizacja** - poprawienie formularzy, interfejsów, nazw konrolerów a szczególnie routingu
