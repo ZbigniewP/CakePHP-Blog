@@ -1,0 +1,44 @@
+{
+    "name": "kareylo/blogmvc-cakephp3",
+    "description": "Part of BlogMVC project: http://blogmvc.com",
+    "homepage": "https://github.com/Kareylo/BlogMVC-CakePHP3",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.6",
+        "cakephp/cakephp": "^3.6",
+        "mobiledetect/mobiledetectlib": "2.*",
+        "cakephp/migrations": "^1.6",
+        "cakephp/plugin-installer": "~1.0",
+        "league/commonmark": "^0.17.5",
+        "cakephp/debug_kit": "^3.16",
+        "cakephp/bake": "^1.8"
+    },
+    "require-dev": {
+        "psy/psysh": "@stable",
+        "cakephp/cakephp-codesniffer": "^3.0"
+    },
+    "suggest": {
+        "markstory/asset_compress": "An asset compression plugin which provides file concatenation and a flexible filter system for preprocessing and minification.",
+        "dereuromark/cakephp-ide-helper": "After baking your code, this keeps your annotations in sync with the code evolving from there on for maximum IDE and PHPStan compatibility.",
+        "phpunit/phpunit": "Allows automated tests to be run without system-wide install.",
+        "cakephp/cakephp-codesniffer": "Allows to check the code against the coding standards used in CakePHP."
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src",
+            "Markdown\\": "./plugins/Markdown/src"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": "App\\Console\\Installer::postInstall",
+        "post-create-project-cmd": "App\\Console\\Installer::postInstall",
+        "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump",
+        "check": [
+            "@cs-check"
+        ],
+        "cs-check": "phpcs --colors -p --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src",
+        "cs-fix": "phpcbf --colors --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src"
+    },
+    "prefer-stable": true
+}
