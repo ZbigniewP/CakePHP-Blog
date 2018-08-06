@@ -11,6 +11,6 @@ Szczegóły znajdują się na stronych frameworków:
 - **[Symfonia]** https://auth0.com/blog/symfony-tutorial-building-a-blog-part-1/
 
 ### Podzielona jest na 3 etapy:
-1. **stworzenie** - aplikacja odczytu danych dla 3 schematów baz danych na przyładzie z yii
+1. **stworzenie** - aplikacja odczytu danych dla 3 schematów baz danych na przyładzie z CakePHP
 2. **konwersja** - schemat kodu kontrolera i interfejsu tak jak w wymienionych przykładach zgodnie z założeniami.
 3. **optymalizacja** - poprawienie formularzy, interfejsów, nazw konrolerów a szczególnie routingu
