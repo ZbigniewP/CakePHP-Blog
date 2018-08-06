@@ -5,25 +5,39 @@
 		<p class="lead">Welcome on my blog</p>
 	</div>
 	<?php 
-	foreach ($blogdemo as $post): ?>
+	// echo'<pre>';print_r([__FILE__,$blogdemo]);exit;
+	foreach ($blogdemo as $post): 
+	?>
 		<article>
-			<h2><?= $this->Html->link($post->name, ['controller' => 'Posts', 'action' => 'view', 'slug' => $post->slug]) ?></h2>
+			<h2><?php
+			echo $this->Html->link($post->name, ['controller' => 'blogdemo', 'action' => 'view', 'slug' => $post->slug]) 
+			?></h2>
 			<p>
 				<small>
-					Category : <?= $this->Html->link($post->category->name, ['controller' => 'Posts', 'action' => 'category', 'slug' => $post->category->slug]) ?>,
-					by <?= $this->Html->link($post->user->username, ['controller' => 'Posts', 'action' => 'author', 'id' => $post->user->id]) ?> on <em><?= $post->created->format('F jS Y, H:i') ?></em>
+					Category : <?= $this->Html->link($post->category->name, 
+					['controller' => 'blogdemo', 'action' => 'category', 'slug' => $post->category->slug]) ?>,
+					by <?= $this->Html->link($post->user->username, 
+					['controller' => 'blogdemo', 'action' => 'author', 'id' => $post->user->id]) ?> 
+					on <em><?= $post->created->format('F jS Y, H:i') ?></em>
 				</small>
 			</p>
 			<p><?php
 			// echo $this->Text->truncate($post->content, 450, ['ellipsis' => '...', 'exact' => false]);
 			echo $this->Markdown->parse($this->Text->truncate($post->content, 450, ['ellipsis' => '...', 'exact' => false])) 
 			?></p>
-			<p class="text-right"><?= $this->Html->link('Read more...', ['controller' => 'Posts', 'action' => 'view', 'slug' => $post->slug], ['class' => 'btn btn-primary']) ?></p>
+			<p class="text-right"><?= 
+			$this->Html->link('Read more...', 
+			['controller' => 'blogdemo', 'action' => 'view', 'slug' => $post->slug], 
+			['class' => 'btn btn-primary']) 
+			?></p>
 		</article>
 		<hr />
 	<?php endforeach; ?>
 
-	<?php if ($this->Paginator->counter() !== '1 of 1'): ?>
+	<?php 
+	if ($this->Paginator->counter() !== '1 of 1'): 
+	// if ($this->Paginator->last()>1): 
+		?>
 		<div class="paginator">
 			<ul class="pagination">
 				<?= $this->Paginator->prev('«') ?>

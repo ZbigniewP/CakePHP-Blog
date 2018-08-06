@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7075aa87128c4f9df31d4dc83c2a97c",
+    "content-hash": "e040a758e415683dde05847df88e6605",
     "packages": [
         {
             "name": "ajgl/breakpoint-twig-extension",
@@ -225,16 +225,16 @@
         },
         {
             "name": "cakephp/bake",
-            "version": "1.8.1",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/bake.git",
-                "reference": "73073c27eb599d2aa7155472dd465d210ac782eb"
+                "reference": "d3a75d7addef363550c2189a7826799d648e9c0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/bake/zipball/73073c27eb599d2aa7155472dd465d210ac782eb",
-                "reference": "73073c27eb599d2aa7155472dd465d210ac782eb",
+                "url": "https://api.github.com/repos/cakephp/bake/zipball/d3a75d7addef363550c2189a7826799d648e9c0d",
+                "reference": "d3a75d7addef363550c2189a7826799d648e9c0d",
                 "shasum": ""
             },
             "require": {
@@ -269,20 +269,20 @@
                 "bake",
                 "cakephp"
             ],
-            "time": "2018-06-27T00:50:55+00:00"
+            "time": "2018-07-22T01:25:56+00:00"
         },
         {
             "name": "cakephp/cakephp",
-            "version": "3.6.7",
+            "version": "3.6.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "9a67c9d7158d5e299418f9956d1a8af39128cf57"
+                "reference": "abbb678b23de16d0e4d15367804d7ae741510842"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/9a67c9d7158d5e299418f9956d1a8af39128cf57",
-                "reference": "9a67c9d7158d5e299418f9956d1a8af39128cf57",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/abbb678b23de16d0e4d15367804d7ae741510842",
+                "reference": "abbb678b23de16d0e4d15367804d7ae741510842",
                 "shasum": ""
             },
             "require": {
@@ -355,7 +355,7 @@
                 "rapid-development",
                 "validation"
             ],
-            "time": "2018-07-08T18:02:23+00:00"
+            "time": "2018-08-05T01:44:02+00:00"
         },
         {
             "name": "cakephp/chronos",
@@ -416,16 +416,16 @@
         },
         {
             "name": "cakephp/debug_kit",
-            "version": "3.16.3",
+            "version": "3.16.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "aabaecb032f7e91d2c4df9c79806992cf60e07ee"
+                "reference": "d5cd81818b65da0849089a66316744e4cc453d70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/aabaecb032f7e91d2c4df9c79806992cf60e07ee",
-                "reference": "aabaecb032f7e91d2c4df9c79806992cf60e07ee",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/d5cd81818b65da0849089a66316744e4cc453d70",
+                "reference": "d5cd81818b65da0849089a66316744e4cc453d70",
                 "shasum": ""
             },
             "require": {
@@ -472,7 +472,7 @@
                 "debug",
                 "kit"
             ],
-            "time": "2018-06-11T02:33:52+00:00"
+            "time": "2018-08-03T13:57:51+00:00"
         },
         {
             "name": "cakephp/migrations",
@@ -1669,25 +1669,25 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.12",
+            "version": "v4.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "3a8c3de91d2b2c68cd2d665cf9d00f7ef9eaa394"
+                "reference": "e162f1df3102d0b7472805a5a9d5db9fcf0a8068"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/3a8c3de91d2b2c68cd2d665cf9d00f7ef9eaa394",
-                "reference": "3a8c3de91d2b2c68cd2d665cf9d00f7ef9eaa394",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/e162f1df3102d0b7472805a5a9d5db9fcf0a8068",
+                "reference": "e162f1df3102d0b7472805a5a9d5db9fcf0a8068",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9|>=7.0.8"
+                "php": "^7.1.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.4-dev"
+                    "dev-master": "4.1-dev"
                 }
             },
             "autoload": {
@@ -1714,7 +1714,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2018-06-19T20:52:10+00:00"
+            "time": "2018-07-26T11:24:31+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",

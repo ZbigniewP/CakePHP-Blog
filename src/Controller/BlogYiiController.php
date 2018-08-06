@@ -27,16 +27,12 @@ class BlogyiiController extends AppController
 
 	public function index()
 	{
-		// $posts = [];//$this->paginate($this->Posts);
-
-		// $this->set(compact('yiiPost'));
-		// $this->set('_serialize', ['yiiPost']);
-
-		// $this->paginate = ['contain' => ['YiiUsers']];
-        $posts = $this->paginate($this->YiiPost);
+		$yiiPost = [];//$this->paginate($this->yiiPost);
 
 		$this->set(compact('yiiPost'));
 		$this->set('_serialize', ['yiiPost']);
+
+		// $this->paginate = ['contain' => ['YiiUsers']];
 	}
 
 	public function view($slug = null)

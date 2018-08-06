@@ -11,7 +11,7 @@ use Cake\Http\Response;
 
 // use App\Controller\AppController;
 
-class BlogyiiController extends AppController
+class XXXBlogyiiController extends AppController
 {
 	public $paginate = [
 		'contain' => ['YiiTags', 'YiiUsers'],
