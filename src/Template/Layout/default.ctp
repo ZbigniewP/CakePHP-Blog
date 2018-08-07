@@ -49,12 +49,12 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 				<ul class="nav navbar-nav">
 					<li><?= $this->Html->link('Yii', '/yii') ?></li>
 					<li><?= $this->Html->link('Symfony', '/symfony') ?></li>
-					<li><?= $this->Html->link('Pages', ['controller' => 'Pages', 'action' => 'display']) ?></li>
+					<li><?= $this->Html->link('Pages', ['controller' => 'pages', 'action' => 'display']) ?></li>
 				<?php if ($this->request->session()->read('Auth.User')): ?>
-					<li><?= $this->Html->link('Admin', ['controller' => 'Admin', 'action' => 'index']) ?></li>
-					<li><?= $this->Html->link('Admin Yii', ['controller' => 'yiiPost', 'action' => 'admin']) ?></li>
+					<li><?= $this->Html->link('Admin', ['controller' => 'admin', 'action' => 'index']) ?></li>
+					<li><?= $this->Html->link('Admin Yii', ['controller' => 'yiipost', 'action' => 'admin']) ?></li>
 				<?php else: ?>
-					<li><?= $this->Html->link('Login', ['controller' => 'Users', 'action' => 'login']) ?></li>
+					<li><?= $this->Html->link('Login', ['controller' => 'users', 'action' => 'login']) ?></li>
 				<?php endif; ?>
 				</ul>
 			</div>

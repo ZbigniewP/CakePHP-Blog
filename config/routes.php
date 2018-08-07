@@ -28,10 +28,10 @@ Router::scope('/admin', function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);
 });
 Router::scope('/yii', function (RouteBuilder $routes) {
-    $routes->connect('/', ['controller' => 'Posts', 'action' => 'index']);
-    $routes->connect('/category/:slug', ['controller' => 'Posts', 'action' => 'category'], ['pass' => ['slug'], 'slug' => '[a-z0-9\-]+']);
-    $routes->connect('/author/:id', ['controller' => 'Posts', 'action' => 'author'], ['pass' => ['id'], 'id' => '[0-9]+']);
-    $routes->connect('/:slug', ['controller' => 'Posts', 'action' => 'view'], ['pass' => ['slug'], 'slug' => '[a-z0-9\-]+']);
+    $routes->connect('/', ['controller' => 'YiiPost', 'action' => 'index']);
+    $routes->connect('/category/:slug', ['controller' => 'YiiPost', 'action' => 'category'], ['pass' => ['slug'], 'slug' => '[a-z0-9\-]+']);
+    $routes->connect('/author/:id', ['controller' => 'YiiPost', 'action' => 'author'], ['pass' => ['id'], 'id' => '[0-9]+']);
+    $routes->connect('/:slug', ['controller' => 'YiiPost', 'action' => 'view'], ['pass' => ['slug'], 'slug' => '[a-z0-9\-]+']);
     $routes->fallbacks(DashedRoute::class);
 });
 Router::scope('/symfony', function (RouteBuilder $routes) {
