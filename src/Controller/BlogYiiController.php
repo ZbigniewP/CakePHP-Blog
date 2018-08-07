@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Model\Entity\YiiPost;
-use App\Model\Table\YiiPostTable;
+use App\Model\Entity\Yii\Post;
+use App\Model\Table\Yii\PostTable;
 
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Event\Event;

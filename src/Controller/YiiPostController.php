@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Model\Table\YiiPostTable;
-// use App\Model\Table\YiiTagsTable;
-use App\Model\Entity\YiiPost;
+use App\Model\Table\Yii\PostTable;
+// use App\Model\Table\Yii\TagsTable;
+use App\Model\Entity\Yii\Post;
 use Cake\Http\Response;
 use Cake\Network\Exception\NotFoundException;
 

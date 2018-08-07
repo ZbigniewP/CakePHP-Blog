@@ -58,7 +58,7 @@ class AdminController extends AppController
 		}
 		$categories = $this->Posts->Categories->find('list');
 		$users = $this->Posts->Users->find('list');
-		$this->set('_serialize', ['post', 'categories', 'users']);
+		// $this->set('_serialize', ['post', 'categories', 'users']);
 		$this->set('_serialize', ['post', 'categories', 'users']);
 	}
 

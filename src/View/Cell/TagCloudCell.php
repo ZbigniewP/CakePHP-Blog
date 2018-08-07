@@ -2,10 +2,10 @@
 
 namespace App\View\Cell;
 
-use App\Model\Table\YiiTagsTable;
-use App\Model\Table\YiiPostsTable;
-use App\Model\Table\YiiCommentsTable;
-// use App\Model\Entity\YiiComments;
+use App\Model\Table\Yii\TagsTable;
+use App\Model\Table\Yii\PostsTable;
+use App\Model\Table\Yii\CommentsTable;
+// use App\Model\Entity\Yii\Comments;
 
 use Cake\View\Cell;
 

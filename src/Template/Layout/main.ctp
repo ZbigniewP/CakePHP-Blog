@@ -13,8 +13,8 @@ $this_menu = [
 		['label' => 'Home', 'url' => ['']],
 		['label' => 'Pages', 'url' => ['controller' => 'Pages', 'action' => 'display']],//, 'home'
 		['label' => 'Cake', 'url' => '/blog'],
-		['label' => 'Yii', 'url' => '/blogyii'],
-		['label' => 'Symfony', 'url' => '/blogdemo'],
+		['label' => 'Yii', 'url' => 'yii.blog'],
+		['label' => 'Symfony', 'url' => 'symfony.blog'],
 		['label' => 'Admin', 'url' => ['controller' => 'Admin', 'action' => 'index']],
 		['label' => 'Login', 'url' => ['controller' => 'Users', 'action' => 'login'], 'visible' => $this->request->session()->read('Auth.User')],
 		// ['label' => 'Logout (app()->user->name)', 'url' => ['controller' => 'Admin', 'action' => 'logout'], 'visible' => !$this->request->session()->read('Auth.User')]
