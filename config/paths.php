@@ -1,15 +1,15 @@
 <?php
 /**
- * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
  * @since         3.0.0
- * @license       MIT License (https://opensource.org/licenses/mit-license.php)
+ * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
 /**
@@ -35,11 +35,13 @@ define('ROOT', dirname(__DIR__));
  * named 'src'.
  */
 define('APP_DIR', 'src');
+// define('APP_DIR', ROOT . DS . 'src');
 
 /**
  * Path to the application's directory.
  */
 define('APP', ROOT . DS . APP_DIR . DS);
+// define('APP', ROOT . DS . 'src' . DS);
 
 /**
  * Path to the config directory.

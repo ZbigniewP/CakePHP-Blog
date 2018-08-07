@@ -1,57 +1,80 @@
 <?php
-/**
- * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
- * @since         0.10.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
- */
+use Cake\Cache\Cache;
+use Cake\Core\Configure;
+use Cake\Core\Plugin;
+use Cake\Datasource\ConnectionManager;
+use Cake\Error\Debugger;
+use Cake\Network\Exception\NotFoundException;
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$this->layout = false;
+
+if (!Configure::read('debug')) :
+	throw new NotFoundException(
+		'Please replace src/Template/Pages/home.ctp with your own version or re-enable debug mode.'
+	);
+endif;
+
+$cakeDescription = 'CakePHP: the rapid development PHP framework';
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?= $cakeDescription ?>:
-        <?= $this->fetch('title') ?>
-    </title>
-    <?= $this->Html->meta('icon') ?>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('style.css') ?>
+	<title><?= $this->fetch('title'); ?> | MyDomain.com</title>
 
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
+	<!-- Bootstrap core CSS -->
+	<?= $this->Html->css(['bootstrap', 'bootstrap-theme']); ?>
+	<style>
+		body {padding-top: 50px;}
+		.sidebar {margin-top: 50px;}
+	</style>
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
-        </ul>
-        <div class="top-bar-section">
-            <ul class="right">
-                <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>
-            </ul>
-        </div>
-    </nav>
-    <?= $this->Flash->render() ?>
-    <div class="container clearfix">
-        <?= $this->fetch('content') ?>
-    </div>
-    <footer>
-    </footer>
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<?= $this->Html->link('Blog Cake', '/blog', ['class' => 'navbar-brand']) ?>
+			</div>
+			<div class="collapse navbar-collapse navbar-ex1-collapse navbar-right">
+				<ul class="nav navbar-nav">
+					<li><?= $this->Html->link('Yii', '/yii') ?></li>
+					<li><?= $this->Html->link('Symfony', '/symfony') ?></li>
+					<li><?= $this->Html->link('Pages', ['controller' => 'Pages', 'action' => 'display']) ?></li>
+				<?php if ($this->request->session()->read('Auth.User')): ?>
+					<li><?= $this->Html->link('Admin', ['controller' => 'Admin', 'action' => 'index']) ?></li>
+					<li><?= $this->Html->link('Admin Yii', ['controller' => 'yiiPost', 'action' => 'admin']) ?></li>
+				<?php else: ?>
+					<li><?= $this->Html->link('Login', ['controller' => 'Users', 'action' => 'login']) ?></li>
+				<?php endif; ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<?= $this->Flash->render() ?>
+			<?= $this->fetch('content'); ?>
+			<?php if ($this->request->params['action'] !== 'login'):
+			echo $this->cell('Sidebar');
+			endif; ?>
+<?php
+// <div class="col-md-4 sidebar"><pre>, 'home'
+// print_r([$this->request->params['controller']]);
+// </pre></div>
+?>
+		</div>
+	</div>
+	<?= $this->Html->script(['bootstrap']); ?>
 </body>
 </html>
