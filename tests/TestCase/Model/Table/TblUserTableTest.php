@@ -1,12 +1,12 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\TblUserTable;
+use App\Model\Table\Yii\UserTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\TblUserTable Test Case
+ * App\Model\Table\Yii\UserTable Test Case
  */
 class TblUserTableTest extends TestCase
 {
@@ -14,7 +14,7 @@ class TblUserTableTest extends TestCase
     /**
      * Test subject
      *
-     * @var \App\Model\Table\TblUserTable
+     * @var \App\Model\Table\Yii\UserTable
      */
     public $TblUser;
 
