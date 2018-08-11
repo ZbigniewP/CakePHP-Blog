@@ -29,5 +29,5 @@ Router::scope('/admin', function (RouteBuilder $routes) {
 });
 Plugin::routes();
 
-// Plugin::load('Bake');
-// Plugin::load('Migrations');
+Plugin::load('Bake');
+Plugin::load('Migrations');

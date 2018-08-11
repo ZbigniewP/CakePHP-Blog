@@ -24,13 +24,13 @@ defined('FrameWorks_DIR') or define('FrameWorks_DIR', '..');
 // } else {
 //     ini_set('include_path', ini_get('include_path') . ":.:" . dirname(__DIR__));
 // }
-ini_set('error_reporting', E_ALL);
-ini_set('track_errors', true);
-ini_set('error_log', dirname(__DIR__) . '/logs/_errors.log');
-ini_set('display_errors', 'On');
-ini_set('intl.default_locale', 'pl_PL');
-setlocale(LC_ALL, array('pl_PL.utf8', 'pl', 'plk'));
-mb_internal_encoding('UTF-8');
+// ini_set('error_reporting', E_ALL);
+// ini_set('track_errors', true);
+// ini_set('error_log', dirname(__DIR__) . '/logs/_errors.log');
+// ini_set('display_errors', 'On');
+// ini_set('intl.default_locale', 'pl_PL');
+// setlocale(LC_ALL, array('pl_PL.utf8', 'pl', 'plk'));
+// mb_internal_encoding('UTF-8');
 
 ## for built-in server
 if (php_sapi_name() === 'cli-server') {
@@ -42,7 +42,7 @@ if (php_sapi_name() === 'cli-server') {
 		return false;
 	}
 }
-
+// require '../config/paths.php';
 require FrameWorks_DIR.'/vendor/autoload.php';
 // require 'src/Controller/AppController.php';
 
