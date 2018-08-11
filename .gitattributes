@@ -40,3 +40,6 @@
 *.ttf binary
 *.otf binary
 *.eot binary
+
+*.sqlite binary
+*.sdb3 binary
