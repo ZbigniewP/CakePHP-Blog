@@ -3,22 +3,27 @@
 namespace App\Controller;
 
 use App\Model\Table\Yii\PostTable;
-// use App\Model\Table\Yii\TagsTable;
+// use App\Model\Table\Yii\TagTable;
 use App\Model\Entity\Yii\Post;
+
+// use App\Model\Table\Yii\CommenTable;
+// use App\Model\Entity\Yii\Comment;
 use Cake\Http\Response;
 use Cake\Network\Exception\NotFoundException;
 
 /**
  * Class YiiPostController
  * @package App\Controller
- * @property YiiPostTable $yiiPost
+ * @property Yii\PostTable $yiiPost
  */
 class YiiPostController extends AppController
 {
 
 	// public $paginate = ['limit' => 5];
 	public $paginate = [
-		'contain' => ['YiiUsers', 'YiiComments'],
+		'contain' => ['User', 'Comment'],
+		// 'contain' => ['Tag', 'User'],
+		// 'contain' => ['User'],
 		'limit' => 5
 	];
 
@@ -29,7 +34,7 @@ class YiiPostController extends AppController
 	public function initialize()
 	{
 		parent::initialize();
-		$this->loadModel('YiiPost');
+		$this->loadModel('Post');
 		// $this->viewBuilder()->setLayout('yiipost');
 		$this->layout='column2';
 		// $this->layout='main';
@@ -37,20 +42,8 @@ class YiiPostController extends AppController
 
 	public function index()
 	{
-		$dataProvider = $this->paginate($this->YiiPost->find()->where('status='.YiiPost::STATUS_PUBLISHED));
-/*
-'SELECT 
-YiiPost.id AS "YiiPost__id", 
-YiiPost.page_id AS "YiiPost__page_id", 
-YiiPost.title AS "YiiPost__title", 
-YiiPost.content AS "YiiPost__content", 
-YiiPost.tags AS "YiiPost__tags", 
-YiiPost.status AS "YiiPost__status", 
-YiiPost.create_time AS "YiiPost__create_time", 
-YiiPost.update_time AS "YiiPost__update_time", 
-YiiPost.author_id AS "YiiPost__author_id" 
-FROM tbl_post YiiPost INNER JOIN tbl_users  ON 1 = 1 LIMIT 5 OFFSET 0'
-*/
+		$dataProvider = $this->paginate($this->Post->find()->where('status='.Post::STATUS_PUBLISHED));
+
 		$this->set(compact('dataProvider'));
 		$this->set('_serialize', ['dataProvider']);
 		$this->render('index');
@@ -79,10 +72,10 @@ FROM tbl_post YiiPost INNER JOIN tbl_users  ON 1 = 1 LIMIT 5 OFFSET 0'
 	{
 		$errors = [];
 
-		$comment = $this->YiiPost->YiiComments->newEntity();
+		$comment = $this->Post->Comment->newEntity();
 		if ($this->request->is(['post'])) {
-			// $comment = $this->YiiPost->YiiComments->patchEntity($comment, $this->request->getData());
-			// if ($this->YiiPost->YiiComments->save($comment)) {
+			// $comment = $this->Post->Comment->patchEntity($comment, $this->request->getData());
+			// if ($this->Post->Comment->save($comment)) {
 			// }
 			$this->Flash->error(__('The post could not be saved. Please, try again.'));
 		}
@@ -91,10 +84,10 @@ FROM tbl_post YiiPost INNER JOIN tbl_users  ON 1 = 1 LIMIT 5 OFFSET 0'
 // echo "</pre>";
 // exit();
 		if(isset($_GET['tag'])) {
-			// $data = $this->YiiPost->find()->where(['tags LIKE' => $tag])->contain(['YiiUsers','YiiComments'])->first();//'YiiTags',
-			// $data = $this->YiiPost->find()->where(['tags LIKE' => '%'.$tag.'%'])->first();
-			// $data = $this->YiiPost->find()->where(['tags LIKE' => '%'.$tag.'%'])->first();
-			// $data = $this->YiiPost->find()->contain(['YiiUsers','YiiComments']);//->first()->like('YiiPost.tags', $tag)
+			// $data = $this->Post->find()->where(['tags LIKE' => $tag])->contain(['User','Comment'])->first();//'Tag',
+			// $data = $this->Post->find()->where(['tags LIKE' => '%'.$tag.'%'])->first();
+			// $data = $this->Post->find()->where(['tags LIKE' => '%'.$tag.'%'])->first();
+			// $data = $this->Post->find()->contain(['User','Comment']);//->first()->like('Post.tags', $tag)
 			// $this->set(compact('data', 'errors'));
 			// $this->set('_serialize', ['data']);
 // *  $settings = [
@@ -112,15 +105,15 @@ FROM tbl_post YiiPost INNER JOIN tbl_users  ON 1 = 1 LIMIT 5 OFFSET 0'
 // * $articles = $paginator->paginate($articlesQuery, ['scope' => 'articles']);
 // * $tags = $paginator->paginate($tagsQuery, ['scope' => 'tags']);
 
-			// $module = $this->paginate($this->YiiPost->find()->where(['tags LIKE' => '%'.$tag.'%']));
-			// $comment = $this->YiiPost->YiiComments;
-			$dataProvider = $this->paginate($this->YiiPost->find()->contain(['YiiUsers']));
+			// $module = $this->paginate($this->Post->find()->where(['tags LIKE' => '%'.$tag.'%']));
+			// $comment = $this->Post->Comment;
+			$dataProvider = $this->paginate($this->Post->find()->contain(['User']));
 			$this->set(compact('dataProvider', 'comment', 'errors'));
 			$this->set('_serialize', ['dataProvider']);
 			// $this->render('index');
 		} else {
-			$dataProvider = $this->paginate($this->YiiPost->find()->contain(['YiiUsers']));//->first()'YiiTags',,'YiiComments'
-			// $module = $this->YiiPost->find()->like('YiiPost.tags', $tag)->contain(['YiiUsers','YiiComments'])->first();
+			$dataProvider = $this->paginate($this->Post->find()->contain(['User']));//->first()'Tag',,'Comment'
+			// $module = $this->Post->find()->like('YiiPost.tags', $tag)->contain(['User','Comment'])->first();
 			$this->set(compact('dataProvider', 'comment', 'errors'));
 			$this->set('_serialize', ['dataProvider']);
 			// $this->render('index');
@@ -139,8 +132,8 @@ $this->render('index');
 
 	public function category($tag)
 	{
-		$module = $this->paginate($this->YiiPost->find()->where(['tags LIKE' => $tag]));
-		// $module = $this->paginate($this->YiiPost->find()->like('YiiPost.tags', $tag));
+		$module = $this->paginate($this->Post->find()->where(['tags LIKE' => $tag]));
+		// $module = $this->paginate($this->Post->find()->like('YiiPost.tags', $tag));
 		$this->set(compact('module'));
 		$this->set('_serialize', ['module']);
 		$this->render('comments.index','comments');
@@ -153,7 +146,7 @@ $this->render('index');
 	 */
 	public function admin()
 	{
-		$module = $this->paginate($this->YiiPost->find()->contain(['YiiLookup']));
+		$module = $this->paginate($this->Post->find()->contain(['YiiLookup']));
 		$this->set(compact('module'));
 		$this->set('_serialize', ['module']);
 	}
@@ -169,7 +162,7 @@ $this->render('index');
 	 */
 	public function create()
 	{
-		$post = $this->YiiPost->newEntity();
+		$post = $this->Post->newEntity();
 		if ($this->request->is(['patch', 'post', 'put'])) {
 			$post = $this->Posts->patchEntity($post, $this->request->getData());
 			// if ($this->Posts->save($post)) {
@@ -179,9 +172,9 @@ $this->render('index');
 			// }
 			$this->Flash->error(__('The post could not be saved. Please, try again.'));
 		}
-		$tags = $this->YiiPost->YiiTags->find('list');
-		$status = $this->YiiPost->YiiLookup->find('list');
-		$users = $this->YiiPost->YiiUsers->find('list');
+		$tags = $this->Post->Tag->find('list');
+		$status = $this->Post->YiiLookup->find('list');
+		$users = $this->Post->User->find('list');
 
 		$this->set(compact('post', 'status', 'tags', 'users'));
 		$this->set('_serialize', ['post', 'status', 'tags', 'users']);
@@ -197,7 +190,7 @@ $this->render('index');
 	 */
 	public function update($id)
 	{
-		$post = $this->YiiPost->get($id, ['contain' => ['YiiTags']]);
+		$post = $this->Post->get($id, ['contain' => ['Tag']]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
 			$post = $this->Posts->patchEntity($post, $this->request->getData());
 			// if ($this->Posts->save($post)) {
@@ -207,9 +200,9 @@ $this->render('index');
 			// }
 			$this->Flash->error(__('The post could not be saved. Please, try again.'));
 		}
-		$tags = $this->YiiPost->YiiTags->find('list');
-		$status = $this->YiiPost->YiiLookup->find('list');
-		$users = $this->YiiPost->YiiUsers->find('list');
+		$tags = $this->Post->Tag->find('list');
+		$status = $this->Post->YiiLookup->find('list');
+		$users = $this->Post->User->find('list');
 
 		$this->set(compact('post', 'status', 'tags', 'users'));
 		$this->set('_serialize', ['post', 'status', 'tags', 'users']);
@@ -274,7 +267,7 @@ $this->render('index');
 	protected function newComment($post)
 	{
 		// $comment = new Comment;
-		$comment = $this->YiiPost->YiiComments->newEntity();
+		$comment = $this->Post->Comment->newEntity();
 		if (isset($_POST['ajax']) && $_POST['ajax'] === 'comment-form') {
 			echo CActiveForm::validate($comment);
 			Yii::app()->end();
@@ -282,7 +275,7 @@ $this->render('index');
 		if (isset($_POST['Comment'])) {
 			$comment->attributes = $_POST['Comment'];
 			if ($post->addComment($comment)) {
-				if ($comment->status == YiiComments::STATUS_PENDING)
+				if ($comment->status == Comment::STATUS_PENDING)
 					Yii::app()->user->setFlash('commentSubmitted', 'Thank you for your comment. Your comment will be posted once it is approved.');
 				$this->refresh();
 			}

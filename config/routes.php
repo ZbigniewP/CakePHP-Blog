@@ -27,6 +27,15 @@ Router::scope('/admin', function (RouteBuilder $routes) {
     $routes->connect('/delete/:id', ['controller' => 'Admin', 'action' => 'delete'], ['pass' => ['id'], 'id' => '\d+']);
     $routes->fallbacks(DashedRoute::class);
 });
+
+Router::scope('/yii', function (RouteBuilder $routes) {
+    $routes->connect('/', ['controller' => 'YiiPost', 'action' => 'index']);
+    $routes->connect('/category/:tag', ['controller' => 'YiiPost', 'action' => 'category'], ['pass' => ['tag'], 'tag' => '[a-z0-9\-]+']);
+    $routes->connect('/author/:id', ['controller' => 'YiiPost', 'action' => 'author'], ['pass' => ['id'], 'id' => '[0-9]+']);
+    $routes->connect('/:tag', ['controller' => 'YiiPost', 'action' => 'view'], ['pass' => ['tag'], 'tag' => '[a-z0-9\-]+']);
+    $routes->fallbacks(DashedRoute::class);
+});
+
 Plugin::routes();
 
 Plugin::load('Bake');

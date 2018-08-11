@@ -2,7 +2,7 @@
 
 namespace App\Model\Table;
 
-use App\Model\Entity\Category;
+use App\Model\Entity\Categories;
 use Cake\Datasource\EntityInterface;
 use Cake\ORM\Association\HasMany;
 use Cake\ORM\Table;
@@ -13,13 +13,13 @@ use Cake\Validation\Validator;
  *
  * @property HasMany $Posts
  *
- * @method Category get($primaryKey, $options = [])
- * @method Category newEntity($data = null, array $options = [])
- * @method Category[] newEntities(array $data, array $options = [])
- * @method Category|bool save(EntityInterface $entity, $options = [])
- * @method Category patchEntity(EntityInterface $entity, array $data, array $options = [])
- * @method Category[] patchEntities($entities, array $data, array $options = [])
- * @method Category findOrCreate($search, callable $callback = null, $options = [])
+ * @method Categories get($primaryKey, $options = [])
+ * @method Categories newEntity($data = null, array $options = [])
+ * @method Categories[] newEntities(array $data, array $options = [])
+ * @method Categories|bool save(EntityInterface $entity, $options = [])
+ * @method Categories patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method Categories[] patchEntities($entities, array $data, array $options = [])
+ * @method Categories findOrCreate($search, callable $callback = null, $options = [])
  */
 class CategoriesTable extends Table
 {
@@ -40,7 +40,7 @@ class CategoriesTable extends Table
 		$this->setDisplayField('name');
 		$this->setPrimaryKey('id');
 
-		$this->hasMany('Posts', ['foreignKey' => 'category_id']);
+		$this->hasMany('Posts', ['foreignKey' => 'Categories_id']);
 	}
 
 	/**

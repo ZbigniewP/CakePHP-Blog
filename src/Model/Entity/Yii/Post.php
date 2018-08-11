@@ -3,7 +3,7 @@
 namespace App\Model\Entity\Yii;
 
 use Cake\I18n\FrozenTime;
-use Cake\ORM\Entity;
+use Cake\ORM\Entity\Yii;
 use Cake\Routing\Router;
 // use Cake\View\Helper\UrlHelper;
 
@@ -18,9 +18,9 @@ use Cake\Routing\Router;
  * @property int $user_id
  * @property FrozenTime $created
  *
- * @property Tags $category
- * @property Users $user
- * @property Comments[] $comments
+ * @property Tag $category
+ * @property User $user
+ * @property Comment[] $comments
  */
 class Post extends Entity
 {
@@ -54,7 +54,7 @@ class Post extends Entity
 	 */
 	public function getUrl()
 	{
-		return Router::url(['controller' => 'yii.post', 'action' => 'view', 'id' => $this->id, 'title' => $this->title]);
+		return Router::url(['controller' => 'YiiPost', 'action' => 'view', 'id' => $this->id, 'title' => $this->title]);
 	}
 
 	/**
@@ -62,9 +62,9 @@ class Post extends Entity
 	 */
 	public function getTagLinks()
 	{
-		// $links[] = $this->Html->link($tag, ['yii.post/index', 'tag' => $tag]);
-		foreach (Tags::string2array($this->tags) as $tag)
-			$links[] = ['label' => $tag, 'url' => Router::url(['controller' => 'yii.post', 'action' => 'index', 'tag' => $tag])];
+		// $links[] = $this->Html->link($tag, ['yii/post/index', 'tag' => $tag]);
+		foreach (Tag::string2array($this->tags) as $tag)
+			$links[] = ['label' => $tag, 'url' => Router::url(['controller' => 'YiiPost', 'action' => 'index', 'tag' => $tag])];
 		return $links;
 	}
 }

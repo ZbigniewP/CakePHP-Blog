@@ -4,10 +4,10 @@
 	</div>
 	<div class="portlet-content">
 		<ul>
-			<li><?= $this->Html->link('Create New Post', '/yiipost/create') ?></li>
-			<li><?= $this->Html->link('Manage Posts', '/yiipost/admin') ?></li>
-			<li><?= $this->Html->link('Approve Comments', '/yiicomments/index') . ' (' . $pendingComments . ')'; ?></li>
-			<li><?= $this->Html->link('Logout', '/yiipost/logout') ?></li>
+			<li><?= $this->Html->link('Create New Post', '/yii/post/create') ?></li>
+			<li><?= $this->Html->link('Manage Posts', '/yii/post/admin') ?></li>
+			<li><?= $this->Html->link('Approve Comments', '/yii/comment/index') . ' (' . $pendingComments . ')'; ?></li>
+			<li><?= $this->Html->link('Logout', '/yii/post/logout') ?></li>
 		</ul>
 	</div>
 </div>

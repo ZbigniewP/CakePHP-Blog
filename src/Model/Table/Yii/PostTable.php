@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Table;
+namespace App\Model\Table\Yii;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -9,8 +9,8 @@ use Cake\Validation\Validator;
 /**
  * YiiPost Model
  *
- * @property \App\Model\Table\Yii\PostTable|\Cake\ORM\Association\BelongsTo $Articles
- * @property \App\Model\Table\Yii\UsersTable|\Cake\ORM\Association\BelongsTo $YiiUsers
+ * @property \App\Model\Table\Yii\PostTable|\Cake\ORM\Association\BelongsTo $Post
+ * @property \App\Model\Table\Yii\UserTable|\Cake\ORM\Association\BelongsTo $User
  *
  * @method \App\Model\Entity\Yii\Post get($primaryKey, $options = [])
  * @method \App\Model\Entity\Yii\Post newEntity($data = null, array $options = [])
@@ -39,26 +39,26 @@ class PostTable extends Table
 		$this->setPrimaryKey('id');
 
 		$this->addBehavior('Timestamp');
-		$this->addBehavior('CounterCache', ['YiiTags' => ['frequency']]);
+		$this->addBehavior('CounterCache', ['Tag' => ['frequency']]);
 
-		$this->belongsTo('YiiUsers', [
+		$this->belongsTo('User', [
 			'foreignKey' => 'author_id',
 			'joinType' => 'INNER'
 		]);
 
-		$this->hasMany('YiiComments', [
+		$this->hasMany('Comment', [
 			'foreignKey' => 'post_id',
 			'joinType' => 'INNER'
 		]);
 
-		$this->hasMany('YiiTags', [//'tags'
+		$this->hasMany('Tag', [//'tags'
 			'foreignKey' => 'name',
 		]);
 // ,['groupField'=>'type','keyField'=>'type','valueField'=>'PostStatus']
 // 'params' => ['YiiLookup.type'=>'PostStatus']
 // ->where(['YiiLookup.type' =>'PostStatus']),['conditions' => ['type=' => 'PostStatus']]
 // echo'<pre>';print_r([$options,$query]);exit;
-		$this->belongsTo('YiiLookup', [
+		$this->belongsTo('Lookup', [
 			'foreignKey' => 'status',
 			'conditions' => ['type' => 'PostStatus']
 		]);
@@ -67,7 +67,7 @@ class PostTable extends Table
 		//     'foreignKey' => 'page_id'
 		// ]);
 
-		// $this->belongsTo('YiiUsers', [
+		// $this->belongsTo('User', [
 		// 	'foreignKey' => 'author_id',
 		// 	'joinType' => 'INNER'
 		// ]);
@@ -125,8 +125,8 @@ class PostTable extends Table
 	 */
 	public function buildRules(RulesChecker $rules)
 	{
-		$rules->add($rules->existsIn(['page_id'], 'Pages'));
-		$rules->add($rules->existsIn(['author_id'], 'YiiUsers'));
+		$rules->add($rules->existsIn(['page_id'], 'Post'));
+		$rules->add($rules->existsIn(['author_id'], 'User'));
 
 		return $rules;
 	}

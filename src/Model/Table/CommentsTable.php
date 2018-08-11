@@ -15,13 +15,13 @@ use Cake\Validation\Validator;
  *
  * @property BelongsTo $Posts
  *
- * @method Comment get($primaryKey, $options = [])
- * @method Comment newEntity($data = null, array $options = [])
- * @method Comment[] newEntities(array $data, array $options = [])
- * @method Comment|bool save(EntityInterface $entity, $options = [])
- * @method Comment patchEntity(EntityInterface $entity, array $data, array $options = [])
- * @method Comment[] patchEntities($entities, array $data, array $options = [])
- * @method Comment findOrCreate($search, callable $callback = null, $options = [])
+ * @method Comments get($primaryKey, $options = [])
+ * @method Comments newEntity($data = null, array $options = [])
+ * @method Comments[] newEntities(array $data, array $options = [])
+ * @method Comments|bool save(EntityInterface $entity, $options = [])
+ * @method Comments patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method Comments[] patchEntities($entities, array $data, array $options = [])
+ * @method Comments findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin TimestampBehavior
  */

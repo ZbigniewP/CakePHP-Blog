@@ -15,7 +15,8 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-defined('FrameWorks_DIR') or define('FrameWorks_DIR', '..');
+// defined('FrameWorks_DIR') or define('FrameWorks_DIR', '..');
+defined('FrameWorks_DIR') or define('FrameWorks_DIR', dirname(__DIR__));
 // defined('FrameWorks_DIR') or define('FrameWorks_DIR', 'C:/FrameWorks/CakePHP test_vendor');
 // defined('FrameWorks_DIR') or define('FrameWorks_DIR', 'C:/Users/edytor/Documents/My Web Sites/WebSite1/blogCake');
 

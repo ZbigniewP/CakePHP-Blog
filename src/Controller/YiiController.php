@@ -14,8 +14,8 @@ use Cake\Http\Response;
 class YiiController extends AppController
 {
 	public $paginate = [
-		'contain' => ['YiiTags', 'YiiUsers'],
-		// 'contain' => ['YiiUsers'],
+		'contain' => ['Tag', 'User'],
+		// 'contain' => ['User'],
 		'limit' => 5
 	];
 
@@ -27,12 +27,12 @@ class YiiController extends AppController
 
 	public function index()
 	{
-		// $posts = [];//$this->paginate($this->Posts);
+		// $posts = [];//$this->paginate($this->Post);
 
 		// $this->set(compact('Post'));
 		// $this->set('_serialize', ['Post']);
 
-		// $this->paginate = ['contain' => ['YiiUsers']];
+		// $this->paginate = ['contain' => ['User']];
 		$posts = $this->paginate($this->Post);
 
 		$this->set(compact('Post'));
@@ -52,7 +52,7 @@ class YiiController extends AppController
 			}
 		}
 
-		$posts = $this->Post->find()->where(['Post.id' => $slug])->contain(['YiiUsers','Comments'])->first();//'YiiTags',
+		$posts = $this->Post->find()->where(['Post.id' => $slug])->contain(['User', 'Comment'])->first();//'Tag',
 
 		$this->set(compact('post', 'comment', 'errors'));
 		$this->set('_serialize', ['post']);
@@ -60,7 +60,7 @@ class YiiController extends AppController
 
 	// public function category($slug)
 	// {
-	// 	$posts = $this->paginate($this->Post->find()->where(['YiiTags.name' => $slug]));
+	// 	$posts = $this->paginate($this->Post->find()->where(['Tag.name' => $slug]));
 
 	// 	$this->set(compact('posts'));
 	// 	$this->set('_serialize', ['posts']);

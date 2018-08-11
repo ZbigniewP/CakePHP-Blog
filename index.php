@@ -12,12 +12,12 @@
  * @since         0.10.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-ini_set('error_reporting', E_ALL);
-ini_set('track_errors', true);
-ini_set('error_log', __DIR__ . 'logs/_errors.log');
-ini_set('display_errors', 'On');
-ini_set('intl.default_locale', 'pl_PL');
-setlocale(LC_ALL, array('pl_PL.utf8', 'pl', 'plk'));
-mb_internal_encoding('UTF-8');
+// ini_set('error_reporting', E_ALL);
+// ini_set('track_errors', true);
+// ini_set('error_log', __DIR__ . 'logs/_errors.log');
+// ini_set('display_errors', 'On');
+// ini_set('intl.default_locale', 'pl_PL');
+// setlocale(LC_ALL, array('pl_PL.utf8', 'pl', 'plk'));
+// mb_internal_encoding('UTF-8');
 
 require 'webroot' . DIRECTORY_SEPARATOR . 'index.php';

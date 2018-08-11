@@ -2,7 +2,7 @@
 
 namespace App\Model\Table;
 
-use App\Model\Entity\Post;
+use App\Model\Entity\Posts;
 use ArrayObject;
 use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
@@ -22,13 +22,13 @@ use Cake\Validation\Validator;
  * @property BelongsTo $Users
  * @property HasMany $Comments
  *
- * @method Post get($primaryKey, $options = [])
- * @method Post newEntity($data = null, array $options = [])
- * @method Post[] newEntities(array $data, array $options = [])
- * @method Post|bool save(EntityInterface $entity, $options = [])
- * @method Post patchEntity(EntityInterface $entity, array $data, array $options = [])
- * @method Post[] patchEntities($entities, array $data, array $options = [])
- * @method Post findOrCreate($search, callable $callback = null, $options = [])
+ * @method Posts get($primaryKey, $options = [])
+ * @method Posts newEntity($data = null, array $options = [])
+ * @method Posts[] newEntities(array $data, array $options = [])
+ * @method Posts|bool save(EntityInterface $entity, $options = [])
+ * @method Posts patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method Posts[] patchEntities($entities, array $data, array $options = [])
+ * @method Posts findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin TimestampBehavior
  * @mixin CounterCacheBehavior

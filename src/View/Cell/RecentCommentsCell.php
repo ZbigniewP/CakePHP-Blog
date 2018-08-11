@@ -2,17 +2,17 @@
 
 namespace App\View\Cell;
 
-use App\Model\Table\Yii\CommentsTable;
-use App\Model\Table\Yii\PostsTable;
-use App\Model\Table\Yii\TagsTable;
+use App\Model\Table\Yii\CommentTable;
+use App\Model\Table\Yii\PostTable;
+use App\Model\Table\Yii\TagTable;
 
 use Cake\View\Cell;
 
 /**
  * Class RecentCommentsCell
  * @package App\View\Cell
- * @property YiiTagsTable Categories
- * @property YiiPostsTable Posts
+ * @property Yii\TagTable Tag
+ * @property Yii\PostTable Post
  */
 class RecentCommentsCell extends Cell
 {
@@ -29,14 +29,13 @@ class RecentCommentsCell extends Cell
 	 */
 	public function display()
 	{
-		$this->loadModel('YiiTags');
-		$this->loadModel('YiiPosts');
+		$this->loadModel('Tag');
+		$this->loadModel('Post');
 		
-		// $categories = $this->YiiTags->find();
-		$categories = $this->YiiTags->find();
-		// $posts = $this->YiiPosts->find()->order(['id' => 'desc'])->limit(5);
-		// $posts = $this->YiiPost->YiiComments->find()->order(['id' => 'desc'])->limit(5);
-		$posts = [];
+		$categories = $this->Tag->find();
+		$posts = $this->Posts->find()->order(['id' => 'desc'])->limit(5);
+		// // $posts = $this->Post->Comment->find()->order(['id' => 'desc'])->limit(5);
+		// $posts = [];
 		$this->set(compact('categories', 'posts'));
 	}
 }

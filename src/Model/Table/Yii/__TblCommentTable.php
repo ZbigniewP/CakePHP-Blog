@@ -1,24 +1,23 @@
 <?php
-namespace App\Model\Table;
-
+namespace App\Model\Table\Yii;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * YiiComments Model
+ * Yii\Comment Model
  *
- * @property \App\Model\Table\Yii\PostTable|\Cake\ORM\Association\BelongsTo $YiiPost
+ * @property \App\Model\Table\Yii\PostTable|\Cake\ORM\Association\BelongsTo $Post
  *
- * @method \App\Model\Entity\Yii\Comments get($primaryKey, $options = [])
- * @method \App\Model\Entity\Yii\Comments newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Yii\Comments[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Comments|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Yii\Comments|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Yii\Comments patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Comments[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Comments findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Yii\Comment get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Yii\Comment newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Yii\Comment[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Yii\Comment|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Yii\Comment|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Yii\Comment patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Yii\Comment[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Yii\Comment findOrCreate($search, callable $callback = null, $options = [])
  */
 class CommentsTable extends Table
 {
