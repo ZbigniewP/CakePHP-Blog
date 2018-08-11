@@ -17,7 +17,8 @@
 
 // defined('FrameWorks_DIR') or define('FrameWorks_DIR', 'C:/FrameWorks/CakePHP test_vendor');
 // defined('FrameWorks_DIR') or define('FrameWorks_DIR', '..');
-defined('FrameWorks_DIR') or define('FrameWorks_DIR', 'C:/Users/edytor/Documents/My Web Sites/WebSite1/blogCake');
+defined('FrameWorks_DIR') or define('FrameWorks_DIR', dirname(__DIR__));
+// defined('FrameWorks_DIR') or define('FrameWorks_DIR', 'C:/Users/edytor/Documents/My Web Sites/WebSite1/blogCake');
 
 // if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
 //     ini_set('include_path', ini_get('include_path') . ';' . dirname(__DIR__) . ';'.FrameWorks_DIR.';');
