@@ -25,4 +25,4 @@
 /vendors/*
 tmp/cache/repo/https---packagist.org/provider-symfony$finder.json
 
-/config/Data/*
+/config/data/*
