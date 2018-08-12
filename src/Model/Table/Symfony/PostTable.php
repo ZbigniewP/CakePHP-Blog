@@ -2,12 +2,22 @@
 namespace App\Model\Table\Symfony;
 
 use Cake\ORM\Query;
+// use Cake\ORM\RulesChecker;
+// use Cake\ORM\Table;
+// use Cake\Validation\Validator;
+use ArrayObject;
+use Cake\Datasource\EntityInterface;
+use Cake\Event\Event;
+use Cake\ORM\Association\BelongsTo;
+use Cake\ORM\Association\HasMany;
+use Cake\ORM\Behavior\CounterCacheBehavior;
+use Cake\ORM\Behavior\TimestampBehavior;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\Utility\Text;
 use Cake\Validation\Validator;
-
 /**
- * SymfonyPost Model
+ * Symfony\Post Model
  *
  * @property \App\Model\Table\Symfony\UserTable|\Cake\ORM\Association\BelongsTo $Symfony\User
  *

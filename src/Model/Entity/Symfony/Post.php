@@ -1,8 +1,10 @@
 <?php
-namespace App\Model\Entity;
+namespace App\Model\Entity\Symfony;
 
+// use Cake\ORM\Entity;
+
+use Cake\I18n\FrozenTime;
 use Cake\ORM\Entity;
-
 /**
  * SymfonyPost Entity
  *
@@ -18,7 +20,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\Symfony\User $symfony_demo_user
  */
-class SymfonyPost extends Entity
+class Post extends Entity
 {
 
     /**

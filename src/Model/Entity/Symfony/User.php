@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Entity;
+namespace App\Model\Entity\Symfony;
 
 use Cake\ORM\Entity;
 
@@ -13,7 +13,7 @@ use Cake\ORM\Entity;
  * @property string $password
  * @property string|resource $roles
  */
-class SymfonyUser extends Entity
+class User extends Entity
 {
 
     /**
@@ -38,7 +38,5 @@ class SymfonyUser extends Entity
      *
      * @var array
      */
-    protected $_hidden = [
-        'password'
-    ];
+    protected $_hidden = ['password'];
 }

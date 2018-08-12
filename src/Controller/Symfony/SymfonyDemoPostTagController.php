@@ -23,7 +23,7 @@ class SymfonyPostTagController extends AppController
         $this->paginate = [
             'contain' => ['SymfonyPost', 'SymfonyDemoTag']
         ];
-        $symfonyDemoPostTag = $this->paginate($this->SymfonyPostTag);
+        $dataPostTag = $this->paginate($this->SymfonyPostTag);
 
         $this->set(compact('symfonyDemoPostTag'));
     }
@@ -37,11 +37,11 @@ class SymfonyPostTagController extends AppController
      */
     public function view($id = null)
     {
-        $symfonyDemoPostTag = $this->SymfonyPostTag->get($id, [
+        $dataPostTag = $this->SymfonyPostTag->get($id, [
             'contain' => ['SymfonyPost', 'SymfonyDemoTag']
         ]);
 
-        $this->set('symfonyDemoPostTag', $symfonyDemoPostTag);
+        $this->set('symfonyDemoPostTag', $dataPostTag);
     }
 
     /**
@@ -51,17 +51,17 @@ class SymfonyPostTagController extends AppController
      */
     public function add()
     {
-        $symfonyDemoPostTag = $this->SymfonyPostTag->newEntity();
+        $dataPostTag = $this->SymfonyPostTag->newEntity();
         if ($this->request->is('post')) {
-            $symfonyDemoPostTag = $this->SymfonyPostTag->patchEntity($symfonyDemoPostTag, $this->request->getData());
-            if ($this->SymfonyPostTag->save($symfonyDemoPostTag)) {
+            $dataPostTag = $this->SymfonyPostTag->patchEntity($dataPostTag, $this->request->getData());
+            if ($this->SymfonyPostTag->save($dataPostTag)) {
                 $this->Flash->success(__('The symfony demo post tag has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The symfony demo post tag could not be saved. Please, try again.'));
         }
-        $symfonyDemoPost = $this->SymfonyPostTag->SymfonyPost->find('list', ['limit' => 200]);
+        $dataPost = $this->SymfonyPostTag->SymfonyPost->find('list', ['limit' => 200]);
         $symfonyDemoTag = $this->SymfonyPostTag->SymfonyDemoTag->find('list', ['limit' => 200]);
         $this->set(compact('symfonyDemoPostTag', 'symfonyDemoPost', 'symfonyDemoTag'));
     }
@@ -75,19 +75,19 @@ class SymfonyPostTagController extends AppController
      */
     public function edit($id = null)
     {
-        $symfonyDemoPostTag = $this->SymfonyPostTag->get($id, [
+        $dataPostTag = $this->SymfonyPostTag->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $symfonyDemoPostTag = $this->SymfonyPostTag->patchEntity($symfonyDemoPostTag, $this->request->getData());
-            if ($this->SymfonyPostTag->save($symfonyDemoPostTag)) {
+            $dataPostTag = $this->SymfonyPostTag->patchEntity($dataPostTag, $this->request->getData());
+            if ($this->SymfonyPostTag->save($dataPostTag)) {
                 $this->Flash->success(__('The symfony demo post tag has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The symfony demo post tag could not be saved. Please, try again.'));
         }
-        $symfonyDemoPost = $this->SymfonyPostTag->SymfonyPost->find('list', ['limit' => 200]);
+        $dataPost = $this->SymfonyPostTag->SymfonyPost->find('list', ['limit' => 200]);
         $symfonyDemoTag = $this->SymfonyPostTag->SymfonyDemoTag->find('list', ['limit' => 200]);
         $this->set(compact('symfonyDemoPostTag', 'symfonyDemoPost', 'symfonyDemoTag'));
     }
@@ -102,8 +102,8 @@ class SymfonyPostTagController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $symfonyDemoPostTag = $this->SymfonyPostTag->get($id);
-        if ($this->SymfonyPostTag->delete($symfonyDemoPostTag)) {
+        $dataPostTag = $this->SymfonyPostTag->get($id);
+        if ($this->SymfonyPostTag->delete($dataPostTag)) {
             $this->Flash->success(__('The symfony demo post tag has been deleted.'));
         } else {
             $this->Flash->error(__('The symfony demo post tag could not be deleted. Please, try again.'));

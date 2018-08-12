@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Symfony\Post[]|\Cake\Collection\CollectionInterface $symfonyDemoPost
+ * @var \App\Model\Entity\Symfony\Post[]|\Cake\Collection\CollectionInterface $data
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -29,20 +29,20 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($symfonyDemoPost as $symfonyDemoPost): ?>
+            <?php foreach ($dataPost as $data): ?>
             <tr>
-                <td><?= $this->Number->format($symfonyDemoPost->id) ?></td>
-                <td><?= $symfonyDemoPost->has('symfony_demo_user') ? $this->Html->link($symfonyDemoPost->symfony_demo_user->id, ['controller' => 'SymfonyUser', 'action' => 'view', $symfonyDemoPost->symfony_demo_user->id]) : '' ?></td>
-                <td><?= h($symfonyDemoPost->title) ?></td>
-                <td><?= h($symfonyDemoPost->slug) ?></td>
-                <td><?= h($symfonyDemoPost->summary) ?></td>
-                <td><?= h($symfonyDemoPost->publishedAt) ?></td>
-                <td><?= $this->Number->format($symfonyDemoPost->status) ?></td>
-                <td><?= h($symfonyDemoPost->updatedAt) ?></td>
+                <td><?= $this->Number->format($data->id) ?></td>
+                <td><?= $data->has('symfony_demo_user') ? $this->Html->link($data->symfony_demo_user->id, ['controller' => 'SymfonyUser', 'action' => 'view', $data->symfony_demo_user->id]) : '' ?></td>
+                <td><?= h($data->title) ?></td>
+                <td><?= h($data->slug) ?></td>
+                <td><?= h($data->summary) ?></td>
+                <td><?= h($data->publishedAt) ?></td>
+                <td><?= $this->Number->format($data->status) ?></td>
+                <td><?= h($data->updatedAt) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $symfonyDemoPost->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $symfonyDemoPost->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $symfonyDemoPost->id], ['confirm' => __('Are you sure you want to delete # {0}?', $symfonyDemoPost->id)]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $data->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $data->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $data->id], ['confirm' => __('Are you sure you want to delete # {0}?', $data->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

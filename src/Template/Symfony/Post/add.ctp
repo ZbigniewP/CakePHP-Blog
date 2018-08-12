@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Symfony\Post $symfonyDemoPost
+ * @var \App\Model\Entity\Symfony\Post $dataPost
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -13,7 +13,7 @@
     </ul>
 </nav>
 <div class="symfonyDemoPost form large-9 medium-8 columns content">
-    <?= $this->Form->create($symfonyDemoPost) ?>
+    <?= $this->Form->create($dataPost) ?>
     <fieldset>
         <legend><?= __('Add Symfony Demo Post') ?></legend>
         <?php

@@ -18,7 +18,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Symfony\User[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Symfony\User findOrCreate($search, callable $callback = null, $options = [])
  */
-class SymfonyUserTable extends Table
+class UserTable extends Table
 {
 
     /**

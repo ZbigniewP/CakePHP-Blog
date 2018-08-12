@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Entity;
+namespace App\Model\Entity\Symfony;
 
 use Cake\ORM\Entity;
 

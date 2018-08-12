@@ -8,7 +8,7 @@ use App\Controller\AppController;
  *
  * @property \App\Model\Table\SymfonyDemoCommentTable $SymfonyDemoComment
  *
- * @method \App\Model\Entity\SymfonyDemoComment[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @method \App\Model\Entity\Symfony\Comment[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class SymfonyDemoCommentController extends AppController
 {
@@ -21,7 +21,7 @@ class SymfonyDemoCommentController extends AppController
     public function index()
     {
         $this->paginate = ['contain' => ['Post', 'User']];
-        $symfonyDemoComment = $this->paginate($this->SymfonyDemoComment);
+        $symfonyDemoComment = $this->paginate($this->Comment);
 
         $this->set(compact('symfonyDemoComment'));
     }
@@ -35,7 +35,7 @@ class SymfonyDemoCommentController extends AppController
      */
     public function view($id = null)
     {
-        $symfonyDemoComment = $this->SymfonyDemoComment->get($id, ['contain' => ['Post', 'User']]);
+        $symfonyDemoComment = $this->Comment->get($id, ['contain' => ['Post', 'User']]);
 
         $this->set('symfonyDemoComment', $symfonyDemoComment);
     }
@@ -47,18 +47,18 @@ class SymfonyDemoCommentController extends AppController
      */
     public function add()
     {
-        $symfonyDemoComment = $this->SymfonyDemoComment->newEntity();
+        $symfonyDemoComment = $this->Comment->newEntity();
         if ($this->request->is('post')) {
-            $symfonyDemoComment = $this->SymfonyDemoComment->patchEntity($symfonyDemoComment, $this->request->getData());
-            if ($this->SymfonyDemoComment->save($symfonyDemoComment)) {
+            $symfonyDemoComment = $this->Comment->patchEntity($symfonyDemoComment, $this->request->getData());
+            if ($this->Comment->save($symfonyDemoComment)) {
                 $this->Flash->success(__('The symfony demo comment has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The symfony demo comment could not be saved. Please, try again.'));
         }
-        $symfonyDemoPost = $this->SymfonyDemoComment->SymfonyPost->find('list', ['limit' => 200]);
-        $user = $this->SymfonyDemoComment->User->find('list', ['limit' => 200]);
+        $dataPost = $this->Comment->SymfonyPost->find('list', ['limit' => 200]);
+        $user = $this->Comment->User->find('list', ['limit' => 200]);
         $this->set(compact('symfonyDemoComment', 'symfonyDemoPost', 'user'));
     }
 
@@ -71,20 +71,20 @@ class SymfonyDemoCommentController extends AppController
      */
     public function edit($id = null)
     {
-        $symfonyDemoComment = $this->SymfonyDemoComment->get($id, [
+        $symfonyDemoComment = $this->Comment->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $symfonyDemoComment = $this->SymfonyDemoComment->patchEntity($symfonyDemoComment, $this->request->getData());
-            if ($this->SymfonyDemoComment->save($symfonyDemoComment)) {
+            $symfonyDemoComment = $this->Comment->patchEntity($symfonyDemoComment, $this->request->getData());
+            if ($this->Comment->save($symfonyDemoComment)) {
                 $this->Flash->success(__('The symfony demo comment has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The symfony demo comment could not be saved. Please, try again.'));
         }
-        $symfonyDemoPost = $this->SymfonyDemoComment->SymfonyPost->find('list', ['limit' => 200]);
-        $user = $this->SymfonyDemoComment->User->find('list', ['limit' => 200]);
+        $dataPost = $this->Comment->SymfonyPost->find('list', ['limit' => 200]);
+        $user = $this->Comment->User->find('list', ['limit' => 200]);
         $this->set(compact('symfonyDemoComment', 'symfonyDemoPost', 'user'));
     }
 
@@ -98,8 +98,8 @@ class SymfonyDemoCommentController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $symfonyDemoComment = $this->SymfonyDemoComment->get($id);
-        if ($this->SymfonyDemoComment->delete($symfonyDemoComment)) {
+        $symfonyDemoComment = $this->Comment->get($id);
+        if ($this->Comment->delete($symfonyDemoComment)) {
             $this->Flash->success(__('The symfony demo comment has been deleted.'));
         } else {
             $this->Flash->error(__('The symfony demo comment could not be deleted. Please, try again.'));

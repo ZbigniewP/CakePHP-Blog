@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Symfony\PostTag[]|\Cake\Collection\CollectionInterface $symfonyDemoPostTag
+ * @var \App\Model\Entity\Symfony\PostTag[]|\Cake\Collection\CollectionInterface $dataPostTag
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -23,14 +23,14 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($symfonyDemoPostTag as $symfonyDemoPostTag): ?>
+            <?php foreach ($dataPostTag as $dataPostTag): ?>
             <tr>
-                <td><?= $symfonyDemoPostTag->has('symfony_demo_post') ? $this->Html->link($symfonyDemoPostTag->symfony_demo_post->title, ['controller' => 'SymfonyPost', 'action' => 'view', $symfonyDemoPostTag->symfony_demo_post->id]) : '' ?></td>
-                <td><?= $this->Number->format($symfonyDemoPostTag->tag_id) ?></td>
+                <td><?= $dataPostTag->has('symfony_demo_post') ? $this->Html->link($dataPostTag->symfony_demo_post->title, ['controller' => 'SymfonyPost', 'action' => 'view', $dataPostTag->symfony_demo_post->id]) : '' ?></td>
+                <td><?= $this->Number->format($dataPostTag->tag_id) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $symfonyDemoPostTag->post_id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $symfonyDemoPostTag->post_id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $symfonyDemoPostTag->post_id], ['confirm' => __('Are you sure you want to delete # {0}?', $symfonyDemoPostTag->post_id)]) ?>
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $dataPostTag->post_id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $dataPostTag->post_id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $dataPostTag->post_id], ['confirm' => __('Are you sure you want to delete # {0}?', $dataPostTag->post_id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

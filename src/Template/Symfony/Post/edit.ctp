@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Symfony\Post $symfonyDemoPost
+ * @var \App\Model\Entity\Symfony\Post $dataPost
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -9,8 +9,8 @@
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $symfonyDemoPost->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $symfonyDemoPost->id)]
+                ['action' => 'delete', $dataPost->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $dataPost->id)]
             )
         ?></li>
         <li><?= $this->Html->link(__('List Symfony Demo Post'), ['action' => 'index']) ?></li>
@@ -19,7 +19,7 @@
     </ul>
 </nav>
 <div class="symfonyDemoPost form large-9 medium-8 columns content">
-    <?= $this->Form->create($symfonyDemoPost) ?>
+    <?= $this->Form->create($dataPost) ?>
     <fieldset>
         <legend><?= __('Edit Symfony Demo Post') ?></legend>
         <?php

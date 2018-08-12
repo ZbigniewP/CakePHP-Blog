@@ -38,7 +38,7 @@ class SymfonyDemoCommentTableTest extends TestCase
     {
         parent::setUp();
         $config = TableRegistry::getTableLocator()->exists('SymfonyDemoComment') ? [] : ['className' => SymfonyDemoCommentTable::class];
-        $this->SymfonyDemoComment = TableRegistry::getTableLocator()->get('SymfonyDemoComment', $config);
+        $this->Comment = TableRegistry::getTableLocator()->get('SymfonyDemoComment', $config);
     }
 
     /**
@@ -48,7 +48,7 @@ class SymfonyDemoCommentTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->SymfonyDemoComment);
+        unset($this->Comment);
 
         parent::tearDown();
     }

@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Entity;
+namespace App\Model\Entity\Symfony;
 
 use Cake\ORM\Entity;
 
@@ -16,7 +16,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Symfony\Post $symfony_demo_post
  * @property \App\Model\Entity\Symfony\User $symfony_demo_user
  */
-class SymfonyDemoComment extends Entity
+class Comment extends Entity
 {
 
     /**

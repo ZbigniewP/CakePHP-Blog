@@ -8,7 +8,7 @@ use Cake\TestSuite\TestCase;
 /**
  * App\Model\Table\Symfony\UserTable Test Case
  */
-class SymfonyUserTableTest extends TestCase
+class UserTableTest extends TestCase
 {
 
     /**

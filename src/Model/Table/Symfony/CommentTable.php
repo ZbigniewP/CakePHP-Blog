@@ -12,16 +12,16 @@ use Cake\Validation\Validator;
  * @property \App\Model\Table\Symfony\PostTable|\Cake\ORM\Association\BelongsTo $SymfonyPost
  * @property \App\Model\Table\Symfony\UserTable|\Cake\ORM\Association\BelongsTo $Symfony\User
  *
- * @method \App\Model\Entity\SymfonyDemoComment get($primaryKey, $options = [])
- * @method \App\Model\Entity\SymfonyDemoComment newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoComment[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoComment|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SymfonyDemoComment|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SymfonyDemoComment patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoComment[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoComment findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Symfony\Comment get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Symfony\Comment newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Symfony\Comment[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\Comment|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Symfony\Comment|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Symfony\Comment patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\Comment[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\Comment findOrCreate($search, callable $callback = null, $options = [])
  */
-class SymfonyDemoCommentTable extends Table
+class CommentTable extends Table
 {
 
     /**
