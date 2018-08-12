@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\SymfonyDemoUserTable;
+use App\Model\Table\Symfony\UserTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\SymfonyDemoUserTable Test Case
+ * App\Model\Table\Symfony\UserTable Test Case
  */
-class SymfonyDemoUserTableTest extends TestCase
+class SymfonyUserTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\SymfonyDemoUserTable
+     * @var \App\Model\Table\Symfony\UserTable
      */
-    public $SymfonyDemoUser;
+    public $SymfonyUser;
 
     /**
      * Fixtures
@@ -35,8 +35,8 @@ class SymfonyDemoUserTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('SymfonyDemoUser') ? [] : ['className' => SymfonyDemoUserTable::class];
-        $this->SymfonyDemoUser = TableRegistry::getTableLocator()->get('SymfonyDemoUser', $config);
+        $config = TableRegistry::getTableLocator()->exists('SymfonyUser') ? [] : ['className' => SymfonyUserTable::class];
+        $this->SymfonyUser = TableRegistry::getTableLocator()->get('SymfonyUser', $config);
     }
 
     /**
@@ -46,7 +46,7 @@ class SymfonyDemoUserTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->SymfonyDemoUser);
+        unset($this->SymfonyUser);
 
         parent::tearDown();
     }

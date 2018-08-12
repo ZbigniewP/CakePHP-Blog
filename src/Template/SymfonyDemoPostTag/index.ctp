@@ -1,15 +1,15 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\SymfonyDemoPostTag[]|\Cake\Collection\CollectionInterface $symfonyDemoPostTag
+ * @var \App\Model\Entity\SymfonyPostTag[]|\Cake\Collection\CollectionInterface $symfonyDemoPostTag
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Symfony Demo Post Tag'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Symfony Demo Post'), ['controller' => 'SymfonyDemoPost', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Symfony Demo Post'), ['controller' => 'SymfonyDemoPost', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Symfony Demo Post'), ['controller' => 'SymfonyPost', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Symfony Demo Post'), ['controller' => 'SymfonyPost', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="symfonyDemoPostTag index large-9 medium-8 columns content">
@@ -25,7 +25,7 @@
         <tbody>
             <?php foreach ($symfonyDemoPostTag as $symfonyDemoPostTag): ?>
             <tr>
-                <td><?= $symfonyDemoPostTag->has('symfony_demo_post') ? $this->Html->link($symfonyDemoPostTag->symfony_demo_post->title, ['controller' => 'SymfonyDemoPost', 'action' => 'view', $symfonyDemoPostTag->symfony_demo_post->id]) : '' ?></td>
+                <td><?= $symfonyDemoPostTag->has('symfony_demo_post') ? $this->Html->link($symfonyDemoPostTag->symfony_demo_post->title, ['controller' => 'SymfonyPost', 'action' => 'view', $symfonyDemoPostTag->symfony_demo_post->id]) : '' ?></td>
                 <td><?= $this->Number->format($symfonyDemoPostTag->tag_id) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $symfonyDemoPostTag->post_id]) ?>

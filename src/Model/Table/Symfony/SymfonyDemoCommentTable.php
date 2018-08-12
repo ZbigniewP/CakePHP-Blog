@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Table;
+namespace App\Model\Table\Symfony;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -9,8 +9,8 @@ use Cake\Validation\Validator;
 /**
  * SymfonyDemoComment Model
  *
- * @property \App\Model\Table\SymfonyDemoPostTable|\Cake\ORM\Association\BelongsTo $SymfonyDemoPost
- * @property \App\Model\Table\SymfonyDemoUserTable|\Cake\ORM\Association\BelongsTo $SymfonyDemoUser
+ * @property \App\Model\Table\SymfonyPostTable|\Cake\ORM\Association\BelongsTo $SymfonyPost
+ * @property \App\Model\Table\Symfony\UserTable|\Cake\ORM\Association\BelongsTo $Symfony\User
  *
  * @method \App\Model\Entity\SymfonyDemoComment get($primaryKey, $options = [])
  * @method \App\Model\Entity\SymfonyDemoComment newEntity($data = null, array $options = [])
@@ -38,11 +38,11 @@ class SymfonyDemoCommentTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('SymfonyDemoPost', [
+        $this->belongsTo('SymfonyPost', [
             'foreignKey' => 'post_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('SymfonyDemoUser', [
+        $this->belongsTo('Symfony\User', [
             'foreignKey' => 'author_id',
             'joinType' => 'INNER'
         ]);
@@ -85,8 +85,8 @@ class SymfonyDemoCommentTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['post_id'], 'SymfonyDemoPost'));
-        $rules->add($rules->existsIn(['author_id'], 'SymfonyDemoUser'));
+        $rules->add($rules->existsIn(['post_id'], 'SymfonyPost'));
+        $rules->add($rules->existsIn(['author_id'], 'Symfony\User'));
 
         return $rules;
     }

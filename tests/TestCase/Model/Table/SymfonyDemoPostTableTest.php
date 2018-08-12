@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\SymfonyDemoPostTable;
+use App\Model\Table\SymfonyPostTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\SymfonyDemoPostTable Test Case
+ * App\Model\Table\SymfonyPostTable Test Case
  */
-class SymfonyDemoPostTableTest extends TestCase
+class SymfonyPostTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\SymfonyDemoPostTable
+     * @var \App\Model\Table\SymfonyPostTable
      */
-    public $SymfonyDemoPost;
+    public $SymfonyPost;
 
     /**
      * Fixtures
@@ -36,8 +36,8 @@ class SymfonyDemoPostTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('SymfonyDemoPost') ? [] : ['className' => SymfonyDemoPostTable::class];
-        $this->SymfonyDemoPost = TableRegistry::getTableLocator()->get('SymfonyDemoPost', $config);
+        $config = TableRegistry::getTableLocator()->exists('SymfonyPost') ? [] : ['className' => SymfonyPostTable::class];
+        $this->SymfonyPost = TableRegistry::getTableLocator()->get('SymfonyPost', $config);
     }
 
     /**
@@ -47,7 +47,7 @@ class SymfonyDemoPostTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->SymfonyDemoPost);
+        unset($this->SymfonyPost);
 
         parent::tearDown();
     }

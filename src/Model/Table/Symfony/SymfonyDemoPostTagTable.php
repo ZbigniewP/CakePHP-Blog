@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Table;
+namespace App\Model\Table\Symfony;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -7,21 +7,21 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * SymfonyDemoPostTag Model
+ * SymfonyPostTag Model
  *
- * @property \App\Model\Table\SymfonyDemoPostTable|\Cake\ORM\Association\BelongsTo $SymfonyDemoPost
+ * @property \App\Model\Table\SymfonyPostTable|\Cake\ORM\Association\BelongsTo $SymfonyPost
  * @property \App\Model\Table\SymfonyDemoTagTable|\Cake\ORM\Association\BelongsTo $SymfonyDemoTag
  *
- * @method \App\Model\Entity\SymfonyDemoPostTag get($primaryKey, $options = [])
- * @method \App\Model\Entity\SymfonyDemoPostTag newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoPostTag[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoPostTag|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SymfonyDemoPostTag|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SymfonyDemoPostTag patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoPostTag[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoPostTag findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\SymfonyPostTag get($primaryKey, $options = [])
+ * @method \App\Model\Entity\SymfonyPostTag newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\SymfonyPostTag[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\SymfonyPostTag|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\SymfonyPostTag|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\SymfonyPostTag patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\SymfonyPostTag[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\SymfonyPostTag findOrCreate($search, callable $callback = null, $options = [])
  */
-class SymfonyDemoPostTagTable extends Table
+class SymfonyPostTagTable extends Table
 {
 
     /**
@@ -38,7 +38,7 @@ class SymfonyDemoPostTagTable extends Table
         $this->setDisplayField('post_id');
         $this->setPrimaryKey(['post_id', 'tag_id']);
 
-        $this->belongsTo('SymfonyDemoPost', [
+        $this->belongsTo('SymfonyPost', [
             'foreignKey' => 'post_id',
             'joinType' => 'INNER'
         ]);
@@ -57,7 +57,7 @@ class SymfonyDemoPostTagTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['post_id'], 'SymfonyDemoPost'));
+        $rules->add($rules->existsIn(['post_id'], 'SymfonyPost'));
         $rules->add($rules->existsIn(['tag_id'], 'SymfonyDemoTag'));
 
         return $rules;

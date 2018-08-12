@@ -4,19 +4,15 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * SymfonyDemoComment Entity
+ * SymfonyPostTag Entity
  *
- * @property int $id
  * @property int $post_id
- * @property int $author_id
- * @property string|resource $content
- * @property \Cake\I18n\FrozenTime $publishedAt
- * @property int $status
+ * @property int $tag_id
  *
- * @property \App\Model\Entity\SymfonyDemoPost $symfony_demo_post
- * @property \App\Model\Entity\SymfonyDemoUser $symfony_demo_user
+ * @property \App\Model\Entity\SymfonyPost $symfony_demo_post
+ * @property \App\Model\Entity\SymfonyDemoTag $symfony_demo_tag
  */
-class SymfonyDemoComment extends Entity
+class SymfonyPostTag extends Entity
 {
 
     /**
@@ -29,12 +25,7 @@ class SymfonyDemoComment extends Entity
      * @var array
      */
     protected $_accessible = [
-        'post_id' => true,
-        'author_id' => true,
-        'content' => true,
-        'publishedAt' => true,
-        'status' => true,
         'symfony_demo_post' => true,
-        'symfony_demo_user' => true
+        'symfony_demo_tag' => true
     ];
 }

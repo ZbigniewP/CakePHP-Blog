@@ -35,7 +35,7 @@ class UserMenuCell extends Cell
         // $this->loadModel('Post');
         $this->loadModel('Comment');
 
-		$tags = $this->YiiTags->find();
+		$tags = $this->YiiTag->find();
         // $posts = $this->YiiPost->find()->order(['id' => 'desc'])->limit(5);
         $pendingComments = $this->Comment->find()->where('status='.Comment::STATUS_PENDING)->count();
 

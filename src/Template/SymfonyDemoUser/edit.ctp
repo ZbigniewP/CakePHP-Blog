@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\SymfonyDemoUser $symfonyDemoUser
+ * @var \App\Model\Entity\Symfony\User $Symfony\User
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -9,15 +9,15 @@
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $symfonyDemoUser->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $symfonyDemoUser->id)]
+                ['action' => 'delete', $user->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]
             )
         ?></li>
         <li><?= $this->Html->link(__('List Symfony Demo User'), ['action' => 'index']) ?></li>
     </ul>
 </nav>
-<div class="symfonyDemoUser form large-9 medium-8 columns content">
-    <?= $this->Form->create($symfonyDemoUser) ?>
+<div class="Symfony\User form large-9 medium-8 columns content">
+    <?= $this->Form->create($user) ?>
     <fieldset>
         <legend><?= __('Edit Symfony Demo User') ?></legend>
         <?php

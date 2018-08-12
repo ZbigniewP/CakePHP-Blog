@@ -4,7 +4,7 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * SymfonyDemoUser Entity
+ * Symfony\User Entity
  *
  * @property int $id
  * @property string $fullName
@@ -13,7 +13,7 @@ use Cake\ORM\Entity;
  * @property string $password
  * @property string|resource $roles
  */
-class SymfonyDemoUser extends Entity
+class SymfonyUser extends Entity
 {
 
     /**

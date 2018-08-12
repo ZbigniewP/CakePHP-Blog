@@ -14,8 +14,8 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Symfony Demo Comment'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Symfony Demo Post'), ['controller' => 'SymfonyDemoPost', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Symfony Demo Post'), ['controller' => 'SymfonyDemoPost', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Symfony Demo Post'), ['controller' => 'SymfonyPost', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Symfony Demo Post'), ['controller' => 'SymfonyPost', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="symfonyDemoComment form large-9 medium-8 columns content">

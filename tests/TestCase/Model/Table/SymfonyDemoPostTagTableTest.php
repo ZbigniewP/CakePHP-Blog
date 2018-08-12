@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\SymfonyDemoPostTagTable;
+use App\Model\Table\SymfonyPostTagTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\SymfonyDemoPostTagTable Test Case
+ * App\Model\Table\SymfonyPostTagTable Test Case
  */
-class SymfonyDemoPostTagTableTest extends TestCase
+class SymfonyPostTagTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\SymfonyDemoPostTagTable
+     * @var \App\Model\Table\SymfonyPostTagTable
      */
-    public $SymfonyDemoPostTag;
+    public $SymfonyPostTag;
 
     /**
      * Fixtures
@@ -37,8 +37,8 @@ class SymfonyDemoPostTagTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('SymfonyDemoPostTag') ? [] : ['className' => SymfonyDemoPostTagTable::class];
-        $this->SymfonyDemoPostTag = TableRegistry::getTableLocator()->get('SymfonyDemoPostTag', $config);
+        $config = TableRegistry::getTableLocator()->exists('SymfonyPostTag') ? [] : ['className' => SymfonyPostTagTable::class];
+        $this->SymfonyPostTag = TableRegistry::getTableLocator()->get('SymfonyPostTag', $config);
     }
 
     /**
@@ -48,7 +48,7 @@ class SymfonyDemoPostTagTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->SymfonyDemoPostTag);
+        unset($this->SymfonyPostTag);
 
         parent::tearDown();
     }

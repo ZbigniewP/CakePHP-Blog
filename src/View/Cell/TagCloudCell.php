@@ -37,9 +37,9 @@ class TagCloudCell extends Cell
 		// $this->loadModel('Post');
 		// $this->loadModel('Comment');
 
-		$tags = $this->YiiTags->find();
+		$tags = $this->YiiTag->find();
 		// $tags = Tag::model()->findTagWeights($this->maxTags);
-		// $tags = $this->YiiTags->findTagWeights($this->maxTags);
+		// $tags = $this->YiiTag->findTagWeights($this->maxTags);
 
 		// $posts = $this->YiiPost->find()->order(['id' => 'desc'])->limit(5);
 		// $pendingComments = $this->Comment->find()->where('status='.Comment::STATUS_PENDING)->count();

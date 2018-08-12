@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\SymfonyDemoPostTag $symfonyDemoPostTag
+ * @var \App\Model\Entity\SymfonyPostTag $symfonyDemoPostTag
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -11,8 +11,8 @@
         <li><?= $this->Form->postLink(__('Delete Symfony Demo Post Tag'), ['action' => 'delete', $symfonyDemoPostTag->post_id], ['confirm' => __('Are you sure you want to delete # {0}?', $symfonyDemoPostTag->post_id)]) ?> </li>
         <li><?= $this->Html->link(__('List Symfony Demo Post Tag'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Symfony Demo Post Tag'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Symfony Demo Post'), ['controller' => 'SymfonyDemoPost', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Symfony Demo Post'), ['controller' => 'SymfonyDemoPost', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Symfony Demo Post'), ['controller' => 'SymfonyPost', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Symfony Demo Post'), ['controller' => 'SymfonyPost', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="symfonyDemoPostTag view large-9 medium-8 columns content">
@@ -20,7 +20,7 @@
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('Symfony Demo Post') ?></th>
-            <td><?= $symfonyDemoPostTag->has('symfony_demo_post') ? $this->Html->link($symfonyDemoPostTag->symfony_demo_post->title, ['controller' => 'SymfonyDemoPost', 'action' => 'view', $symfonyDemoPostTag->symfony_demo_post->id]) : '' ?></td>
+            <td><?= $symfonyDemoPostTag->has('symfony_demo_post') ? $this->Html->link($symfonyDemoPostTag->symfony_demo_post->title, ['controller' => 'SymfonyPost', 'action' => 'view', $symfonyDemoPostTag->symfony_demo_post->id]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Tag Id') ?></th>

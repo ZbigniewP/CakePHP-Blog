@@ -21,7 +21,7 @@ class SymfonyDemoCommentController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['SymfonyDemoPost', 'SymfonyDemoUser']
+            'contain' => ['SymfonyPost', 'SymfonyUser']
         ];
         $symfonyDemoComment = $this->paginate($this->SymfonyDemoComment);
 
@@ -38,7 +38,7 @@ class SymfonyDemoCommentController extends AppController
     public function view($id = null)
     {
         $symfonyDemoComment = $this->SymfonyDemoComment->get($id, [
-            'contain' => ['SymfonyDemoPost', 'SymfonyDemoUser']
+            'contain' => ['SymfonyPost', 'SymfonyUser']
         ]);
 
         $this->set('symfonyDemoComment', $symfonyDemoComment);
@@ -61,9 +61,9 @@ class SymfonyDemoCommentController extends AppController
             }
             $this->Flash->error(__('The symfony demo comment could not be saved. Please, try again.'));
         }
-        $symfonyDemoPost = $this->SymfonyDemoComment->SymfonyDemoPost->find('list', ['limit' => 200]);
-        $symfonyDemoUser = $this->SymfonyDemoComment->SymfonyDemoUser->find('list', ['limit' => 200]);
-        $this->set(compact('symfonyDemoComment', 'symfonyDemoPost', 'symfonyDemoUser'));
+        $symfonyDemoPost = $this->SymfonyDemoComment->SymfonyPost->find('list', ['limit' => 200]);
+        $SymfonyUser = $this->SymfonyDemoComment->SymfonyUser->find('list', ['limit' => 200]);
+        $this->set(compact('symfonyDemoComment', 'symfonyDemoPost', 'SymfonyUser'));
     }
 
     /**
@@ -87,9 +87,9 @@ class SymfonyDemoCommentController extends AppController
             }
             $this->Flash->error(__('The symfony demo comment could not be saved. Please, try again.'));
         }
-        $symfonyDemoPost = $this->SymfonyDemoComment->SymfonyDemoPost->find('list', ['limit' => 200]);
-        $symfonyDemoUser = $this->SymfonyDemoComment->SymfonyDemoUser->find('list', ['limit' => 200]);
-        $this->set(compact('symfonyDemoComment', 'symfonyDemoPost', 'symfonyDemoUser'));
+        $symfonyDemoPost = $this->SymfonyDemoComment->SymfonyPost->find('list', ['limit' => 200]);
+        $SymfonyUser = $this->SymfonyDemoComment->SymfonyUser->find('list', ['limit' => 200]);
+        $this->set(compact('symfonyDemoComment', 'symfonyDemoPost', 'SymfonyUser'));
     }
 
     /**

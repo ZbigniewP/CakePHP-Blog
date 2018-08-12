@@ -5,7 +5,7 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * YiiTags Entity
+ * YiiTag Entity
  *
  * @property int $id
  * @property string $name
@@ -14,7 +14,7 @@ use Cake\ORM\Entity;
  *
  * @property YiiPost[] $posts
  */
-class YiiTags extends Entity
+class YiiTag extends Entity
 {
 
 	/**

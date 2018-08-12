@@ -8,8 +8,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Symfony Demo Comment'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Symfony Demo Post'), ['controller' => 'SymfonyDemoPost', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Symfony Demo Post'), ['controller' => 'SymfonyDemoPost', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Symfony Demo Post'), ['controller' => 'SymfonyPost', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Symfony Demo Post'), ['controller' => 'SymfonyPost', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="symfonyDemoComment index large-9 medium-8 columns content">
@@ -29,7 +29,7 @@
             <?php foreach ($symfonyDemoComment as $symfonyDemoComment): ?>
             <tr>
                 <td><?= $this->Number->format($symfonyDemoComment->id) ?></td>
-                <td><?= $symfonyDemoComment->has('symfony_demo_post') ? $this->Html->link($symfonyDemoComment->symfony_demo_post->title, ['controller' => 'SymfonyDemoPost', 'action' => 'view', $symfonyDemoComment->symfony_demo_post->id]) : '' ?></td>
+                <td><?= $symfonyDemoComment->has('symfony_demo_post') ? $this->Html->link($symfonyDemoComment->symfony_demo_post->title, ['controller' => 'SymfonyPost', 'action' => 'view', $symfonyDemoComment->symfony_demo_post->id]) : '' ?></td>
                 <td><?= $this->Number->format($symfonyDemoComment->author_id) ?></td>
                 <td><?= h($symfonyDemoComment->publishedAt) ?></td>
                 <td><?= $this->Number->format($symfonyDemoComment->status) ?></td>

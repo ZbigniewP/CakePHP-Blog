@@ -4,13 +4,13 @@ namespace App\Controller;
 use App\Controller\AppController;
 
 /**
- * SymfonyDemoPostTag Controller
+ * SymfonyPostTag Controller
  *
- * @property \App\Model\Table\SymfonyDemoPostTagTable $SymfonyDemoPostTag
+ * @property \App\Model\Table\SymfonyPostTagTable $SymfonyPostTag
  *
- * @method \App\Model\Entity\SymfonyDemoPostTag[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @method \App\Model\Entity\SymfonyPostTag[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class SymfonyDemoPostTagController extends AppController
+class SymfonyPostTagController extends AppController
 {
 
     /**
@@ -21,9 +21,9 @@ class SymfonyDemoPostTagController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['SymfonyDemoPost', 'SymfonyDemoTag']
+            'contain' => ['SymfonyPost', 'SymfonyDemoTag']
         ];
-        $symfonyDemoPostTag = $this->paginate($this->SymfonyDemoPostTag);
+        $symfonyDemoPostTag = $this->paginate($this->SymfonyPostTag);
 
         $this->set(compact('symfonyDemoPostTag'));
     }
@@ -37,8 +37,8 @@ class SymfonyDemoPostTagController extends AppController
      */
     public function view($id = null)
     {
-        $symfonyDemoPostTag = $this->SymfonyDemoPostTag->get($id, [
-            'contain' => ['SymfonyDemoPost', 'SymfonyDemoTag']
+        $symfonyDemoPostTag = $this->SymfonyPostTag->get($id, [
+            'contain' => ['SymfonyPost', 'SymfonyDemoTag']
         ]);
 
         $this->set('symfonyDemoPostTag', $symfonyDemoPostTag);
@@ -51,18 +51,18 @@ class SymfonyDemoPostTagController extends AppController
      */
     public function add()
     {
-        $symfonyDemoPostTag = $this->SymfonyDemoPostTag->newEntity();
+        $symfonyDemoPostTag = $this->SymfonyPostTag->newEntity();
         if ($this->request->is('post')) {
-            $symfonyDemoPostTag = $this->SymfonyDemoPostTag->patchEntity($symfonyDemoPostTag, $this->request->getData());
-            if ($this->SymfonyDemoPostTag->save($symfonyDemoPostTag)) {
+            $symfonyDemoPostTag = $this->SymfonyPostTag->patchEntity($symfonyDemoPostTag, $this->request->getData());
+            if ($this->SymfonyPostTag->save($symfonyDemoPostTag)) {
                 $this->Flash->success(__('The symfony demo post tag has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The symfony demo post tag could not be saved. Please, try again.'));
         }
-        $symfonyDemoPost = $this->SymfonyDemoPostTag->SymfonyDemoPost->find('list', ['limit' => 200]);
-        $symfonyDemoTag = $this->SymfonyDemoPostTag->SymfonyDemoTag->find('list', ['limit' => 200]);
+        $symfonyDemoPost = $this->SymfonyPostTag->SymfonyPost->find('list', ['limit' => 200]);
+        $symfonyDemoTag = $this->SymfonyPostTag->SymfonyDemoTag->find('list', ['limit' => 200]);
         $this->set(compact('symfonyDemoPostTag', 'symfonyDemoPost', 'symfonyDemoTag'));
     }
 
@@ -75,20 +75,20 @@ class SymfonyDemoPostTagController extends AppController
      */
     public function edit($id = null)
     {
-        $symfonyDemoPostTag = $this->SymfonyDemoPostTag->get($id, [
+        $symfonyDemoPostTag = $this->SymfonyPostTag->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $symfonyDemoPostTag = $this->SymfonyDemoPostTag->patchEntity($symfonyDemoPostTag, $this->request->getData());
-            if ($this->SymfonyDemoPostTag->save($symfonyDemoPostTag)) {
+            $symfonyDemoPostTag = $this->SymfonyPostTag->patchEntity($symfonyDemoPostTag, $this->request->getData());
+            if ($this->SymfonyPostTag->save($symfonyDemoPostTag)) {
                 $this->Flash->success(__('The symfony demo post tag has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The symfony demo post tag could not be saved. Please, try again.'));
         }
-        $symfonyDemoPost = $this->SymfonyDemoPostTag->SymfonyDemoPost->find('list', ['limit' => 200]);
-        $symfonyDemoTag = $this->SymfonyDemoPostTag->SymfonyDemoTag->find('list', ['limit' => 200]);
+        $symfonyDemoPost = $this->SymfonyPostTag->SymfonyPost->find('list', ['limit' => 200]);
+        $symfonyDemoTag = $this->SymfonyPostTag->SymfonyDemoTag->find('list', ['limit' => 200]);
         $this->set(compact('symfonyDemoPostTag', 'symfonyDemoPost', 'symfonyDemoTag'));
     }
 
@@ -102,8 +102,8 @@ class SymfonyDemoPostTagController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $symfonyDemoPostTag = $this->SymfonyDemoPostTag->get($id);
-        if ($this->SymfonyDemoPostTag->delete($symfonyDemoPostTag)) {
+        $symfonyDemoPostTag = $this->SymfonyPostTag->get($id);
+        if ($this->SymfonyPostTag->delete($symfonyDemoPostTag)) {
             $this->Flash->success(__('The symfony demo post tag has been deleted.'));
         } else {
             $this->Flash->error(__('The symfony demo post tag could not be deleted. Please, try again.'));

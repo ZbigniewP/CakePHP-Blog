@@ -39,7 +39,7 @@ class PostTable extends Table
 		$this->setPrimaryKey('id');
 
 		$this->addBehavior('Timestamp');
-		$this->addBehavior('CounterCache', ['YiiTags' => ['frequency']]);
+		$this->addBehavior('CounterCache', ['YiiTag' => ['frequency']]);
 
 		$this->belongsTo('User', [
 			'foreignKey' => 'author_id',
@@ -51,7 +51,7 @@ class PostTable extends Table
 			'joinType' => 'INNER'
 		]);
 
-		$this->hasMany('YiiTags', [//'tags'
+		$this->hasMany('YiiTag', [//'tags'
 			'foreignKey' => 'name',
 		]);
 // ,['groupField'=>'type','keyField'=>'type','valueField'=>'PostStatus']

@@ -11,10 +11,10 @@ use Cake\Http\Response;
 
 // use App\Controller\AppController;
 
-class BlogyiiController extends AppController
+class BlogController extends AppController
 {
 	public $paginate = [
-		'contain' => ['Tags', 'User'],
+		'contain' => ['Tag', 'User'],
 		// 'contain' => ['User'],
 		'limit' => 5
 	];
@@ -29,10 +29,10 @@ class BlogyiiController extends AppController
 	{
 		// $posts = [];//$this->paginate($this->Posts);
 
-		// $this->set(compact('yiiPost'));
-		// $this->set('_serialize', ['yiiPost']);
+		// $this->set(compact('Post'));
+		// $this->set('_serialize', ['Post']);
 
-		// $this->paginate = ['contain' => ['Users']];
+		// $this->paginate = ['contain' => ['User']];
         $posts = $this->paginate($this->Post);
 
 		$this->set(compact('posts'));
@@ -43,16 +43,16 @@ class BlogyiiController extends AppController
 	{
 		$errors = [];
 
-		$comment = $this->YiiPost->YiiComment->newEntity();
-		$this->YiiPost->YiiComment->_connection = 'db_yii';
+		$comment = $this->Post->Comment->newEntity();
+		$this->Post->Comment->_connection = 'db_yii';
 
 		if ($this->request->is(['post'])) {
-			$comment = $this->YiiPost->YiiComment->patchEntity($comment, $this->request->getData());
-			if ($this->YiiPost->YiiComment->save($comment)) {
+			$comment = $this->Post->Comment->patchEntity($comment, $this->request->getData());
+			if ($this->Post->Comment->save($comment)) {
 			}
 		}
 
-		$posts = $this->YiiPost->find()->where(['YiiPost.id' => $slug])->contain(['Users','YiiComment'])->first();//'YiiTags',
+		$post = $this->Post->find()->where(['Post.id' => $slug])->contain(['User','Comment'])->first();//'YiiTag',
 
 		$this->set(compact('post', 'comment', 'errors'));
 		$this->set('_serialize', ['post']);
@@ -60,7 +60,7 @@ class BlogyiiController extends AppController
 
 	// public function category($slug)
 	// {
-	// 	$posts = $this->paginate($this->YiiPost->find()->where(['YiiTags.name' => $slug]));
+	// 	$posts = $this->paginate($this->Post->find()->where(['YiiTag.name' => $slug]));
 
 	// 	$this->set(compact('posts'));
 	// 	$this->set('_serialize', ['posts']);

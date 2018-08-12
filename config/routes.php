@@ -28,17 +28,17 @@ Router::scope('/admin', function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);
 });
 Router::scope('/yii', function (RouteBuilder $routes) {
-    $routes->connect('/', ['controller' => 'post', 'action' => 'index']);
-    $routes->connect('/category/:tag', ['controller' => 'post', 'action' => 'category'], ['pass' => ['tag'], 'tag' => '[a-z0-9\-]+']);
-    $routes->connect('/author/:id', ['controller' => 'post', 'action' => 'author'], ['pass' => ['id'], 'id' => '[0-9]+']);
-    $routes->connect('/:tag', ['controller' => 'post', 'action' => 'view'], ['pass' => ['slug'], 'tag' => '[a-z0-9\-]+']);
+    $routes->connect('/', ['controller' => 'Post', 'action' => 'index']);
+    // $routes->connect('/category/:tag', ['controller' => 'Post', 'action' => 'category'], ['pass' => ['tag'], 'tag' => '[a-z0-9\-]+']);
+    // $routes->connect('/author/:id', ['controller' => 'Post', 'action' => 'author'], ['pass' => ['id'], 'id' => '[0-9]+']);
+    $routes->connect('/:tag', ['controller' => 'Post', 'action' => 'view'], ['pass' => ['slug'], 'tag' => '[a-z0-9\-]+']);
     $routes->fallbacks(DashedRoute::class);
 });
 Router::scope('/symfony', function (RouteBuilder $routes) {
-    $routes->connect('/', ['controller' => 'SymfonyDemoPost', 'action' => 'index']);
-    $routes->connect('/category/:slug', ['controller' => 'SymfonyDemoPost', 'action' => 'category'], ['pass' => ['slug'], 'slug' => '[a-z0-9\-]+']);
-    $routes->connect('/author/:id', ['controller' => 'SymfonyDemoPost', 'action' => 'author'], ['pass' => ['id'], 'id' => '[0-9]+']);
-    $routes->connect('/:slug', ['controller' => 'SymfonyDemoPost', 'action' => 'view'], ['pass' => ['slug'], 'slug' => '[a-z0-9\-]+']);
+    $routes->connect('/', ['controller' => 'Post', 'action' => 'index']);
+    // $routes->connect('/category/:slug', ['controller' => 'Post', 'action' => 'category'], ['pass' => ['slug'], 'slug' => '[a-z0-9\-]+']);
+    // $routes->connect('/author/:id', ['controller' => 'Post', 'action' => 'author'], ['pass' => ['id'], 'id' => '[0-9]+']);
+    // $routes->connect('/:slug', ['controller' => 'Post', 'action' => 'view'], ['pass' => ['slug'], 'slug' => '[a-z0-9\-]+']);
     $routes->fallbacks(DashedRoute::class);
 });
 Plugin::routes();

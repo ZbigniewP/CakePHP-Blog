@@ -7,7 +7,7 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * YiiTags Model
+ * YiiTag Model
  *
  * @method \App\Model\Entity\Yii\Tag get($primaryKey, $options = [])
  * @method \App\Model\Entity\Yii\Tag newEntity($data = null, array $options = [])

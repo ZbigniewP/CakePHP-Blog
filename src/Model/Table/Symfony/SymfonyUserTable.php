@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Table;
+namespace App\Model\Table\Symfony;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -7,18 +7,18 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * SymfonyDemoUser Model
+ * Symfony\User Model
  *
- * @method \App\Model\Entity\SymfonyDemoUser get($primaryKey, $options = [])
- * @method \App\Model\Entity\SymfonyDemoUser newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoUser[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoUser|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SymfonyDemoUser|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SymfonyDemoUser patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoUser[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoUser findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Symfony\User get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Symfony\User newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Symfony\User[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\User|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Symfony\User|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Symfony\User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\User[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\User findOrCreate($search, callable $callback = null, $options = [])
  */
-class SymfonyDemoUserTable extends Table
+class SymfonyUserTable extends Table
 {
 
     /**

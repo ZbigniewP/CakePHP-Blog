@@ -63,7 +63,7 @@ class Post extends Entity
 	public function getTagLinks()
 	{
 		// $links[] = $this->Html->link($tag, ['yii/post/index', 'tag' => $tag]);
-		foreach (YiiTags::string2array($this->tags) as $tag)
+		foreach (YiiTag::string2array($this->tags) as $tag)
 			$links[] = ['label' => $tag, 'url' => Router::url(['controller' => '/yii/post', 'action' => 'index', 'tag' => $tag])];
 		return $links;
 	}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Yii;
+namespace App\Controller;
 
 use App\Model\Table\Yii\PostTable;
 // use App\Model\Table\Yii\TagTable;
@@ -14,7 +14,7 @@ use Cake\Network\Exception\NotFoundException;
  * @package App\Controller
  * @property PostTable $Post
  */
-class PostController extends AppController
+class YiiPostController extends AppController
 {
 
 	// public $paginate = ['limit' => 5];
@@ -80,7 +80,7 @@ class PostController extends AppController
 // echo "</pre>";
 // exit();
 		if(isset($_GET['tag'])) {
-			// $data = $this->Post->find()->where(['tags LIKE' => $tag])->contain(['Users','YiiComment'])->first();//'YiiTags',
+			// $data = $this->Post->find()->where(['tags LIKE' => $tag])->contain(['Users','YiiComment'])->first();//'YiiTag',
 			// $data = $this->Post->find()->where(['tags LIKE' => '%'.$tag.'%'])->first();
 			// $data = $this->Post->find()->where(['tags LIKE' => '%'.$tag.'%'])->first();
 			// $data = $this->Post->find()->contain(['Users','YiiComment']);//->first()->like('Post.tags', $tag)
@@ -108,7 +108,7 @@ class PostController extends AppController
 			$this->set('_serialize', ['dataProvider']);
 			// $this->render('index');
 		} else {
-			$dataProvider = $this->paginate($this->Post->find()->contain(['Users']));//->first()'YiiTags',,'YiiComment'
+			$dataProvider = $this->paginate($this->Post->find()->contain(['Users']));//->first()'YiiTag',,'YiiComment'
 			// $module = $this->Post->find()->like('Post.tags', $tag)->contain(['Users','YiiComment'])->first();
 			$this->set(compact('dataProvider', 'comment', 'errors'));
 			$this->set('_serialize', ['dataProvider']);
@@ -186,7 +186,7 @@ $this->render('index');
 	 */
 	public function update($id)
 	{
-		$post = $this->Post->get($id, ['contain' => ['YiiTags']]);
+		$post = $this->Post->get($id, ['contain' => ['YiiTag']]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
 			$post = $this->Posts->patchEntity($post, $this->request->getData());
 			// if ($this->Posts->save($post)) {

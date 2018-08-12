@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Table;
+namespace App\Model\Table\Symfony;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -7,20 +7,20 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * SymfonyDemoPost Model
+ * SymfonyPost Model
  *
- * @property \App\Model\Table\SymfonyDemoUserTable|\Cake\ORM\Association\BelongsTo $SymfonyDemoUser
+ * @property \App\Model\Table\Symfony\UserTable|\Cake\ORM\Association\BelongsTo $Symfony\User
  *
- * @method \App\Model\Entity\SymfonyDemoPost get($primaryKey, $options = [])
- * @method \App\Model\Entity\SymfonyDemoPost newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoPost[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoPost|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SymfonyDemoPost|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SymfonyDemoPost patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoPost[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoPost findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\SymfonyPost get($primaryKey, $options = [])
+ * @method \App\Model\Entity\SymfonyPost newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\SymfonyPost[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\SymfonyPost|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\SymfonyPost|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\SymfonyPost patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\SymfonyPost[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\SymfonyPost findOrCreate($search, callable $callback = null, $options = [])
  */
-class SymfonyDemoPostTable extends Table
+class SymfonyPostTable extends Table
 {
 
     /**
@@ -37,7 +37,7 @@ class SymfonyDemoPostTable extends Table
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('SymfonyDemoUser', [
+        $this->belongsTo('Symfony\User', [
             'foreignKey' => 'author_id',
             'joinType' => 'INNER'
         ]);
@@ -99,7 +99,7 @@ class SymfonyDemoPostTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['author_id'], 'SymfonyDemoUser'));
+        $rules->add($rules->existsIn(['author_id'], 'Symfony\User'));
 
         return $rules;
     }

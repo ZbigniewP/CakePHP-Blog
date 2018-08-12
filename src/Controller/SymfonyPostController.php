@@ -1,16 +1,22 @@
 <?php
 namespace App\Controller;
 
-use App\Controller\AppController;
+// use App\Controller\AppController;
 
+use App\Model\Entity\Symfony\Posts;
+use App\Model\Table\Symfony\PostsTable;
+
+use Cake\Datasource\Exception\RecordNotFoundException;
+use Cake\Event\Event;
+use Cake\Http\Response;
 /**
- * SymfonyDemoPost Controller
+ * SymfonyPost Controller
  *
- * @property \App\Model\Table\SymfonyDemoPostTable $SymfonyDemoPost
+ * @property \App\Model\Table\SymfonyPostTable $SymfonyPost
  *
- * @method \App\Model\Entity\SymfonyDemoPost[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @method \App\Model\Entity\SymfonyPost[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class SymfonyDemoPostController extends AppController
+class SymfonyPostController extends AppController
 {
 
     /**
@@ -20,12 +26,10 @@ class SymfonyDemoPostController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['SymfonyDemoUser']
-        ];
-        $symfonyDemoPost = $this->paginate($this->SymfonyDemoPost);
+        $this->paginate = ['contain' => ['SymfonyUser']];
+        $post = $this->paginate($this->SymfonyPost);
 
-        $this->set(compact('symfonyDemoPost'));
+        $this->set(compact('post'));
     }
 
     /**
@@ -37,11 +41,9 @@ class SymfonyDemoPostController extends AppController
      */
     public function view($id = null)
     {
-        $symfonyDemoPost = $this->SymfonyDemoPost->get($id, [
-            'contain' => ['SymfonyDemoUser']
-        ]);
+        $post = $this->SymfonyPost->get($id, ['contain' => ['SymfonyUser']]);
 
-        $this->set('symfonyDemoPost', $symfonyDemoPost);
+        $this->set('post', $post);
     }
 
     /**
@@ -51,18 +53,18 @@ class SymfonyDemoPostController extends AppController
      */
     public function add()
     {
-        $symfonyDemoPost = $this->SymfonyDemoPost->newEntity();
+        $post = $this->SymfonyPost->newEntity();
         if ($this->request->is('post')) {
-            $symfonyDemoPost = $this->SymfonyDemoPost->patchEntity($symfonyDemoPost, $this->request->getData());
-            if ($this->SymfonyDemoPost->save($symfonyDemoPost)) {
+            $post = $this->SymfonyPost->patchEntity($post, $this->request->getData());
+            if ($this->SymfonyPost->save($post)) {
                 $this->Flash->success(__('The symfony demo post has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The symfony demo post could not be saved. Please, try again.'));
         }
-        $symfonyDemoUser = $this->SymfonyDemoPost->SymfonyDemoUser->find('list', ['limit' => 200]);
-        $this->set(compact('symfonyDemoPost', 'symfonyDemoUser'));
+        $user = $this->SymfonyPost->SymfonyUser->find('list', ['limit' => 200]);
+        $this->set(compact('post', 'user'));
     }
 
     /**
@@ -74,20 +76,18 @@ class SymfonyDemoPostController extends AppController
      */
     public function edit($id = null)
     {
-        $symfonyDemoPost = $this->SymfonyDemoPost->get($id, [
-            'contain' => []
-        ]);
+        $post = $this->SymfonyPost->get($id, ['contain' => []]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $symfonyDemoPost = $this->SymfonyDemoPost->patchEntity($symfonyDemoPost, $this->request->getData());
-            if ($this->SymfonyDemoPost->save($symfonyDemoPost)) {
+            $post = $this->SymfonyPost->patchEntity($post, $this->request->getData());
+            if ($this->SymfonyPost->save($post)) {
                 $this->Flash->success(__('The symfony demo post has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The symfony demo post could not be saved. Please, try again.'));
         }
-        $symfonyDemoUser = $this->SymfonyDemoPost->SymfonyDemoUser->find('list', ['limit' => 200]);
-        $this->set(compact('symfonyDemoPost', 'symfonyDemoUser'));
+        $user = $this->SymfonyPost->SymfonyUser->find('list', ['limit' => 200]);
+        $this->set(compact('post', 'user'));
     }
 
     /**
@@ -100,8 +100,8 @@ class SymfonyDemoPostController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $symfonyDemoPost = $this->SymfonyDemoPost->get($id);
-        if ($this->SymfonyDemoPost->delete($symfonyDemoPost)) {
+        $post = $this->SymfonyPost->get($id);
+        if ($this->SymfonyPost->delete($post)) {
             $this->Flash->success(__('The symfony demo post has been deleted.'));
         } else {
             $this->Flash->error(__('The symfony demo post could not be deleted. Please, try again.'));
