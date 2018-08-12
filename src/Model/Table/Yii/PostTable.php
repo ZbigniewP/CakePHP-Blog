@@ -55,8 +55,8 @@ class PostTable extends Table
 			'foreignKey' => 'name',
 		]);
 // ,['groupField'=>'type','keyField'=>'type','valueField'=>'PostStatus']
-// 'params' => ['YiiLookup.type'=>'PostStatus']
-// ->where(['YiiLookup.type' =>'PostStatus']),['conditions' => ['type=' => 'PostStatus']]
+// 'params' => ['Lookup.type'=>'PostStatus']
+// ->where(['Lookup.type' =>'PostStatus']),['conditions' => ['type=' => 'PostStatus']]
 // echo'<pre>';print_r([$options,$query]);exit;
 		$this->belongsTo('Lookup', [
 			'foreignKey' => 'status',

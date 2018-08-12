@@ -7,7 +7,7 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * YiiLookup Model
+ * Yii\Lookup Model
  *
  * @method \App\Model\Entity\Yii\Lookup get($primaryKey, $options = [])
  * @method \App\Model\Entity\Yii\Lookup newEntity($data = null, array $options = [])

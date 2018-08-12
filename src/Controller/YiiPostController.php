@@ -146,7 +146,7 @@ $this->render('index');
 	 */
 	public function admin()
 	{
-		$module = $this->paginate($this->Post->find()->contain(['YiiLookup']));
+		$module = $this->paginate($this->Post->find()->contain(['Lookup']));
 		$this->set(compact('module'));
 		$this->set('_serialize', ['module']);
 	}
@@ -173,7 +173,7 @@ $this->render('index');
 			$this->Flash->error(__('The post could not be saved. Please, try again.'));
 		}
 		$tags = $this->Post->Tag->find('list');
-		$status = $this->Post->YiiLookup->find('list');
+		$status = $this->Post->Lookup->find('list');
 		$users = $this->Post->User->find('list');
 
 		$this->set(compact('post', 'status', 'tags', 'users'));
@@ -201,7 +201,7 @@ $this->render('index');
 			$this->Flash->error(__('The post could not be saved. Please, try again.'));
 		}
 		$tags = $this->Post->Tag->find('list');
-		$status = $this->Post->YiiLookup->find('list');
+		$status = $this->Post->Lookup->find('list');
 		$users = $this->Post->User->find('list');
 
 		$this->set(compact('post', 'status', 'tags', 'users'));
