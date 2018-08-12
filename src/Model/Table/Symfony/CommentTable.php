@@ -9,8 +9,8 @@ use Cake\Validation\Validator;
 /**
  * SymfonyDemoComment Model
  *
- * @property \App\Model\Table\Symfony\PostTable|\Cake\ORM\Association\BelongsTo $SymfonyPost
- * @property \App\Model\Table\Symfony\UserTable|\Cake\ORM\Association\BelongsTo $Symfony\User
+ * @property \App\Model\Table\SymfonyPostTable|\Cake\ORM\Association\BelongsTo $SymfonyPost
+ * @property \App\Model\Table\SymfonyUserTable|\Cake\ORM\Association\BelongsTo $SymfonyUser
  *
  * @method \App\Model\Entity\Symfony\Comment get($primaryKey, $options = [])
  * @method \App\Model\Entity\Symfony\Comment newEntity($data = null, array $options = [])

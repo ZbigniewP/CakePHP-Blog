@@ -4,15 +4,15 @@ namespace App\Controller;
 // use App\Controller\AppController;
 
 use App\Model\Entity\Symfony\Post;
-use App\Model\Table\Symfony\PostTable;
+use App\Model\Table\SymfonyPostTable;
 
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Event\Event;
 use Cake\Http\Response;
 /**
- * SymfonyPost Controller
+ * Symfony\Post Controller
  *
- * @property \App\Model\Table\Symfony\PostTable $SymfonyPost
+ * @property \App\Model\Table\SymfonyPostTable $SymfonyPost
  *
  * @method \App\Model\Entity\Symfony\Post[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
@@ -25,17 +25,21 @@ class SymfonyPostController extends AppController
 	 */
 	public function index()
 	{
-		$this->paginate = [
-            // 'contain' => ['Pages', 'TblUser']
-			// 'contain' => ['Comment', 'User']
-			'contain' => []
-        ];
-		$dataPost = $this->paginate($this->Post);
-		// $dataPost = $this->Post->find();
+		// $this->paginate = [
+		// 	// 'contain' => ['Pages', 'TblUser']
+		// 	// 'contain' => ['Comment', 'User']
+		// 	'contain' => []
+		// ];
+		// $users = $this->paginate($this->SymfonyUser);
+
+		$dataPost = $this->paginate($this->SymfonyPost);
 
 		$this->set(compact('dataPost'));
 		$this->set('_serialize', ['dataPost']);
-
+// echo "<pre>";
+// print_r($dataPost);
+// echo "</pre>";
+// exit();
 		$this->render('//Symfony/Post/index');
 	}
 
@@ -48,9 +52,11 @@ class SymfonyPostController extends AppController
 	 */
 	public function view($id = null)
 	{
-		$dataPost = $this->SymfonyPost->get($id, ['contain' => ['User']]);
+		$dataPost = $this->SymfonyPost->get($id, ['contain' => ['SymfonyUser']]);
 
 		$this->set('data', $dataPost);
+
+		$this->render('//Symfony/Post/view');
 	}
 
 	/**
@@ -60,18 +66,20 @@ class SymfonyPostController extends AppController
 	 */
 	public function add()
 	{
-		$dataPost = $this->SymfonyPost->newEntity();
+		$data = $this->SymfonyPost->newEntity();
 		if ($this->request->is('post')) {
-			$dataPost = $this->SymfonyPost->patchEntity($dataPost, $this->request->getData());
-			if ($this->SymfonyPost->save($dataPost)) {
+			$data = $this->SymfonyPost->patchEntity($data, $this->request->getData());
+			if ($this->SymfonyPost->save($data)) {
 				$this->Flash->success(__('The symfony demo post has been saved.'));
 
 				return $this->redirect(['action' => 'index']);
 			}
 			$this->Flash->error(__('The symfony demo post could not be saved. Please, try again.'));
 		}
-		$user = $this->SymfonyPost->User->find('list', ['limit' => 200]);
-		$this->set(compact('post', 'user'));
+		$user = $this->SymfonyPost->SymfonyUser->find('list', ['limit' => 10]);
+		$this->set(compact('data', 'user'));
+
+		$this->render('//Symfony/Post/add');
 	}
 
 	/**
@@ -93,7 +101,7 @@ class SymfonyPostController extends AppController
 			}
 			$this->Flash->error(__('The symfony demo post could not be saved. Please, try again.'));
 		}
-		$user = $this->SymfonyPost->User->find('list', ['limit' => 200]);
+		$user = $this->SymfonyPost->SymfonyUser->find('list', ['limit' => 200]);
 		$this->set(compact('post', 'user'));
 	}
 

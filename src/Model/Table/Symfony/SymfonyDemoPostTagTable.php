@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * SymfonyPostTag Model
  *
- * @property \App\Model\Table\Symfony\PostTable|\Cake\ORM\Association\BelongsTo $SymfonyPost
+ * @property \App\Model\Table\SymfonyPostTable|\Cake\ORM\Association\BelongsTo $SymfonyPost
  * @property \App\Model\Table\SymfonyDemoTagTable|\Cake\ORM\Association\BelongsTo $SymfonyDemoTag
  *
  * @method \App\Model\Entity\Symfony\PostTag get($primaryKey, $options = [])

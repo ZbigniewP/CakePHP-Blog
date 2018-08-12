@@ -1,12 +1,12 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\Symfony\UserTable;
+use App\Model\Table\SymfonyUserTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\Symfony\UserTable Test Case
+ * App\Model\Table\SymfonyUserTable Test Case
  */
 class UserTableTest extends TestCase
 {
@@ -14,18 +14,16 @@ class UserTableTest extends TestCase
     /**
      * Test subject
      *
-     * @var \App\Model\Table\Symfony\UserTable
+     * @var \App\Model\Table\SymfonyUserTable
      */
-    public $SymfonyUser;
+    public $User;
 
     /**
      * Fixtures
      *
      * @var array
      */
-    public $fixtures = [
-        'app.symfony_demo_user'
-    ];
+    public $fixtures = ['app.symfony_demo_user'];
 
     /**
      * setUp method

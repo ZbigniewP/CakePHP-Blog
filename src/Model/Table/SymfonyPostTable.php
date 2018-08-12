@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Table\Symfony;
+namespace App\Model\Table;
 
 use Cake\ORM\Query;
 // use Cake\ORM\RulesChecker;
@@ -19,7 +19,7 @@ use Cake\Validation\Validator;
 /**
  * Symfony\Post Model
  *
- * @property \App\Model\Table\Symfony\UserTable|\Cake\ORM\Association\BelongsTo $Symfony\User
+ * @property \App\Model\Table\SymfonyUserTable|\Cake\ORM\Association\BelongsTo $SymfonyUser
  *
  * @method \App\Model\Entity\Symfony\Post get($primaryKey, $options = [])
  * @method \App\Model\Entity\Symfony\Post newEntity($data = null, array $options = [])
@@ -30,7 +30,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Symfony\Post[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Symfony\Post findOrCreate($search, callable $callback = null, $options = [])
  */
-class PostTable extends Table
+class SymfonyPostTable extends Table
 {
 
     /**
@@ -47,7 +47,7 @@ class PostTable extends Table
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('User', [
+        $this->belongsTo('SymfonyUser', [
             'foreignKey' => 'author_id',
             'joinType' => 'INNER'
         ]);

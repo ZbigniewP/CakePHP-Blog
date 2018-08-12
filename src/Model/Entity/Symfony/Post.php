@@ -6,7 +6,7 @@ namespace App\Model\Entity\Symfony;
 use Cake\I18n\FrozenTime;
 use Cake\ORM\Entity;
 /**
- * SymfonyPost Entity
+ * Symfony\Post Entity
  *
  * @property int $id
  * @property int $author_id
@@ -20,7 +20,7 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\Symfony\User $symfony_demo_user
  */
-class Post extends Entity
+class SymfonyPost extends Entity
 {
 
     /**

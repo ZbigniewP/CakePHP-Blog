@@ -13,15 +13,15 @@
                 ['confirm' => __('Are you sure you want to delete # {0}?', $dataPostTag->post_id)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Symfony Demo Post Tag'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Symfony Demo Post'), ['controller' => 'SymfonyPost', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Symfony Demo Post'), ['controller' => 'SymfonyPost', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Posts Tag'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'SymfonyPost', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Post'), ['controller' => 'SymfonyPost', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="symfonyDemoPostTag form large-9 medium-8 columns content">
     <?= $this->Form->create($dataPostTag) ?>
     <fieldset>
-        <legend><?= __('Edit Symfony Demo Post Tag') ?></legend>
+        <legend><?= __('Edit Post Tag') ?></legend>
         <?php
         ?>
     </fieldset>

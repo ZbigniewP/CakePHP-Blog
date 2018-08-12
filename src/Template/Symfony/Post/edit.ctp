@@ -13,15 +13,15 @@
                 ['confirm' => __('Are you sure you want to delete # {0}?', $dataPost->id)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Symfony Demo Post'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Symfony Demo User'), ['controller' => 'SymfonyUser', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Symfony Demo User'), ['controller' => 'SymfonyUser', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Posts'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Users'), ['controller' => 'SymfonyUser', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New User'), ['controller' => 'SymfonyUser', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="symfonyDemoPost form large-9 medium-8 columns content">
     <?= $this->Form->create($dataPost) ?>
     <fieldset>
-        <legend><?= __('Edit Symfony Demo Post') ?></legend>
+        <legend><?= __('Edit Post') ?></legend>
         <?php
             echo $this->Form->control('author_id', ['options' => $user]);
             echo $this->Form->control('title');

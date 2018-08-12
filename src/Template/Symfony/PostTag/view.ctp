@@ -7,12 +7,12 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Symfony Demo Post Tag'), ['action' => 'edit', $dataPostTag->post_id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Symfony Demo Post Tag'), ['action' => 'delete', $dataPostTag->post_id], ['confirm' => __('Are you sure you want to delete # {0}?', $dataPostTag->post_id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Symfony Demo Post Tag'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Symfony Demo Post Tag'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Symfony Demo Post'), ['controller' => 'SymfonyPost', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Symfony Demo Post'), ['controller' => 'SymfonyPost', 'action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('Edit Post Tag'), ['action' => 'edit', $dataPostTag->post_id]) ?> </li>
+        <li><?= $this->Form->postLink(__('Delete Post Tag'), ['action' => 'delete', $dataPostTag->post_id], ['confirm' => __('Are you sure you want to delete # {0}?', $dataPostTag->post_id)]) ?> </li>
+        <li><?= $this->Html->link(__('List Posts Tag'), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Post Tag'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Posts'), ['controller' => 'SymfonyPost', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Post'), ['controller' => 'SymfonyPost', 'action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="symfonyDemoPostTag view large-9 medium-8 columns content">

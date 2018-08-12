@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Entity;
+namespace App\Model\Entity\Yii;
 
 use Cake\I18n\FrozenTime;
 use Cake\ORM\Entity;

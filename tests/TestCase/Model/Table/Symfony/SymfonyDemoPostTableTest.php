@@ -1,12 +1,12 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\Symfony\PostTable;
+use App\Model\Table\SymfonyPostTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\Symfony\PostTable Test Case
+ * App\Model\Table\SymfonyPostTable Test Case
  */
 class SymfonyPostTableTest extends TestCase
 {
@@ -14,7 +14,7 @@ class SymfonyPostTableTest extends TestCase
     /**
      * Test subject
      *
-     * @var \App\Model\Table\Symfony\PostTable
+     * @var \App\Model\Table\SymfonyPostTable
      */
     public $SymfonyPost;
 

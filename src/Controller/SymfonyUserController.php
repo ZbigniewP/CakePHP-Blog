@@ -2,106 +2,109 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use App\Model\Entity\Symfony\User;
+use App\Model\Table\SymfonyUserTable;
 /**
  * Symfony\User Controller
  *
- * @property \App\Model\Table\Symfony\UserTable $Symfony\User
+ * @property \App\Model\Table\SymfonyUserTable $SymfonyUser
  *
  * @method \App\Model\Entity\Symfony\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class SymfonyUserController extends AppController
 {
 
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|void
-     */
-    public function index()
-    {
-        $user = $this->paginate($this->User);
+	/**
+	 * Index method
+	 *
+	 * @return \Cake\Http\Response|void
+	 */
+	public function index()
+	{
 
-        $this->set(compact('user'));
-        $this->render('//Symfony/User/index');
-    }
+		// $this->paginate = ['contain' => []];
+		$users = $this->paginate($this->SymfonyUser);
 
-    /**
-     * View method
-     *
-     * @param string|null $id Symfony Demo User id.
-     * @return \Cake\Http\Response|void
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $user = $this->User->get($id, ['contain' => []]);
+		$this->set(compact('users'));
+		$this->render('//Symfony/User/index');
+	}
 
-        $this->set('User', $user);
-        $this->render('//Symfony/User/view');
-    }
+	/**
+	 * View method
+	 *
+	 * @param string|null $id Symfony Demo User id.
+	 * @return \Cake\Http\Response|void
+	 * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+	 */
+	public function view($id = null)
+	{
+		$user = $this->SymfonyUser->get($id, ['contain' => []]);
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $user = $this->User->newEntity();
-        if ($this->request->is('post')) {
-            $user = $this->User->patchEntity($user, $this->request->getData());
-            if ($this->User->save($user)) {
-                $this->Flash->success(__('The symfony demo user has been saved.'));
+		$this->set('User', $user);
+		$this->render('//Symfony/User/view');
+	}
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The symfony demo user could not be saved. Please, try again.'));
-        }
-        $this->set(compact('user'));
-        $this->render('//Symfony/User/add');
-    }
+	/**
+	 * Add method
+	 *
+	 * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
+	 */
+	public function add()
+	{
+		$user = $this->SymfonyUser->newEntity();
+		if ($this->request->is('post')) {
+			$user = $this->SymfonyUser->patchEntity($user, $this->request->getData());
+			if ($this->SymfonyUser->save($user)) {
+				$this->Flash->success(__('The symfony demo user has been saved.'));
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Symfony Demo User id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $user = $this->User->get($id, ['contain' => []]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->User->patchEntity($user, $this->request->getData());
-            if ($this->User->save($user)) {
-                $this->Flash->success(__('The symfony demo user has been saved.'));
+				return $this->redirect(['action' => 'index']);
+			}
+			$this->Flash->error(__('The symfony demo user could not be saved. Please, try again.'));
+		}
+		$this->set(compact('user'));
+		$this->render('//Symfony/User/add');
+	}
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The symfony demo user could not be saved. Please, try again.'));
-        }
-        $this->set(compact('user'));
-        $this->render('//Symfony/User/edit');
-    }
+	/**
+	 * Edit method
+	 *
+	 * @param string|null $id Symfony Demo User id.
+	 * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+	 * @throws \Cake\Network\Exception\NotFoundException When record not found.
+	 */
+	public function edit($id = null)
+	{
+		$user = $this->SymfonyUser->get($id, ['contain' => []]);
+		if ($this->request->is(['patch', 'post', 'put'])) {
+			$user = $this->SymfonyUser->patchEntity($user, $this->request->getData());
+			if ($this->SymfonyUser->save($user)) {
+				$this->Flash->success(__('The symfony demo user has been saved.'));
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Symfony Demo User id.
-     * @return \Cake\Http\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $user = $this->User->get($id);
-        if ($this->User->delete($user)) {
-            $this->Flash->success(__('The symfony demo user has been deleted.'));
-        } else {
-            $this->Flash->error(__('The symfony demo user could not be deleted. Please, try again.'));
-        }
+				return $this->redirect(['action' => 'index']);
+			}
+			$this->Flash->error(__('The symfony demo user could not be saved. Please, try again.'));
+		}
+		$this->set(compact('user'));
+		$this->render('//Symfony/User/edit');
+	}
 
-        return $this->redirect(['action' => 'index']);
-    }
+	/**
+	 * Delete method
+	 *
+	 * @param string|null $id Symfony Demo User id.
+	 * @return \Cake\Http\Response|null Redirects to index.
+	 * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+	 */
+	public function delete($id = null)
+	{
+		$this->request->allowMethod(['post', 'delete']);
+		$user = $this->SymfonyUser->get($id);
+		if ($this->SymfonyUser->delete($user)) {
+			$this->Flash->success(__('The symfony demo user has been deleted.'));
+		} else {
+			$this->Flash->error(__('The symfony demo user could not be deleted. Please, try again.'));
+		}
+
+		return $this->redirect(['action' => 'index']);
+	}
 }
