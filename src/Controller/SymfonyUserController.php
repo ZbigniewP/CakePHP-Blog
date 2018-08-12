@@ -20,9 +20,9 @@ class SymfonyUserController extends AppController
      */
     public function index()
     {
-        $SymfonyUser = $this->paginate($this->SymfonyUser);
+        $user = $this->paginate($this->User);
 
-        $this->set(compact('SymfonyUser'));
+        $this->set(compact('user'));
     }
 
     /**
@@ -34,11 +34,9 @@ class SymfonyUserController extends AppController
      */
     public function view($id = null)
     {
-        $SymfonyUser = $this->SymfonyUser->get($id, [
-            'contain' => []
-        ]);
+        $user = $this->User->get($id, ['contain' => []]);
 
-        $this->set('SymfonyUser', $SymfonyUser);
+        $this->set('User', $user);
     }
 
     /**
@@ -48,17 +46,17 @@ class SymfonyUserController extends AppController
      */
     public function add()
     {
-        $SymfonyUser = $this->SymfonyUser->newEntity();
+        $user = $this->User->newEntity();
         if ($this->request->is('post')) {
-            $SymfonyUser = $this->SymfonyUser->patchEntity($SymfonyUser, $this->request->getData());
-            if ($this->SymfonyUser->save($SymfonyUser)) {
+            $user = $this->User->patchEntity($user, $this->request->getData());
+            if ($this->User->save($user)) {
                 $this->Flash->success(__('The symfony demo user has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The symfony demo user could not be saved. Please, try again.'));
         }
-        $this->set(compact('Symfony\User'));
+        $this->set(compact('user'));
     }
 
     /**
@@ -70,19 +68,17 @@ class SymfonyUserController extends AppController
      */
     public function edit($id = null)
     {
-        $SymfonyUser = $this->SymfonyUser->get($id, [
-            'contain' => []
-        ]);
+        $user = $this->User->get($id, ['contain' => []]);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $SymfonyUser = $this->SymfonyUser->patchEntity($SymfonyUser, $this->request->getData());
-            if ($this->SymfonyUser->save($SymfonyUser)) {
+            $user = $this->User->patchEntity($user, $this->request->getData());
+            if ($this->User->save($user)) {
                 $this->Flash->success(__('The symfony demo user has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The symfony demo user could not be saved. Please, try again.'));
         }
-        $this->set(compact('SymfonyUser'));
+        $this->set(compact('user'));
     }
 
     /**
@@ -95,8 +91,8 @@ class SymfonyUserController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $SymfonyUser = $this->SymfonyUser->get($id);
-        if ($this->SymfonyUser->delete($SymfonyUser)) {
+        $user = $this->User->get($id);
+        if ($this->User->delete($user)) {
             $this->Flash->success(__('The symfony demo user has been deleted.'));
         } else {
             $this->Flash->error(__('The symfony demo user could not be deleted. Please, try again.'));

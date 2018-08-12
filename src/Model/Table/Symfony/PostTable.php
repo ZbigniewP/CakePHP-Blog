@@ -11,16 +11,16 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\Symfony\UserTable|\Cake\ORM\Association\BelongsTo $Symfony\User
  *
- * @method \App\Model\Entity\SymfonyPost get($primaryKey, $options = [])
- * @method \App\Model\Entity\SymfonyPost newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\SymfonyPost[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyPost|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SymfonyPost|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SymfonyPost patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyPost[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyPost findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Symfony\Post get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Symfony\Post newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Symfony\Post[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\Post|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Symfony\Post|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Symfony\Post patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\Post[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\Post findOrCreate($search, callable $callback = null, $options = [])
  */
-class SymfonyPostTable extends Table
+class PostTable extends Table
 {
 
     /**
@@ -37,7 +37,7 @@ class SymfonyPostTable extends Table
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Symfony\User', [
+        $this->belongsTo('User', [
             'foreignKey' => 'author_id',
             'joinType' => 'INNER'
         ]);
@@ -99,7 +99,7 @@ class SymfonyPostTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['author_id'], 'Symfony\User'));
+        $rules->add($rules->existsIn(['author_id'], 'User'));
 
         return $rules;
     }

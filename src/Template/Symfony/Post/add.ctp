@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\SymfonyPost $symfonyDemoPost
+ * @var \App\Model\Entity\Symfony\Post $symfonyDemoPost
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">

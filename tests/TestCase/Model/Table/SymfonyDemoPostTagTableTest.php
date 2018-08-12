@@ -1,12 +1,12 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\SymfonyPostTagTable;
+use App\Model\Table\Symfony\PostTagTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\SymfonyPostTagTable Test Case
+ * App\Model\Table\Symfony\PostTagTable Test Case
  */
 class SymfonyPostTagTableTest extends TestCase
 {
@@ -14,7 +14,7 @@ class SymfonyPostTagTableTest extends TestCase
     /**
      * Test subject
      *
-     * @var \App\Model\Table\SymfonyPostTagTable
+     * @var \App\Model\Table\Symfony\PostTagTable
      */
     public $SymfonyPostTag;
 

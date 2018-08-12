@@ -35,8 +35,8 @@ class SymfonyUserTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('SymfonyUser') ? [] : ['className' => SymfonyUserTable::class];
-        $this->SymfonyUser = TableRegistry::getTableLocator()->get('SymfonyUser', $config);
+        $config = TableRegistry::getTableLocator()->exists('User') ? [] : ['className' => UserTable::class];
+        $this->User = TableRegistry::getTableLocator()->get('User', $config);
     }
 
     /**
@@ -46,7 +46,7 @@ class SymfonyUserTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->SymfonyUser);
+        unset($this->User);
 
         parent::tearDown();
     }

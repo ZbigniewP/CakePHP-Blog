@@ -6,9 +6,9 @@ use App\Controller\AppController;
 /**
  * SymfonyPostTag Controller
  *
- * @property \App\Model\Table\SymfonyPostTagTable $SymfonyPostTag
+ * @property \App\Model\Table\Symfony\PostTagTable $SymfonyPostTag
  *
- * @method \App\Model\Entity\SymfonyPostTag[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @method \App\Model\Entity\Symfony\PostTag[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class SymfonyPostTagController extends AppController
 {

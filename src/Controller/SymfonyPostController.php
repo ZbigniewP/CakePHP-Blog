@@ -3,8 +3,8 @@ namespace App\Controller;
 
 // use App\Controller\AppController;
 
-use App\Model\Entity\Symfony\Posts;
-use App\Model\Table\Symfony\PostsTable;
+use App\Model\Entity\Symfony\Post;
+use App\Model\Table\Symfony\PostTable;
 
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Event\Event;
@@ -12,9 +12,9 @@ use Cake\Http\Response;
 /**
  * SymfonyPost Controller
  *
- * @property \App\Model\Table\SymfonyPostTable $SymfonyPost
+ * @property \App\Model\Table\Symfony\PostTable $SymfonyPost
  *
- * @method \App\Model\Entity\SymfonyPost[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @method \App\Model\Entity\Symfony\Post[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class SymfonyPostController extends AppController
 {
@@ -26,8 +26,8 @@ class SymfonyPostController extends AppController
      */
     public function index()
     {
-        $this->paginate = ['contain' => ['SymfonyUser']];
-        $post = $this->paginate($this->SymfonyPost);
+        $this->paginate = ['contain' => ['User']];
+        $post = $this->paginate($this->Post);
 
         $this->set(compact('post'));
     }
@@ -41,7 +41,7 @@ class SymfonyPostController extends AppController
      */
     public function view($id = null)
     {
-        $post = $this->SymfonyPost->get($id, ['contain' => ['SymfonyUser']]);
+        $post = $this->SymfonyPost->get($id, ['contain' => ['User']]);
 
         $this->set('post', $post);
     }
@@ -63,7 +63,7 @@ class SymfonyPostController extends AppController
             }
             $this->Flash->error(__('The symfony demo post could not be saved. Please, try again.'));
         }
-        $user = $this->SymfonyPost->SymfonyUser->find('list', ['limit' => 200]);
+        $user = $this->SymfonyPost->User->find('list', ['limit' => 200]);
         $this->set(compact('post', 'user'));
     }
 
@@ -86,7 +86,7 @@ class SymfonyPostController extends AppController
             }
             $this->Flash->error(__('The symfony demo post could not be saved. Please, try again.'));
         }
-        $user = $this->SymfonyPost->SymfonyUser->find('list', ['limit' => 200]);
+        $user = $this->SymfonyPost->User->find('list', ['limit' => 200]);
         $this->set(compact('post', 'user'));
     }
 

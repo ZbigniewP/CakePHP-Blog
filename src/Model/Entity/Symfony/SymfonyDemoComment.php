@@ -13,7 +13,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $publishedAt
  * @property int $status
  *
- * @property \App\Model\Entity\SymfonyPost $symfony_demo_post
+ * @property \App\Model\Entity\Symfony\Post $symfony_demo_post
  * @property \App\Model\Entity\Symfony\User $symfony_demo_user
  */
 class SymfonyDemoComment extends Entity

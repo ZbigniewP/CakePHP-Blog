@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\SymfonyPost $symfonyDemoPost
+ * @var \App\Model\Entity\Symfony\Post $symfonyDemoPost
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -14,8 +14,8 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Symfony Demo Post'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Symfony Demo User'), ['controller' => 'Symfony\User', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Symfony Demo User'), ['controller' => 'Symfony\User', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Symfony Demo User'), ['controller' => 'SymfonyUser', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Symfony Demo User'), ['controller' => 'SymfonyUser', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="symfonyDemoPost form large-9 medium-8 columns content">

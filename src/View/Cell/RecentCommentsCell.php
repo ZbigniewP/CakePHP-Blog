@@ -11,7 +11,7 @@ use Cake\View\Cell;
 /**
  * Class RecentCommentsCell
  * @package App\View\Cell
- * @property TagsTable Categories
+ * @property TagTable Categories
  * @property PostTable Posts
  */
 class RecentCommentsCell extends Cell
@@ -29,12 +29,12 @@ class RecentCommentsCell extends Cell
 	 */
 	public function display()
 	{
-		$this->loadModel('Tags');
+		$this->loadModel('Tag');
 		$this->loadModel('Post');
 		
-		// $categories = $this->Tags->find();
-		$categories = $this->Tags->find();
-		// $posts = $this->Posts->find()->order(['id' => 'desc'])->limit(5);
+		// $categories = $this->Tag->find();
+		$categories = $this->Tag->find();
+		// $posts = $this->Post->find()->order(['id' => 'desc'])->limit(5);
 		// $posts = $this->Post->Comment->find()->order(['id' => 'desc'])->limit(5);
 		$posts = [];
 		$this->set(compact('categories', 'posts'));

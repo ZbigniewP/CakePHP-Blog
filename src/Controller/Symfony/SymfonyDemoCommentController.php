@@ -20,9 +20,7 @@ class SymfonyDemoCommentController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['SymfonyPost', 'SymfonyUser']
-        ];
+        $this->paginate = ['contain' => ['Post', 'User']];
         $symfonyDemoComment = $this->paginate($this->SymfonyDemoComment);
 
         $this->set(compact('symfonyDemoComment'));
@@ -37,9 +35,7 @@ class SymfonyDemoCommentController extends AppController
      */
     public function view($id = null)
     {
-        $symfonyDemoComment = $this->SymfonyDemoComment->get($id, [
-            'contain' => ['SymfonyPost', 'SymfonyUser']
-        ]);
+        $symfonyDemoComment = $this->SymfonyDemoComment->get($id, ['contain' => ['Post', 'User']]);
 
         $this->set('symfonyDemoComment', $symfonyDemoComment);
     }
@@ -62,8 +58,8 @@ class SymfonyDemoCommentController extends AppController
             $this->Flash->error(__('The symfony demo comment could not be saved. Please, try again.'));
         }
         $symfonyDemoPost = $this->SymfonyDemoComment->SymfonyPost->find('list', ['limit' => 200]);
-        $SymfonyUser = $this->SymfonyDemoComment->SymfonyUser->find('list', ['limit' => 200]);
-        $this->set(compact('symfonyDemoComment', 'symfonyDemoPost', 'SymfonyUser'));
+        $user = $this->SymfonyDemoComment->User->find('list', ['limit' => 200]);
+        $this->set(compact('symfonyDemoComment', 'symfonyDemoPost', 'user'));
     }
 
     /**
@@ -88,8 +84,8 @@ class SymfonyDemoCommentController extends AppController
             $this->Flash->error(__('The symfony demo comment could not be saved. Please, try again.'));
         }
         $symfonyDemoPost = $this->SymfonyDemoComment->SymfonyPost->find('list', ['limit' => 200]);
-        $SymfonyUser = $this->SymfonyDemoComment->SymfonyUser->find('list', ['limit' => 200]);
-        $this->set(compact('symfonyDemoComment', 'symfonyDemoPost', 'SymfonyUser'));
+        $user = $this->SymfonyDemoComment->User->find('list', ['limit' => 200]);
+        $this->set(compact('symfonyDemoComment', 'symfonyDemoPost', 'user'));
     }
 
     /**

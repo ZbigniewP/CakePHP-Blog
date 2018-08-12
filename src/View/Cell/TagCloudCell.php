@@ -12,7 +12,7 @@ use Cake\View\Cell;
 /**
  * Class TagCloudCell
  * @package App\View\Cell
- * @property TagsTable Tags
+ * @property TagTable Tags
  * @property PostTable Posts
  */
 class TagCloudCell extends Cell
@@ -33,13 +33,13 @@ class TagCloudCell extends Cell
 	 */
 	public function display()
 	{
-		$this->loadModel('Tags');
+		$this->loadModel('Tag');
 		// $this->loadModel('Post');
 		// $this->loadModel('Comment');
 
-		$tags = $this->YiiTag->find();
+		$tags = $this->Tag->find();
 		// $tags = Tag::model()->findTagWeights($this->maxTags);
-		// $tags = $this->YiiTag->findTagWeights($this->maxTags);
+		$tags = $this->Tag->findTagWeights($this->maxTags);
 
 		// $posts = $this->YiiPost->find()->order(['id' => 'desc'])->limit(5);
 		// $pendingComments = $this->Comment->find()->where('status='.Comment::STATUS_PENDING)->count();

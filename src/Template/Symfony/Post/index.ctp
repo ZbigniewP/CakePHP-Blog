@@ -1,15 +1,15 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\SymfonyPost[]|\Cake\Collection\CollectionInterface $symfonyDemoPost
+ * @var \App\Model\Entity\Symfony\Post[]|\Cake\Collection\CollectionInterface $symfonyDemoPost
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Symfony Demo Post'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Symfony Demo User'), ['controller' => 'Symfony\User', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Symfony Demo User'), ['controller' => 'Symfony\User', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Symfony Demo User'), ['controller' => 'SymfonyUser', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Symfony Demo User'), ['controller' => 'SymfonyUser', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="symfonyDemoPost index large-9 medium-8 columns content">
@@ -32,7 +32,7 @@
             <?php foreach ($symfonyDemoPost as $symfonyDemoPost): ?>
             <tr>
                 <td><?= $this->Number->format($symfonyDemoPost->id) ?></td>
-                <td><?= $symfonyDemoPost->has('symfony_demo_user') ? $this->Html->link($symfonyDemoPost->symfony_demo_user->id, ['controller' => 'Symfony\User', 'action' => 'view', $symfonyDemoPost->symfony_demo_user->id]) : '' ?></td>
+                <td><?= $symfonyDemoPost->has('symfony_demo_user') ? $this->Html->link($symfonyDemoPost->symfony_demo_user->id, ['controller' => 'SymfonyUser', 'action' => 'view', $symfonyDemoPost->symfony_demo_user->id]) : '' ?></td>
                 <td><?= h($symfonyDemoPost->title) ?></td>
                 <td><?= h($symfonyDemoPost->slug) ?></td>
                 <td><?= h($symfonyDemoPost->summary) ?></td>

@@ -9,17 +9,17 @@ use Cake\Validation\Validator;
 /**
  * SymfonyPostTag Model
  *
- * @property \App\Model\Table\SymfonyPostTable|\Cake\ORM\Association\BelongsTo $SymfonyPost
+ * @property \App\Model\Table\Symfony\PostTable|\Cake\ORM\Association\BelongsTo $SymfonyPost
  * @property \App\Model\Table\SymfonyDemoTagTable|\Cake\ORM\Association\BelongsTo $SymfonyDemoTag
  *
- * @method \App\Model\Entity\SymfonyPostTag get($primaryKey, $options = [])
- * @method \App\Model\Entity\SymfonyPostTag newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\SymfonyPostTag[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyPostTag|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SymfonyPostTag|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SymfonyPostTag patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyPostTag[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyPostTag findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Symfony\PostTag get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Symfony\PostTag newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Symfony\PostTag[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\PostTag|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Symfony\PostTag|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Symfony\PostTag patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\PostTag[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\PostTag findOrCreate($search, callable $callback = null, $options = [])
  */
 class SymfonyPostTagTable extends Table
 {
