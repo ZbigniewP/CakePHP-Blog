@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Symfony\SymfonyTags $dataTags
+ * @var \App\Model\Entity\SymfonyTags $data
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -11,7 +11,7 @@
     </ul>
 </nav>
 <div class="SymfonyTags form large-9 medium-8 columns content">
-    <?= $this->Form->create($dataTags) ?>
+    <?= $this->Form->create($data) ?>
     <fieldset>
         <legend><?= __('Add Tag') ?></legend>
         <?php

@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\SymfonyPostTag $dataPostTag
+ * @var \App\Model\Entity\SymfonyPostsTag $dataPostsTag
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -9,8 +9,8 @@
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $dataPostTag->post_id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $dataPostTag->post_id)]
+                ['action' => 'delete', $dataPostsTag->post_id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $dataPostsTag->post_id)]
             )
         ?></li>
         <li><?= $this->Html->link(__('List Posts Tag'), ['action' => 'index']) ?></li>
@@ -19,7 +19,7 @@
     </ul>
 </nav>
 <div class="symfonyDemoPostTag form large-9 medium-8 columns content">
-    <?= $this->Form->create($dataPostTag) ?>
+    <?= $this->Form->create($dataPostsTag) ?>
     <fieldset>
         <legend><?= __('Edit Post Tag') ?></legend>
         <?php

@@ -55,6 +55,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 				<ul class="nav navbar-nav">
 					<li><?= $this->Html->link('Yii', '/yiiPost') ?></li>
 					<li><?= $this->Html->link('Symfony', '/symfonyPost') ?></li>
+					<li><?= $this->Html->link('SymfonyBlog', '/symfonyBlog') ?></li>
 					<li><?= $this->Html->link('Pages', ['controller' => 'pages', 'action' => 'display']) ?></li>
 				<?php if ($this->request->session()->read('Auth.User')): ?>
 					<li><?= $this->Html->link('Admin', ['controller' => 'admin', 'action' => 'index']) ?></li>

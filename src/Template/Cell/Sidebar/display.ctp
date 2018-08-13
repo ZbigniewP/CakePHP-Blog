@@ -17,9 +17,9 @@ foreach ($categories as $category) :
 			['escape' => false, 'class' => 'list-group-item']
 		);
 
-	if (strtolower($this->request->params['controller']) == 'blogdemo')
+	if (strtolower($this->request->params['controller']) == 'symfonyblog')
 		echo $this->Html->link("<span class='badge'>{$category->frequency}</span>{$category->name}",
-			['controller' => 'BlogDemo', 'action' => 'category', 'slug' => $category->slug],
+			['controller' => 'SymfonyBlog', 'action' => 'category', 'slug' => $category->slug],
 			['escape' => false, 'class' => 'list-group-item']
 		);
 endforeach;
@@ -35,14 +35,14 @@ foreach ($posts as $post) :
 			['controller' => 'Posts', 'action' => 'view', 'slug' => $post->slug], 
 			['class' => 'list-group-item']);
 
-	if (strtolower($this->request->params['controller']) == 'yii/post')
+	if (strtolower($this->request->params['controller']) == 'yiipost')
 		echo $this->Html->link($post->name, 
 			['controller' => 'yii/post', 'action' => 'view', 'slug' => $post->slug], 
 			['class' => 'list-group-item']);
 
-	if (strtolower($this->request->params['controller']) == 'blogdemo')
+	if (strtolower($this->request->params['controller']) == 'symfonyblog')
 		echo $this->Html->link($post->name, 
-			['controller' => 'BlogDemo', 'action' => 'view', 'slug' => $post->slug], 
+			['controller' => 'SymfonyBlog', 'action' => 'view', 'slug' => $post->slug], 
 			['class' => 'list-group-item']);
 endforeach; 
 ?>

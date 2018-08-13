@@ -109,7 +109,7 @@ class SymfonyPostTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['author_id'], 'User'));
+        $rules->add($rules->existsIn(['author_id'], 'SymfonyUser'));
 
         return $rules;
     }

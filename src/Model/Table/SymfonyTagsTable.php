@@ -9,14 +9,14 @@ use Cake\Validation\Validator;
 /**
  * SymfonyTags Model
  *
- * @method \App\Model\Entity\Symfony\SymfonyTags get($primaryKey, $options = [])
- * @method \App\Model\Entity\Symfony\SymfonyTags newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Symfony\SymfonyTags[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Symfony\SymfonyTags|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Symfony\SymfonyTags|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Symfony\SymfonyTags patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Symfony\SymfonyTags[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Symfony\SymfonyTags findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\SymfonyTags get($primaryKey, $options = [])
+ * @method \App\Model\Entity\SymfonyTags newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\SymfonyTags[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\SymfonyTags|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\SymfonyTags|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\SymfonyTags patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\SymfonyTags[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\SymfonyTags findOrCreate($search, callable $callback = null, $options = [])
  */
 class SymfonyTagsTable extends Table
 {

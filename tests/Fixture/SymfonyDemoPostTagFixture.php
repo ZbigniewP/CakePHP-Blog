@@ -4,10 +4,10 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * SymfonyPostTagFixture
+ * SymfonyPostsTagFixture
  *
  */
-class SymfonyPostTagFixture extends TestFixture
+class SymfonyPostsTagFixture extends TestFixture
 {
 
     /**

@@ -4,8 +4,7 @@
 		<h1>Blog Symfony</h1>
 		<p class="lead">Welcome on my blog</p>
 	</div>
-	<?php 
-	foreach ($dataPost as $data): ?>
+	<?php foreach ($dataPost as $data): ?>
 		<article>
 			<h2><?= $this->Html->link($data->name, ['controller' => 'Posts', 'action' => 'view', 'slug' => $data->slug]) ?></h2>
 			<p>
@@ -23,7 +22,12 @@
 		<hr />
 	<?php endforeach; ?>
 
-	<?php if ($this->Paginator->counter() !== '1 of 1'): ?>
+	<?php 
+// echo "<pre>";
+// print_r();
+// echo "</pre>";
+// exit();
+	if ($this->Paginator->total() && $this->Paginator->counter() !== '1 of 1'): ?>
 		<div class="paginator">
 			<ul class="pagination">
 				<?= $this->Paginator->prev('«') ?>

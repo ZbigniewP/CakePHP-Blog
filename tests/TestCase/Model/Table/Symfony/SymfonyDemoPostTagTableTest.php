@@ -8,7 +8,7 @@ use Cake\TestSuite\TestCase;
 /**
  * App\Model\Table\Symfony\PostTagTable Test Case
  */
-class SymfonyPostTagTableTest extends TestCase
+class SymfonyPostsTagTableTest extends TestCase
 {
 
     /**
@@ -16,7 +16,7 @@ class SymfonyPostTagTableTest extends TestCase
      *
      * @var \App\Model\Table\Symfony\PostTagTable
      */
-    public $SymfonyPostTag;
+    public $SymfonyPostsTag;
 
     /**
      * Fixtures
@@ -37,8 +37,8 @@ class SymfonyPostTagTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('SymfonyPostTag') ? [] : ['className' => SymfonyPostTagTable::class];
-        $this->SymfonyPostTag = TableRegistry::getTableLocator()->get('SymfonyPostTag', $config);
+        $config = TableRegistry::getTableLocator()->exists('SymfonyPostsTag') ? [] : ['className' => SymfonyPostsTagTable::class];
+        $this->SymfonyPostsTag = TableRegistry::getTableLocator()->get('SymfonyPostsTag', $config);
     }
 
     /**
@@ -48,7 +48,7 @@ class SymfonyPostTagTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->SymfonyPostTag);
+        unset($this->SymfonyPostsTag);
 
         parent::tearDown();
     }

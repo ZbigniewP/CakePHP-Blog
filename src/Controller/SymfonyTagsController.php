@@ -8,7 +8,7 @@ use App\Controller\AppController;
  *
  * @property \App\Model\Table\SymfonyTagsTable $dataTags
  *
- * @method \App\Model\Entity\Symfony\SymfonyTags[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @method \App\Model\Entity\SymfonyTags[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class SymfonyTagsController extends AppController
 {
@@ -48,17 +48,17 @@ class SymfonyTagsController extends AppController
 	 */
 	public function add()
 	{
-		$dataTags = $this->SymfonyTags->newEntity();
+		$data = $this->SymfonyTags->newEntity();
 		if ($this->request->is('post')) {
-			$dataTags = $this->SymfonyTags->patchEntity($dataTags, $this->request->getData());
-			if ($this->SymfonyTags->save($dataTags)) {
+			$data = $this->SymfonyTags->patchEntity($data, $this->request->getData());
+			if ($this->SymfonyTags->save($data)) {
 				$this->Flash->success(__('The symfony demo tag has been saved.'));
 
 				return $this->redirect(['action' => 'index']);
 			}
 			$this->Flash->error(__('The symfony demo tag could not be saved. Please, try again.'));
 		}
-		$this->set(compact('dataTags'));
+		$this->set(compact('data'));
 		$this->render('//Symfony/Tag/add');
 	}
 
@@ -71,17 +71,17 @@ class SymfonyTagsController extends AppController
 	 */
 	public function edit($id = null)
 	{
-		$dataTags = $this->SymfonyTags->get($id, ['contain' => []]);
+		$data = $this->SymfonyTags->get($id, ['contain' => []]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
-			$dataTags = $this->SymfonyTags->patchEntity($dataTags, $this->request->getData());
-			if ($this->SymfonyTags->save($dataTags)) {
+			$data = $this->SymfonyTags->patchEntity($data, $this->request->getData());
+			if ($this->SymfonyTags->save($data)) {
 				$this->Flash->success(__('The symfony demo tag has been saved.'));
 
 				return $this->redirect(['action' => 'index']);
 			}
 			$this->Flash->error(__('The symfony demo tag could not be saved. Please, try again.'));
 		}
-		$this->set(compact('dataTags'));
+		$this->set(compact('data'));
 		$this->render('//Symfony/Tag/edit');
 	}
 
@@ -95,8 +95,8 @@ class SymfonyTagsController extends AppController
 	public function delete($id = null)
 	{
 		$this->request->allowMethod(['post', 'delete']);
-		$dataTags = $this->SymfonyTags->get($id);
-		if ($this->SymfonyTags->delete($dataTags)) {
+		$data = $this->SymfonyTags->get($id);
+		if ($this->SymfonyTags->delete($data)) {
 			$this->Flash->success(__('The symfony demo tag has been deleted.'));
 		} else {
 			$this->Flash->error(__('The symfony demo tag could not be deleted. Please, try again.'));

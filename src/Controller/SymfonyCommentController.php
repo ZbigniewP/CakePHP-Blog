@@ -22,10 +22,7 @@ class SymfonyCommentController extends AppController
 	{
 		$this->paginate = ['contain' => ['SymfonyPost', 'SymfonyUser']];
 		$dataComment = $this->paginate($this->SymfonyComment);
-// echo "<pre>";
-// print_r($SymfonyComment);
-// echo "</pre>";
-// exit();
+
 		$this->set(compact('dataComment'));
 
 		$this->render('//Symfony/Comment/index');

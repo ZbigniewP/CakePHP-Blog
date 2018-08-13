@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Symfony\SymfonyTags[]|\Cake\Collection\CollectionInterface $dataTags
+ * @var \App\Model\Entity\SymfonyTags[]|\Cake\Collection\CollectionInterface $dataTags
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -20,7 +20,7 @@
 	<table cellpadding="0" cellspacing="0">
 		<thead>
 			<tr>
-				<th scope="col"><?= $this->Paginator->sort('id') ?></th>
+				<!-- <th scope="col"><?= $this->Paginator->sort('id') ?></th> -->
 				<th scope="col"><?= $this->Paginator->sort('name') ?></th>
 				<th scope="col"><?= $this->Paginator->sort('frequency') ?></th>
 				<th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -29,7 +29,7 @@
 		<tbody>
 			<?php foreach ($dataTags as $dataTags): ?>
 			<tr>
-				<td><?= $this->Number->format($dataTags->id) ?></td>
+				<!-- <td><?= $this->Number->format($dataTags->id) ?></td> -->
 				<td><?= h($dataTags->name) ?></td>
 				<td><?= $this->Number->format($dataTags->frequency) ?></td>
 				<td class="actions">
