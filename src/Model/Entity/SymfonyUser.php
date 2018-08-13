@@ -1,10 +1,11 @@
 <?php
-namespace App\Model\Entity\Symfony;
+namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\Auth\DefaultPasswordHasher;
 
 /**
- * Symfony\User Entity
+ * SymfonyUser Entity
  *
  * @property int $id
  * @property string $fullName
@@ -13,7 +14,7 @@ use Cake\ORM\Entity;
  * @property string $password
  * @property string|resource $roles
  */
-class User extends Entity
+class SymfonyUser extends Entity
 {
 
 	/**
@@ -32,10 +33,7 @@ class User extends Entity
 	//     'password' => true,
 	//     'roles' => true
 	// ];
-	protected $_accessible = [
-		'*' => true,
-		'id' => false
-	];
+	protected $_accessible = ['*' => true, 'id' => false];
 
 	/**
 	 * Fields that are excluded from JSON versions of the entity.

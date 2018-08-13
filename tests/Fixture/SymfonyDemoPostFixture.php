@@ -38,7 +38,7 @@ class SymfonyPostFixture extends TestFixture
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'author_id_fk' => ['type' => 'foreign', 'columns' => ['author_id'], 'references' => ['symfony_demo_user', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
+            'author_id_fk' => ['type' => 'foreign', 'columns' => ['author_id'], 'references' => ['symfony_user', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
         ],
     ];
     // @codingStandardsIgnoreEnd

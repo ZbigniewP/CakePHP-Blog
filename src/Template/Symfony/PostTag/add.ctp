@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Symfony\PostTag $dataPostTag
+ * @var \App\Model\Entity\SymfonyPostTag $dataPostTag
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -15,7 +15,7 @@
 <div class="symfonyDemoPostTag form large-9 medium-8 columns content">
     <?= $this->Form->create($dataPostTag) ?>
     <fieldset>
-        <legend><?= __('Add Symfony Demo Post Tag') ?></legend>
+        <legend><?= __('Add Post Tag') ?></legend>
         <?php
         ?>
     </fieldset>

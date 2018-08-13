@@ -23,7 +23,7 @@ class UserTableTest extends TestCase
      *
      * @var array
      */
-    public $fixtures = ['app.symfony_demo_user'];
+    public $fixtures = ['app.symfony_user'];
 
     /**
      * setUp method

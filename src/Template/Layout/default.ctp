@@ -27,11 +27,16 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 	<title><?= $this->fetch('title'); ?> | MyDomain.com</title>
 	<?= $this->Html->meta('icon') ?>
 	<!-- Bootstrap core CSS -->
-	<?= $this->Html->css(['bootstrap', 'bootstrap-theme', 'base', 'style', 'home']); ?>
+	<?= $this->Html->css(['bootstrap', 'bootstrap-theme']); ?>
+	<?= $this->Html->css('base.css') ?>
+	<?= $this->Html->css('style.css') ?>
+	<?= $this->Html->css('home.css') ?>
+
 	<link href="https://fonts.googleapis.com/css?family=Raleway:500i|Roboto:300,400,700|Roboto+Mono" rel="stylesheet">
 	<style>
 		body {padding-top: 50px;}
 		.sidebar {margin-top: 50px;}
+		.paginator li {padding-left:0;}
 	</style>
 </head>
 <body>

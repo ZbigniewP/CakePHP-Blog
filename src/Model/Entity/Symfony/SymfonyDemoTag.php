@@ -4,13 +4,13 @@ namespace App\Model\Entity\Symfony;
 use Cake\ORM\Entity;
 
 /**
- * SymfonyDemoTag Entity
+ * SymfonyTags Entity
  *
  * @property int $id
  * @property string $name
  * @property int $frequency
  */
-class SymfonyDemoTag extends Entity
+class SymfonyTags extends Entity
 {
 
     /**

@@ -8,7 +8,7 @@ use App\Controller\AppController;
  *
  * @property \App\Model\Table\Symfony\PostTagTable $SymfonyPostTag
  *
- * @method \App\Model\Entity\Symfony\PostTag[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @method \App\Model\Entity\SymfonyPostTag[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class SymfonyPostTagController extends AppController
 {
@@ -21,7 +21,7 @@ class SymfonyPostTagController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['SymfonyPost', 'SymfonyDemoTag']
+            'contain' => ['SymfonyPost', 'SymfonyTags']
         ];
         $dataPostTag = $this->paginate($this->SymfonyPostTag);
 
@@ -38,7 +38,7 @@ class SymfonyPostTagController extends AppController
     public function view($id = null)
     {
         $dataPostTag = $this->SymfonyPostTag->get($id, [
-            'contain' => ['SymfonyPost', 'SymfonyDemoTag']
+            'contain' => ['SymfonyPost', 'SymfonyTags']
         ]);
 
         $this->set('symfonyDemoPostTag', $dataPostTag);
@@ -62,8 +62,8 @@ class SymfonyPostTagController extends AppController
             $this->Flash->error(__('The symfony demo post tag could not be saved. Please, try again.'));
         }
         $dataPost = $this->SymfonyPostTag->SymfonyPost->find('list', ['limit' => 200]);
-        $symfonyDemoTag = $this->SymfonyPostTag->SymfonyDemoTag->find('list', ['limit' => 200]);
-        $this->set(compact('symfonyDemoPostTag', 'symfonyDemoPost', 'symfonyDemoTag'));
+        $dataTags = $this->SymfonyPostTag->SymfonyTags->find('list', ['limit' => 200]);
+        $this->set(compact('symfonyDemoPostTag', 'symfonyDemoPost', 'SymfonyTags'));
     }
 
     /**
@@ -88,8 +88,8 @@ class SymfonyPostTagController extends AppController
             $this->Flash->error(__('The symfony demo post tag could not be saved. Please, try again.'));
         }
         $dataPost = $this->SymfonyPostTag->SymfonyPost->find('list', ['limit' => 200]);
-        $symfonyDemoTag = $this->SymfonyPostTag->SymfonyDemoTag->find('list', ['limit' => 200]);
-        $this->set(compact('symfonyDemoPostTag', 'symfonyDemoPost', 'symfonyDemoTag'));
+        $dataTags = $this->SymfonyPostTag->SymfonyTags->find('list', ['limit' => 200]);
+        $this->set(compact('symfonyDemoPostTag', 'symfonyDemoPost', 'SymfonyTags'));
     }
 
     /**

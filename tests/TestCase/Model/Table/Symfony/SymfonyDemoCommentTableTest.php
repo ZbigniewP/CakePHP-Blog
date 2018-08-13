@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\SymfonyDemoCommentTable;
+use App\Model\Table\SymfonyCommentTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\SymfonyDemoCommentTable Test Case
+ * App\Model\Table\SymfonyCommentTable Test Case
  */
-class SymfonyDemoCommentTableTest extends TestCase
+class SymfonyCommentTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\SymfonyDemoCommentTable
+     * @var \App\Model\Table\SymfonyCommentTable
      */
-    public $SymfonyDemoComment;
+    public $SymfonyComment;
 
     /**
      * Fixtures
@@ -26,7 +26,7 @@ class SymfonyDemoCommentTableTest extends TestCase
     public $fixtures = [
         'app.symfony_demo_comment',
         'app.symfony_demo_post',
-        'app.symfony_demo_user'
+        'app.symfony_user'
     ];
 
     /**
@@ -37,8 +37,8 @@ class SymfonyDemoCommentTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('SymfonyDemoComment') ? [] : ['className' => SymfonyDemoCommentTable::class];
-        $this->Comment = TableRegistry::getTableLocator()->get('SymfonyDemoComment', $config);
+        $config = TableRegistry::getTableLocator()->exists('SymfonyComment') ? [] : ['className' => SymfonyCommentTable::class];
+        $this->Comment = TableRegistry::getTableLocator()->get('SymfonyComment', $config);
     }
 
     /**

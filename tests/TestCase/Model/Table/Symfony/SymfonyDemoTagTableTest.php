@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\SymfonyDemoTagTable;
+use App\Model\Table\SymfonyTagsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\SymfonyDemoTagTable Test Case
+ * App\Model\Table\SymfonyTagsTable Test Case
  */
-class SymfonyDemoTagTableTest extends TestCase
+class SymfonyTagsTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\SymfonyDemoTagTable
+     * @var \App\Model\Table\SymfonyTagsTable
      */
-    public $SymfonyDemoTag;
+    public $dataTags;
 
     /**
      * Fixtures
@@ -35,8 +35,8 @@ class SymfonyDemoTagTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::getTableLocator()->exists('SymfonyDemoTag') ? [] : ['className' => SymfonyDemoTagTable::class];
-        $this->SymfonyDemoTag = TableRegistry::getTableLocator()->get('SymfonyDemoTag', $config);
+        $config = TableRegistry::getTableLocator()->exists('SymfonyTags') ? [] : ['className' => SymfonyTagsTable::class];
+        $this->SymfonyTags = TableRegistry::getTableLocator()->get('SymfonyTags', $config);
     }
 
     /**
@@ -46,7 +46,7 @@ class SymfonyDemoTagTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->SymfonyDemoTag);
+        unset($this->SymfonyTags);
 
         parent::tearDown();
     }

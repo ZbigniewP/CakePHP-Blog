@@ -51,6 +51,33 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 	<div class="header-title">
 		<h1>Welcome to CakePHP <?= Configure::version() ?> Red Velvet. Build fast. Grow solid.</h1>
 	</div>
+	<nav class="top-bar expanded" data-topbar="" role="navigation">
+<ul class="title-area large-3 medium-4 columns">
+	<li class="name"><h1><a href="/articles">Articles</a></h1></li>
+	
+</ul>
+<div class="top-bar-section">
+<ul class="right">
+	<li><?= $this->Html->link("Article", ['controller' => 'articles','action' => 'index']) ?></li>
+
+	<li><?= $this->Html->link("Blog", ['controller' => 'blog','action' => 'index']) ?></li>
+	<!-- <li><?= $this->Html->link("Pages", ['controller' => 'Pages','action' => 'display']) ?></li> -->
+	<li class="name active"><h1><a href="pages">Pages</a></h1></li>
+	<!-- <li><?= $this->Html->link("Add Article", ['controller' => 'articles','action' => 'add']) ?></li>
+	<li><?= $this->Html->link("Edit Article", ['controller' => 'articles','action' => 'edit']) ?></li>
+	<li><?= $this->Html->link("View Article", ['controller' => 'articles','action' => 'view']) ?></li> -->
+</ul>
+</div>
+</nav>
+<!-- <nav class="large-3 medium-4 columns" id="actions-sidebar">
+<ul class="side-nav">
+<li class="heading"><?= __('Actions') ?></li>
+<li><?= $this->Html->link("Article", ['controller' => 'articles','action' => 'index']) ?></li>
+<li><?= $this->Html->link("Add Article", ['controller' => 'articles','action' => 'add']) ?></li>
+<li><?= $this->Html->link("Edit Article", ['controller' => 'articles','action' => 'edit']) ?></li>
+<li><?= $this->Html->link("View Article", ['controller' => 'articles','action' => 'view']) ?></li>
+</ul>
+</nav> -->
 </header>
 
 <div class="row">
@@ -68,31 +95,6 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 			</ul>
 		</div>
 		<?php Debugger::checkSecurityKeys(); ?>
-<nav class="top-bar expanded" data-topbar="" role="navigation">
-<ul class="title-area large-3 medium-4 columns">
-<li class="name">
-<h1><a href="/articles">Articles</a></h1>
-</li>
-</ul>
-<div class="top-bar-section">
-<ul class="right">
-<li><?= $this->Html->link("Article", ['controller' => 'articles','action' => 'index']) ?></li>
-<li><?= $this->Html->link("Blog", ['controller' => 'blog','action' => 'index']) ?></li>
-<!-- <li><?= $this->Html->link("Add Article", ['controller' => 'articles','action' => 'add']) ?></li>
-<li><?= $this->Html->link("Edit Article", ['controller' => 'articles','action' => 'edit']) ?></li>
-<li><?= $this->Html->link("View Article", ['controller' => 'articles','action' => 'view']) ?></li> -->
-</ul>
-</div>
-</nav>
-<!-- <nav class="large-3 medium-4 columns" id="actions-sidebar">
-<ul class="side-nav">
-<li class="heading"><?= __('Actions') ?></li>
-<li><?= $this->Html->link("Article", ['controller' => 'articles','action' => 'index']) ?></li>
-<li><?= $this->Html->link("Add Article", ['controller' => 'articles','action' => 'add']) ?></li>
-<li><?= $this->Html->link("Edit Article", ['controller' => 'articles','action' => 'edit']) ?></li>
-<li><?= $this->Html->link("View Article", ['controller' => 'articles','action' => 'view']) ?></li>
-</ul>
-</nav> -->
 	</div>
 </div>
 

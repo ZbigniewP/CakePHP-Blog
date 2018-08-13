@@ -1,26 +1,23 @@
 <?php
-namespace App\Model\Entity\Symfony;
-
-// use Cake\ORM\Entity;
+namespace App\Model\Entity;
 
 use Cake\I18n\FrozenTime;
 use Cake\ORM\Entity;
+
 /**
- * Symfony\Post Entity
+ * SymfonyComment Entity
  *
  * @property int $id
+ * @property int $post_id
  * @property int $author_id
- * @property string $title
- * @property string $slug
- * @property string $summary
  * @property string|resource $content
  * @property \Cake\I18n\FrozenTime $publishedAt
  * @property int $status
- * @property \Cake\I18n\FrozenTime $updatedAt
  *
- * @property \App\Model\Entity\Symfony\User $symfony_demo_user
+ * @property \App\Model\Entity\SymfonyPost $symfony_post
+ * @property \App\Model\Entity\SymfonyUser $symfony_user
  */
-class SymfonyPost extends Entity
+class SymfonyComment extends Entity
 {
 
     /**
@@ -34,13 +31,11 @@ class SymfonyPost extends Entity
      */
     protected $_accessible = [
         'author_id' => true,
-        'title' => true,
-        'slug' => true,
-        'summary' => true,
         'content' => true,
+        'post_id' => true,
         'publishedAt' => true,
-        'status' => true,
-        'updatedAt' => true,
-        'symfony_demo_user' => true
+        // 'status' => true,
+        'symfony_post' => true,
+        'symfony_user' => true
     ];
 }

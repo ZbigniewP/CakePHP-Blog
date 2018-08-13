@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Table\Symfony;
+namespace App\Model\Table;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -7,18 +7,18 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * SymfonyDemoTag Model
+ * SymfonyTags Model
  *
- * @method \App\Model\Entity\SymfonyDemoTag get($primaryKey, $options = [])
- * @method \App\Model\Entity\SymfonyDemoTag newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoTag[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoTag|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SymfonyDemoTag|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SymfonyDemoTag patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoTag[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\SymfonyDemoTag findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\Symfony\SymfonyTags get($primaryKey, $options = [])
+ * @method \App\Model\Entity\Symfony\SymfonyTags newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\Symfony\SymfonyTags[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\SymfonyTags|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Symfony\SymfonyTags|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\Symfony\SymfonyTags patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\SymfonyTags[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\Symfony\SymfonyTags findOrCreate($search, callable $callback = null, $options = [])
  */
-class SymfonyDemoTagTable extends Table
+class SymfonyTagsTable extends Table
 {
 
     /**

@@ -25,7 +25,7 @@ class SymfonyPostTableTest extends TestCase
      */
     public $fixtures = [
         'app.symfony_demo_post',
-        'app.symfony_demo_user'
+        'app.symfony_user'
     ];
 
     /**

@@ -4,12 +4,7 @@
 		<h1>Blog</h1>
 		<p class="lead">Welcome on my blog</p>
 	</div>
-	<?php foreach ($posts as $post): 
-// echo "<pre>";
-// print_r($post);
-// echo "</pre>";
-// exit();
-?>
+	<?php foreach ($posts as $post): ?>
 		<article>
 			<h2><?= $this->Html->link($post->name, ['controller' => 'Posts', 'action' => 'view', 'slug' => $post->slug]) ?></h2>
 			<p>

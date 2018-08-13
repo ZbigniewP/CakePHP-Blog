@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Symfony\PostTag $dataPostTag
+ * @var \App\Model\Entity\SymfonyPostTag $dataPostTag
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -19,7 +19,7 @@
     <h3><?= h($dataPostTag->post_id) ?></h3>
     <table class="vertical-table">
         <tr>
-            <th scope="row"><?= __('Symfony Demo Post') ?></th>
+            <th scope="row"><?= __('Symfony Post') ?></th>
             <td><?= $dataPostTag->has('symfony_demo_post') ? $this->Html->link($dataPostTag->symfony_demo_post->title, ['controller' => 'SymfonyPost', 'action' => 'view', $dataPostTag->symfony_demo_post->id]) : '' ?></td>
         </tr>
         <tr>

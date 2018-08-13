@@ -9,8 +9,8 @@ use Cake\ORM\Entity;
  * @property int $post_id
  * @property int $tag_id
  *
- * @property \App\Model\Entity\Symfony\Post $symfony_demo_post
- * @property \App\Model\Entity\SymfonyDemoTag $symfony_demo_tag
+ * @property \App\Model\Entity\SymfonyPost $symfony_post
+ * @property \App\Model\Entity\Symfony\SymfonyTags $symfony_demo_tag
  */
 class SymfonyPostTag extends Entity
 {

@@ -1,11 +1,11 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\Symfony\UserController;
+use App\Controller\SymfonyUserController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\Symfony\UserController Test Case
+ * App\Controller\SymfonyUserController Test Case
  */
 class SymfonyUserControllerTest extends IntegrationTestCase
 {
@@ -16,7 +16,7 @@ class SymfonyUserControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.symfony_demo_user'
+        'app.symfony_user'
     ];
 
     /**

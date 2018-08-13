@@ -3,7 +3,7 @@ namespace App\Controller;
 
 // use App\Controller\AppController;
 
-use App\Model\Entity\Symfony\Post;
+use App\Model\Entity\SymfonyPost;
 use App\Model\Table\SymfonyPostTable;
 
 use Cake\Datasource\Exception\RecordNotFoundException;
@@ -14,7 +14,7 @@ use Cake\Http\Response;
  *
  * @property \App\Model\Table\SymfonyPostTable $SymfonyPost
  *
- * @method \App\Model\Entity\Symfony\Post[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @method \App\Model\Entity\SymfonyPost[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class SymfonyPostController extends AppController
 {
@@ -25,11 +25,12 @@ class SymfonyPostController extends AppController
 	 */
 	public function index()
 	{
-		// $this->paginate = [
-		// 	// 'contain' => ['Pages', 'TblUser']
-		// 	// 'contain' => ['Comment', 'User']
-		// 	'contain' => []
-		// ];
+		$this->paginate = [
+			// 'contain' => ['Pages', 'TblUser']
+			// 'contain' => ['Comment', 'User']
+			'contain' => ['SymfonyUser'],
+			'limit' => 10
+		];
 		// $users = $this->paginate($this->SymfonyUser);
 
 		$dataPost = $this->paginate($this->SymfonyPost);
@@ -76,7 +77,7 @@ class SymfonyPostController extends AppController
 			}
 			$this->Flash->error(__('The symfony demo post could not be saved. Please, try again.'));
 		}
-		$user = $this->SymfonyPost->SymfonyUser->find('list', ['limit' => 10]);
+		$user = $this->SymfonyPost->SymfonyUser->find('list', ['limit' => 30]);
 		$this->set(compact('data', 'user'));
 
 		$this->render('//Symfony/Post/add');
@@ -101,7 +102,7 @@ class SymfonyPostController extends AppController
 			}
 			$this->Flash->error(__('The symfony demo post could not be saved. Please, try again.'));
 		}
-		$user = $this->SymfonyPost->SymfonyUser->find('list', ['limit' => 200]);
+		$user = $this->SymfonyPost->SymfonyUser->find('list', ['limit' => 30]);
 		$this->set(compact('post', 'user'));
 	}
 

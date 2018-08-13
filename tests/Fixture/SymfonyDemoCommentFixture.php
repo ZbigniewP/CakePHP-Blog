@@ -4,10 +4,10 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * SymfonyDemoCommentFixture
+ * SymfonyCommentFixture
  *
  */
-class SymfonyDemoCommentFixture extends TestFixture
+class SymfonyCommentFixture extends TestFixture
 {
 
     /**
@@ -36,7 +36,7 @@ class SymfonyDemoCommentFixture extends TestFixture
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
-            'author_id_fk' => ['type' => 'foreign', 'columns' => ['author_id'], 'references' => ['symfony_demo_user', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
+            'author_id_fk' => ['type' => 'foreign', 'columns' => ['author_id'], 'references' => ['symfony_user', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
             'post_id_fk' => ['type' => 'foreign', 'columns' => ['post_id'], 'references' => ['symfony_demo_post', 'id'], 'update' => 'noAction', 'delete' => 'noAction', 'length' => []],
         ],
     ];

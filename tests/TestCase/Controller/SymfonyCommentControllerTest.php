@@ -1,13 +1,13 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\SymfonyPostController;
+use App\Controller\SymfonyCommentController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\SymfonyPostController Test Case
+ * App\Controller\SymfonyCommentController Test Case
  */
-class SymfonyPostControllerTest extends IntegrationTestCase
+class SymfonyCommentControllerTest extends IntegrationTestCase
 {
 
     /**
@@ -16,8 +16,9 @@ class SymfonyPostControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
+        'app.symfony_demo_comment',
         'app.symfony_demo_post',
-        'app.symfony_demo_user'
+        'app.symfony_user'
     ];
 
     /**

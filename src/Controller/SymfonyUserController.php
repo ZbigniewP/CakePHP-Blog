@@ -2,14 +2,14 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use App\Model\Entity\Symfony\User;
-use App\Model\Table\SymfonyUserTable;
+// use App\Model\Entity\SymfonyUser;
+// use App\Model\Table\SymfonyUserTable;
 /**
- * Symfony\User Controller
+ * SymfonyUser Controller
  *
  * @property \App\Model\Table\SymfonyUserTable $SymfonyUser
  *
- * @method \App\Model\Entity\Symfony\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
+ * @method \App\Model\Entity\SymfonyUser[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class SymfonyUserController extends AppController
 {
@@ -40,7 +40,8 @@ class SymfonyUserController extends AppController
 	{
 		$user = $this->SymfonyUser->get($id, ['contain' => []]);
 
-		$this->set('User', $user);
+		$this->set('data', $user);
+
 		$this->render('//Symfony/User/view');
 	}
 

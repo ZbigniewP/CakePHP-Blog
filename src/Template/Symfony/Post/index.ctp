@@ -1,26 +1,31 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Symfony\Post[]|\Cake\Collection\CollectionInterface $data
+ * @var \App\Model\Entity\SymfonyPost[]|\Cake\Collection\CollectionInterface $data
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
 	<ul class="side-nav">
 		<li class="heading"><?= __('Actions') ?></li>
-		<li><?= $this->Html->link(__('New Post'), ['action' => 'add']) ?></li>
-		<li><?= $this->Html->link(__('List Users'), ['controller' => 'SymfonyUser', 'action' => 'index']) ?></li>
-		<li><?= $this->Html->link(__('New User'), ['controller' => 'SymfonyUser', 'action' => 'add']) ?></li>
+		<li><?= $this->Html->link(__('List Comment'), ['controller' => 'SymfonyComment','action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('List Posts Tag'), ['controller' => 'SymfonyPostsTag', 'action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('List Posts'), ['action' => 'index']) ?></li>
+		<li><?= $this->Html->link(__('List Tags'), ['controller' => 'SymfonyTags', 'action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('List Users'), ['controller' => 'SymfonyUser', 'action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('New Post'), ['action' => 'add']) ?> </li>
+		<li><?= $this->Html->link(__('New User'), ['controller' => 'SymfonyUser', 'action' => 'add']) ?> </li>
+
 	</ul>
 </nav>
 <div class="symfonyDemoPost index large-9 medium-8 columns content">
-	<h3><?= __('Symfony Demo Post') ?></h3>
+	<h3><?= __('Symfony Post') ?></h3>
 	<table cellpadding="0" cellspacing="0">
 		<thead>
 			<tr>
-				<th scope="col"><?= $this->Paginator->sort('id') ?></th>
+				<!-- <th scope="col"><?= $this->Paginator->sort('id') ?></th> -->
 				<th scope="col"><?= $this->Paginator->sort('author_id') ?></th>
 				<th scope="col"><?= $this->Paginator->sort('title') ?></th>
-				<th scope="col"><?= $this->Paginator->sort('slug') ?></th>
+				<!-- <th scope="col"><?= $this->Paginator->sort('slug') ?></th> -->
 				<!-- <th scope="col"><?= $this->Paginator->sort('summary') ?></th> -->
 				<th scope="col"><?= $this->Paginator->sort('publishedAt') ?></th>
 				<!-- <th scope="col"><?= $this->Paginator->sort('status') ?></th> -->
@@ -31,10 +36,10 @@
 		<tbody>
 			<?php foreach ($dataPost as $data): ?>
 			<tr>
-				<td><?= $this->Number->format($data->id) ?></td>
-				<td><?= $data->has('symfony_demo_user') ? $this->Html->link($data->symfony_demo_user->id, ['controller' => 'SymfonyUser', 'action' => 'view', $data->symfony_demo_user->id]) : '' ?></td>
+				<!-- <td><?= $this->Number->format($data->id) ?></td> -->
+				<td><?= $data->has('symfony_user') ? $this->Html->link($data->symfony_user->fullName, ['controller' => 'SymfonyUser', 'action' => 'view', $data->author_id]) : '' ?></td>
 				<td><?= h($data->title) ?></td>
-				<td><?= h($data->slug) ?></td>
+				<!-- <td><?= h($data->slug) ?></td> -->
 				<!-- <td><?= h($data->summary) ?></td> -->
 				<td><?= h($data->publishedAt) ?></td>
 				<!-- <td><?= $this->Number->format($data->status) ?></td> -->

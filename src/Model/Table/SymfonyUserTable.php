@@ -7,16 +7,16 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Symfony\User Model
+ * SymfonyUser Model
  *
- * @method \App\Model\Entity\Symfony\User get($primaryKey, $options = [])
- * @method \App\Model\Entity\Symfony\User newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Symfony\User[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Symfony\User|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Symfony\User|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Symfony\User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Symfony\User[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Symfony\User findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\SymfonyUser get($primaryKey, $options = [])
+ * @method \App\Model\Entity\SymfonyUser newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\SymfonyUser[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\SymfonyUser|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\SymfonyUser|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\SymfonyUser patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\SymfonyUser[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\SymfonyUser findOrCreate($search, callable $callback = null, $options = [])
  */
 class SymfonyUserTable extends Table
 {
@@ -30,9 +30,10 @@ class SymfonyUserTable extends Table
 	public function initialize(array $config)
 	{
 		parent::initialize($config);
-
+		
 		$this->setTable('symfony_demo_user');
-		$this->setDisplayField('id');
+		// $this->setDisplayField('id');
+		$this->setDisplayField('fullName');
 		$this->setPrimaryKey('id');
 
 		$this->hasMany('SymfonyPost', ['foreignKey' => 'author_id']);

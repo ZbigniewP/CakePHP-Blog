@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Symfony\PostTag[]|\Cake\Collection\CollectionInterface $dataPostTag
+ * @var \App\Model\Entity\SymfonyPostTag[]|\Cake\Collection\CollectionInterface $dataPostTag
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -13,7 +13,7 @@
     </ul>
 </nav>
 <div class="symfonyDemoPostTag index large-9 medium-8 columns content">
-    <h3><?= __('Symfony Demo Post Tag') ?></h3>
+    <h3><?= __('Symfony Post Tag') ?></h3>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>
