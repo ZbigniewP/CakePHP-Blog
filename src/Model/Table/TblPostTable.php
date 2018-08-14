@@ -10,7 +10,7 @@ use Cake\Validation\Validator;
  * TblPost Model
  *
  * @property \App\Model\Table\ArticlesTable|\Cake\ORM\Association\BelongsTo $Articles
- * @property \App\Model\Table\TblUserTable|\Cake\ORM\Association\BelongsTo $TblUser
+ * @property \App\Model\Table\TblUserTable|\Cake\ORM\Association\BelongsTo $dataUser
  *
  * @method \App\Model\Entity\TblPost get($primaryKey, $options = [])
  * @method \App\Model\Entity\TblPost newEntity($data = null, array $options = [])
@@ -61,6 +61,7 @@ class TblPostTable extends Table
 		// 	'foreignKey' => 'author_id',
 		// 	'joinType' => 'INNER'
 		// ]);
+		$this->belongsTo('TblLookup', ['key' => 'status', 'foreignKey' => 'code', 'where' => 'PostStatus']);
 	}
 
 	/**

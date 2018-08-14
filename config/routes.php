@@ -41,7 +41,11 @@ Router::scope('/symfony', function (RouteBuilder $routes) {
     // $routes->connect('/:slug', ['controller' => 'SymfonyBlog', 'action' => 'view'], ['pass' => ['slug'], 'slug' => '[a-z0-9\-]+']);
     $routes->fallbacks(DashedRoute::class);
 });
-Plugin::routes();
+// Router::scope('/TblUser', function (RouteBuilder $routes) {
+//     $routes->connect('/', ['controller' => 'TblUser', 'action' => 'index']);
+//     $routes->fallbacks(DashedRoute::class);
+// });
 
-Plugin::load('Bake');
-Plugin::load('Migrations');
+// Plugin::routes();
+// Plugin::load('Bake');
+// Plugin::load('Migrations');

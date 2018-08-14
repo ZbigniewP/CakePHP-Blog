@@ -16,7 +16,7 @@ class TblUserTableTest extends TestCase
      *
      * @var \App\Model\Table\YiiUserTable
      */
-    public $TblUser;
+    public $dataUser;
 
     /**
      * Fixtures

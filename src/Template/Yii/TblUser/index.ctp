@@ -1,51 +1,56 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Yii\User[]|\Cake\Collection\CollectionInterface $tblUser
+ * @var \App\Model\Entity\YiiUser[]|\Cake\Collection\CollectionInterface $dataUser
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
-    </ul>
+	<ul class="side-nav">
+		<li class="heading"><?= __('Actions') ?></li>
+		<li><?= $this->Html->link(__('List Comments'), ['controller' => 'TblComment','action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('List Lookup'), ['controller' => 'TblLookup', 'action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('List Posts'), ['controller' => 'YiiPost', 'action' => 'index']) ?></li>
+		<li><?= $this->Html->link(__('List Tags'), ['controller' => 'TblTag', 'action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('List Users'), ['controller' => 'TblUser', 'action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
+	</ul>
 </nav>
 <div class="tblUser index large-9 medium-8 columns content">
-    <h3><?= __('Tbl User') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('username') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('password') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($tblUser as $tblUser): ?>
-            <tr>
-                <td><?= $this->Number->format($tblUser->id) ?></td>
-                <td><?= h($tblUser->username) ?></td>
-                <td><?= h($tblUser->password) ?></td>
-                <td><?= h($tblUser->email) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $tblUser->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $tblUser->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $tblUser->id], ['confirm' => __('Are you sure you want to delete # {0}?', $tblUser->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
-    </div>
+	<h3><?= __('User') ?></h3>
+	<table cellpadding="0" cellspacing="0">
+		<thead>
+			<tr>
+				<!-- <th scope="col"><?= $this->Paginator->sort('id') ?></th> -->
+				<th scope="col"><?= $this->Paginator->sort('username') ?></th>
+				<!-- <th scope="col"><?= $this->Paginator->sort('password') ?></th> -->
+				<th scope="col"><?= $this->Paginator->sort('email') ?></th>
+				<th scope="col" class="actions"><?= __('Actions') ?></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($dataUser as $dataUser): ?>
+			<tr>
+				<!-- <td><?= $this->Number->format($dataUser->id) ?></td> -->
+				<td><?= h($dataUser->username) ?></td>
+				<!-- <td><?= h($dataUser->password) ?></td> -->
+				<td><?= h($dataUser->email) ?></td>
+				<td class="actions">
+					<?= $this->Html->link(__('View'), ['action' => 'view', $dataUser->id]) ?>
+					<?= $this->Html->link(__('Edit'), ['action' => 'edit', $dataUser->id]) ?>
+					<?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $dataUser->id], ['confirm' => __('Are you sure you want to delete # {0}?', $dataUser->id)]) ?>
+				</td>
+			</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+	<div class="paginator">
+		<ul class="pagination">
+			<?= $this->Paginator->first('<< ' . __('first')) ?>
+			<?= $this->Paginator->prev('< ' . __('previous')) ?>
+			<?= $this->Paginator->numbers() ?>
+			<?= $this->Paginator->next(__('next') . ' >') ?>
+			<?= $this->Paginator->last(__('last') . ' >>') ?>
+		</ul>
+		<p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+	</div>
 </div>

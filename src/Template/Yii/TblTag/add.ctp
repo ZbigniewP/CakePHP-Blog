@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Yii\Tag $tblTag
+ * @var \App\Model\Entity\TblTag $dataTag
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -11,7 +11,7 @@
     </ul>
 </nav>
 <div class="tblTag form large-9 medium-8 columns content">
-    <?= $this->Form->create($tblTag) ?>
+    <?= $this->Form->create($dataTag) ?>
     <fieldset>
         <legend><?= __('Add Tbl Tag') ?></legend>
         <?php

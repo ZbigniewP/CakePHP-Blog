@@ -171,9 +171,9 @@ $this->render('/Yii/Post/view');
 			$this->Flash->error(__('The post could not be saved. Please, try again.'));
 		}
 
-		$tags = $this->YiiPost->Tags->find('list');
-		$status = $this->YiiPost->Lookup->find('list');
-		$users = $this->YiiPost->Users->find('list');
+		$tags = $this->YiiPost->TblTag->find('list');
+		$status = $this->YiiPost->TblLookup->find('list');
+		$users = $this->YiiPost->TblUser->find('list');
 
 		$this->set(compact('post', 'status', 'tags', 'users'));
 		$this->set('_serialize', ['post', 'status', 'tags', 'users']);
@@ -199,9 +199,9 @@ $this->render('/Yii/Post/view');
 			}
 			$this->Flash->error(__('The post could not be saved. Please, try again.'));
 		}
-		$tags = $this->YiiPost->Tags->find('list');
-		$status = $this->YiiPost->Lookup->find('list');
-		$users = $this->YiiPost->Users->find('list');
+		$tags = $this->YiiPost->TblTag->find('list');
+		$status = $this->YiiPost->TblLookup->find('list');
+		$users = $this->YiiPost->TblUser->find('list');
 
 		$this->set(compact('post', 'status', 'tags', 'users'));
 		$this->set('_serialize', ['post', 'status', 'tags', 'users']);

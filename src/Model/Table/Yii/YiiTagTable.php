@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Table\Yii;
+namespace App\Model\Table;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -9,16 +9,16 @@ use Cake\Validation\Validator;
 /**
  * YiiTag Model
  *
- * @method \App\Model\Entity\Yii\Tag get($primaryKey, $options = [])
- * @method \App\Model\Entity\Yii\Tag newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Yii\Tag[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Tag|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Yii\Tag|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Yii\Tag patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Tag[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Tag findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\YiiTag get($primaryKey, $options = [])
+ * @method \App\Model\Entity\YiiTag newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\YiiTag[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\YiiTag|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\YiiTag|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\YiiTag patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\YiiTag[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\YiiTag findOrCreate($search, callable $callback = null, $options = [])
  */
-class TagTable extends Table
+class YiiTagTable extends Table
 {
 
 	/**

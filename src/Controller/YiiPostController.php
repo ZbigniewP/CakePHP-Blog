@@ -17,14 +17,15 @@ use App\Controller\AppController;
 class YiiPostController extends AppController
 {
 	public $paginate = [
-		// 'contain' => ['TblComment', 'TblUser'],
-		'contain' => ['YiiComment', 'YiiUser'],
+		'contain' => ['TblComment', 'TblUser', 'TblLookup'],
+		// 'contain' => ['YiiComment', 'YiiUser'],
 		'limit' => 5
 	];
 
 	public function initialize()
 	{
-		$this->layout = 'start';
+		$this->viewBuilder()->setLayout('start');
+		$this->viewBuilder()->setTemplatePath('Yii/TblPost');
 	}
 
 	/**
@@ -36,9 +37,7 @@ class YiiPostController extends AppController
 	{
 		// $dataPost = $this->paginate($this->TblPost);
 		$dataPost = $this->paginate($this->YiiPost);
-
 		$this->set(compact('dataPost'));
-		$this->render('/Yii/TblPost/index');
 	}
 
 	/**
@@ -51,10 +50,14 @@ class YiiPostController extends AppController
 	public function view($id = null)
 	{
 		// $data = $this->TblPost->get($id, ['contain' => ['TblComment', 'TblUser']]);
-		$data = $this->YiiPost->get($id, ['contain' => ['YiiComment', 'YiiUser']]);
+		$data = $this->YiiPost->get($id, ['contain' => ['TblComment', 'TblUser']]);
+		$status = $this->YiiPost->TblLookup
+			->find('list', ['keyField' => 'code', 'valueField' => 'name'])
+			->where(['type' => 'PageStatus', 'code' => $data->status])
+			->toList();
+		$data->status = $status[0];
 
 		$this->set('data', $data);
-		$this->render('/Yii/TblPost/view');
 	}
 
 	/**
@@ -64,10 +67,10 @@ class YiiPostController extends AppController
 	 */
 	public function add()
 	{
-		$data = $this->TblPost->newEntity();
+		$data = $this->YiiPost->newEntity();
 		if ($this->request->is('post')) {
-			$data = $this->TblPost->patchEntity($data, $this->request->getData());
-			if ($this->TblPost->save($data)) {
+			$data = $this->YiiPost->patchEntity($data, $this->request->getData());
+			if ($this->YiiPost->save($data)) {
 				$this->Flash->success(__('The tbl post has been saved.'));
 
 				return $this->redirect(['action' => 'index']);
@@ -75,9 +78,14 @@ class YiiPostController extends AppController
 			$this->Flash->error(__('The tbl post could not be saved. Please, try again.'));
 		}
 		// $pages = $this->TblPost->Pages->find('list', ['limit' => 30]);
-		$pages = $this->TblPost->TblComment->find('list', ['limit' => 30]);
-		$tblUser = $this->TblPost->TblUser->find('list', ['limit' => 30]);
-		$this->set(compact('data', 'pages', 'tblUser'));
+		// $pages = $this->YiiPost->TblComment->find('list', ['limit' => 30]);
+		$dataUser = $this->YiiPost->TblUser->find('list', ['limit' => 30]);
+		$status = $this->YiiPost->TblLookup
+			->find('list', ['keyField' => 'code', 'valueField' => 'name'])
+			->where(['type' => 'PageStatus'])
+			->toList();
+
+		$this->set(compact('data', 'dataUser', 'status'));//'pages',
 	}
 
 	/**
@@ -102,15 +110,11 @@ class YiiPostController extends AppController
 			}
 			$this->Flash->error(__('The tbl post could not be saved. Please, try again.'));
 		}
-		// $pages = $this->TblPost->Pages->find('list', ['limit' => 30]);
-		// $pages = $this->TblPost->TblComment->find('list', ['limit' => 30]);
-		// $postUser = $this->TblPost->TblUser->find('list', ['limit' => 30]);
-		$comments = $this->YiiPost->YiiComment->find('list', ['limit' => 30]);
-		$postUser = $this->YiiPost->YiiUser->find('list', ['limit' => 30]);
-		$postStatus = $this->YiiPost->YiiLookup->find('list', ['limit' => 30]);
+		// $pages = $this->TblPost->Articles->find('list', ['limit' => 30]);
+		$comments = $this->YiiPost->TblComment->find('list', ['limit' => 30]);
+		$postUser = $this->YiiPost->TblUser->find('list', ['limit' => 30]);
+		$postStatus = $this->YiiPost->TblLookup->find('list', ['limit' => 30]);
 		$this->set(compact('data', 'comments', 'postStatus', 'postUser'));
-
-		$this->render('/Yii/TblPost/edit');
 	}
 
 	/**
@@ -123,8 +127,8 @@ class YiiPostController extends AppController
 	public function delete($id = null)
 	{
 		$this->request->allowMethod(['post', 'delete']);
-		$data = $this->TblPost->get($id);
-		if ($this->TblPost->delete($data)) {
+		$data = $this->YiiPost->get($id);
+		if ($this->YiiPost->delete($data)) {
 			$this->Flash->success(__('The tbl post has been deleted.'));
 		} else {
 			$this->Flash->error(__('The tbl post could not be deleted. Please, try again.'));

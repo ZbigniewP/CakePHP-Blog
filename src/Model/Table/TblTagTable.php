@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Table\Yii;
+namespace App\Model\Table;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -9,14 +9,14 @@ use Cake\Validation\Validator;
 /**
  * TblTag Model
  *
- * @method \App\Model\Entity\Yii\Tag get($primaryKey, $options = [])
- * @method \App\Model\Entity\Yii\Tag newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Yii\Tag[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Tag|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Yii\Tag|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Yii\Tag patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Tag[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Tag findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\TblTag get($primaryKey, $options = [])
+ * @method \App\Model\Entity\TblTag newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\TblTag[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\TblTag|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\TblTag|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\TblTag patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\TblTag[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\TblTag findOrCreate($search, callable $callback = null, $options = [])
  */
 class TblTagTable extends Table
 {

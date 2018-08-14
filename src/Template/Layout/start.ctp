@@ -64,7 +64,7 @@ use Cake\Network\Exception\NotFoundException;
 		</div>
 	</div></div>
 
-	<div class="row"><div class="columns large-12">
+	<div class="row"><hr /><div class="columns large-12">
 		<div id="footer">
 			Copyright &copy; <?= date('Y')?> by My Company.<br />
 			All Rights Reserved.

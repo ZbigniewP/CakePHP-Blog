@@ -16,7 +16,7 @@ class TblCommentTableTest extends TestCase
      *
      * @var \App\Model\Table\TblCommentTable
      */
-    public $TblComment;
+    public $dataComment;
 
     /**
      * Fixtures

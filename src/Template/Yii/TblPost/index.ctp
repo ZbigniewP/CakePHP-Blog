@@ -7,13 +7,17 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
 	<ul class="side-nav">
 		<li class="heading"><?= __('Actions') ?></li>
+		<li><?= $this->Html->link(__('List Comments'), ['controller' => 'TblComment','action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('List Lookup'), ['controller' => 'TblLookup', 'action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('List Posts'), ['controller' => 'YiiPost', 'action' => 'index']) ?></li>
+		<li><?= $this->Html->link(__('List Tags'), ['controller' => 'TblTag', 'action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('List Users'), ['controller' => 'TblUser', 'action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('New Post'), ['action' => 'add']) ?></li>
-		<li><?= $this->Html->link(__('List User'), ['controller' => 'TblUser', 'action' => 'index']) ?></li>
 		<li><?= $this->Html->link(__('New User'), ['controller' => 'TblUser', 'action' => 'add']) ?></li>
 	</ul>
 </nav>
 <div class="tblPost index large-9 medium-8 columns content">
-	<h3><?= __('Tbl Post') ?></h3>
+	<h3><?= __('Post') ?></h3>
 	<table cellpadding="0" cellspacing="0">
 		<thead>
 			<tr>
@@ -33,10 +37,11 @@
 				<!-- <td><?= $this->Number->format($data->id) ?></td> -->
 				<!-- <td><?= $this->Number->format($data->page_id) ?></td> -->
 				<td><?= h($data->title) ?></td>
-				<td><?= $this->Number->format($data->status) ?></td>
+				<!-- <td><?= $this->Number->format($data->status) ?></td> -->
+				<td><?= $data->has('tbl_lookup') ? $this->Html->link($data->tbl_lookup->name, ['controller' => 'TblLookup', 'action' => 'view', $data->tbl_lookup->id]) : $this->Number->format($data->status) ?></td>
 				<!-- <td><?= date('Y-m-d H:i', $data->create_time) ?></td> -->
 				<td><?= date('Y-m-d H:i', $data->update_time) ?></td>
-				<td><?= $data->has('yii_user') ? $this->Html->link($data->yii_user->username, ['controller' => 'TblUser', 'action' => 'view', $data->yii_user->id]) : $data->author_id ?></td>
+				<td><?= $data->has('tbl_user') ? $this->Html->link($data->tbl_user->username, ['controller' => 'TblUser', 'action' => 'view', $data->tbl_user->id]) : $this->Number->format($data->author_id) ?></td>
 				<td class="actions">
 					<?= $this->Html->link(__('View'), ['action' => 'view', $data->id]) ?>
 					<?= $this->Html->link(__('Edit'), ['action' => 'edit', $data->id]) ?>

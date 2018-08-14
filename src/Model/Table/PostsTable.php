@@ -131,10 +131,10 @@ class PostsTable extends Table
 		return $rules;
 	}
 		
-	public function getUdated()
-	{
-		$_updated = $this->updated;
-		if (is_numeric($this->updated)) $_updated = date('Y-m-d H:i:s', $this->updated);
-		return $_updated;
-	}
+	// public function getUdated()
+	// {
+	// 	$_updated = $this->updated;
+	// 	if (is_numeric($this->updated)) $_updated = date('Y-m-d H:i:s', $this->updated);
+	// 	return $_updated;
+	// }
 }

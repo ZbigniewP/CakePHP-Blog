@@ -9,14 +9,14 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @method \App\Model\Entity\Yii\User get($primaryKey, $options = [])
- * @method \App\Model\Entity\Yii\User newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Yii\User[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Yii\User|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Yii\User|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Yii\User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Yii\User[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Yii\User findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\YiiUser get($primaryKey, $options = [])
+ * @method \App\Model\Entity\YiiUser newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\YiiUser[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\YiiUser|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\YiiUser|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\YiiUser patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\YiiUser[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\YiiUser findOrCreate($search, callable $callback = null, $options = [])
  */
 class YiiUserTable extends Table
 {

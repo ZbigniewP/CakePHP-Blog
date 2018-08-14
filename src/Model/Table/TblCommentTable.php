@@ -37,10 +37,14 @@ class TblCommentTable extends Table
 		$this->setDisplayField('id');
 		$this->setPrimaryKey('id');
 
+		$this->addBehavior('Timestamp');
+
 		$this->belongsTo('TblPost', [
 			'foreignKey' => 'post_id',
 			'joinType' => 'INNER'
 		]);
+		// $this->belongsTo('TblLookup', ['foreignKey' => 'status', 'where' =>'type=CommentStatus']);
+		$this->belongsTo('TblLookup', ['key' => 'status', 'foreignKey' => 'code', 'where' => 'type=CommentStatus']);
 	}
 
 	/**
@@ -70,9 +74,10 @@ class TblCommentTable extends Table
 			->requirePresence('status', 'create')
 			->notEmpty('status');
 
-		$validator
-			->integer('create_time')
-			->allowEmpty('create_time');
+		// $validator
+		// 	// ->integer('create_time')
+		// 	->integer('create_time')
+		// 	->allowEmpty('create_time');
 
 		$validator
 			->scalar('author')
@@ -82,6 +87,11 @@ class TblCommentTable extends Table
 		$validator
 			->email('email')
 			->requirePresence('email', 'create')
+			// ->requirePresence('email')
+			// ->add('email', 'validFormat', [
+			// 	'rule' => 'email',
+			// 	'message' => 'E-mail must be valid'
+			// ])
 			->notEmpty('email');
 
 		$validator

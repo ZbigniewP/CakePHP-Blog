@@ -15,7 +15,8 @@ class SymfonyUserController extends AppController
 {
 	public function initialize()
 	{
-		$this->layout = 'start';
+		$this->viewBuilder()->setLayout('start');
+		$this->viewBuilder()->setTemplatePath('Symfony/User');
 	}
 	
 	/**
@@ -30,7 +31,6 @@ class SymfonyUserController extends AppController
 		$users = $this->paginate($this->SymfonyUser);
 
 		$this->set(compact('users'));
-		$this->render('/Symfony/User/index');
 	}
 
 	/**
@@ -45,8 +45,6 @@ class SymfonyUserController extends AppController
 		$user = $this->SymfonyUser->get($id, ['contain' => []]);
 
 		$this->set('data', $user);
-
-		$this->render('/Symfony/User/view');
 	}
 
 	/**
@@ -67,7 +65,6 @@ class SymfonyUserController extends AppController
 			$this->Flash->error(__('The symfony demo user could not be saved. Please, try again.'));
 		}
 		$this->set(compact('user'));
-		$this->render('/Symfony/User/add');
 	}
 
 	/**
@@ -90,7 +87,6 @@ class SymfonyUserController extends AppController
 			$this->Flash->error(__('The symfony demo user could not be saved. Please, try again.'));
 		}
 		$this->set(compact('user'));
-		$this->render('/Symfony/User/edit');
 	}
 
 	/**
@@ -103,8 +99,8 @@ class SymfonyUserController extends AppController
 	public function delete($id = null)
 	{
 		$this->request->allowMethod(['post', 'delete']);
-		$user = $this->SymfonyUser->get($id);
-		if ($this->SymfonyUser->delete($user)) {
+		$data = $this->SymfonyUser->get($id);
+		if ($this->SymfonyUser->delete($data)) {
 			$this->Flash->success(__('The symfony demo user has been deleted.'));
 		} else {
 			$this->Flash->error(__('The symfony demo user could not be deleted. Please, try again.'));

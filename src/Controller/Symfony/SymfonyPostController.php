@@ -20,7 +20,8 @@ class SymfonyPostController extends AppController
 {
 	public function initialize()
 	{
-		$this->layout = 'start';
+		$this->viewBuilder()->setLayout('start');
+		$this->viewBuilder()->setTemplatePath('Symfony/Post');
 	}
 
 	/**
@@ -42,12 +43,6 @@ class SymfonyPostController extends AppController
 
 		$this->set(compact('dataPost'));
 		$this->set('_serialize', ['dataPost']);
-// echo "<pre>";
-// print_r($dataPost);
-// echo "</pre>";
-// exit();
-
-$this->render('/Symfony/Post/index');
 	}
 
 	/**
@@ -60,10 +55,7 @@ $this->render('/Symfony/Post/index');
 	public function view($id = null)
 	{
 		$dataPost = $this->SymfonyPost->get($id, ['contain' => ['SymfonyUser']]);
-
 		$this->set('data', $dataPost);
-
-		$this->render('/Symfony/Post/view');
 	}
 
 	/**
@@ -85,8 +77,6 @@ $this->render('/Symfony/Post/index');
 		}
 		$user = $this->SymfonyPost->SymfonyUser->find('list', ['limit' => 30]);
 		$this->set(compact('data', 'user'));
-
-		$this->render('/Symfony/Post/add');
 	}
 
 	/**

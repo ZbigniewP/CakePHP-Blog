@@ -16,7 +16,7 @@ class TblTagTableTest extends TestCase
      *
      * @var \App\Model\Table\TblTagTable
      */
-    public $TblTag;
+    public $dataTag;
 
     /**
      * Fixtures

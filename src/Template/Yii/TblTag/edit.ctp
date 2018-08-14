@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Yii\Tag $tblTag
+ * @var \App\Model\Entity\TblTag $dataTag
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -9,15 +9,15 @@
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $tblTag->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $tblTag->id)]
+                ['action' => 'delete', $data->id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $data->id)]
             )
         ?></li>
         <li><?= $this->Html->link(__('List Tag'), ['action' => 'index']) ?></li>
     </ul>
 </nav>
 <div class="tblTag form large-9 medium-8 columns content">
-    <?= $this->Form->create($tblTag) ?>
+    <?= $this->Form->create($data) ?>
     <fieldset>
         <legend><?= __('Edit Tag') ?></legend>
         <?php
