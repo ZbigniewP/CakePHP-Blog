@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Table\Yii;
+namespace App\Model\Table;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -9,19 +9,19 @@ use Cake\Validation\Validator;
 /**
  * Post Model
  *
- * @property \App\Model\Table\Yii\PostTable|\Cake\ORM\Association\BelongsTo $Articles
- * @property \App\Model\Table\Yii\UserTable|\Cake\ORM\Association\BelongsTo $Users
+ * @property \App\Model\Table\YiiPostTable|\Cake\ORM\Association\BelongsTo $YiiPost
+ * @property \App\Model\Table\YiiUserTable|\Cake\ORM\Association\BelongsTo $YiiUser
  *
- * @method \App\Model\Entity\Yii\Post get($primaryKey, $options = [])
- * @method \App\Model\Entity\Yii\Post newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Yii\Post[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Post|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Yii\Post|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Yii\Post patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Post[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Post findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\YiiPost get($primaryKey, $options = [])
+ * @method \App\Model\Entity\YiiPost newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\YiiPost[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\YiiPost|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\YiiPost|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\YiiPost patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\YiiPost[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\YiiPost findOrCreate($search, callable $callback = null, $options = [])
  */
-class PostTable extends Table
+class YiiPostTable extends Table
 {
 
 	/**
@@ -41,12 +41,12 @@ class PostTable extends Table
 		$this->addBehavior('Timestamp');
 		$this->addBehavior('CounterCache', ['YiiTag' => ['frequency']]);
 
-		$this->belongsTo('User', [
+		$this->belongsTo('YiiUser', [
 			'foreignKey' => 'author_id',
 			'joinType' => 'INNER'
 		]);
 
-		$this->hasMany('Comment', [
+		$this->hasMany('YiiComment', [
 			'foreignKey' => 'post_id',
 			'joinType' => 'INNER'
 		]);
@@ -67,7 +67,7 @@ class PostTable extends Table
 		//     'foreignKey' => 'page_id'
 		// ]);
 
-		// $this->belongsTo('User', [
+		// $this->belongsTo('YiiUser', [
 		// 	'foreignKey' => 'author_id',
 		// 	'joinType' => 'INNER'
 		// ]);
@@ -125,8 +125,8 @@ class PostTable extends Table
 	 */
 	public function buildRules(RulesChecker $rules)
 	{
-		// $rules->add($rules->existsIn(['page_id'], 'Post'));
-		$rules->add($rules->existsIn(['author_id'], 'User'));
+		// $rules->add($rules->existsIn(['page_id'], 'Articles'));
+		$rules->add($rules->existsIn(['author_id'], 'YiiUser'));
 
 		return $rules;
 	}

@@ -40,9 +40,7 @@ class UsersTable extends Table
 		$this->setDisplayField('username');
 		$this->setPrimaryKey('id');
 
-		$this->hasMany('Posts', [
-			'foreignKey' => 'user_id'
-		]);
+		$this->hasMany('Posts', ['foreignKey' => 'user_id']);
 	}
 
 	/**

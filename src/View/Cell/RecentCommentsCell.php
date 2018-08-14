@@ -2,9 +2,9 @@
 
 namespace App\View\Cell;
 
-use App\Model\Table\Yii\CommentTable;
-use App\Model\Table\Yii\PostTable;
-use App\Model\Table\Yii\TagTable;
+// use App\Model\Table\YiiCommentTable;
+// use App\Model\Table\YiiPostTable;
+// use App\Model\Table\YiiTagTable;
 
 use Cake\View\Cell;
 

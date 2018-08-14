@@ -29,7 +29,7 @@ class SymfonyBlogController extends AppController
 		$this->set(compact('dataPost'));
 		$this->set('_serialize', ['dataPost']);
 
-		$this->render('//Symfony/Blog/index');
+		$this->render('/Symfony/Blog/index');
 	}
 	
 	public function view()

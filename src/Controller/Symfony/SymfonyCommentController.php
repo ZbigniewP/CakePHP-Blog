@@ -12,7 +12,11 @@ use App\Controller\AppController;
  */
 class SymfonyCommentController extends AppController
 {
-
+	public function initialize()
+	{
+		$this->layout = 'start';
+	}
+	
 	/**
 	 * Index method
 	 *
@@ -25,7 +29,7 @@ class SymfonyCommentController extends AppController
 
 		$this->set(compact('dataComment'));
 
-		$this->render('//Symfony/Comment/index');
+		$this->render('/Symfony/Comment/index');
 	}
 
 	/**
@@ -41,7 +45,7 @@ class SymfonyCommentController extends AppController
 
 		$this->set('data', $data);
 
-		$this->render('//Symfony/Comment/view');
+		$this->render('/Symfony/Comment/view');
 	}
 
 	/**
@@ -67,7 +71,7 @@ class SymfonyCommentController extends AppController
 
 		$this->set(compact('data', 'post', 'user'));
 
-		$this->render('//Symfony/Comment/add');
+		$this->render('/Symfony/Comment/add');
 	}
 
 	/**
@@ -93,7 +97,7 @@ class SymfonyCommentController extends AppController
 		$user = $this->SymfonyComment->SymfonyUser->find('list', ['limit' => 30]);
 		$this->set(compact('data', 'post', 'user'));
 
-		$this->render('//Symfony/Comment/edit');
+		$this->render('/Symfony/Comment/edit');
 	}
 
 	/**

@@ -2,7 +2,7 @@
 
 namespace App\Model\Entity;
 
-use Cake\I18n\FrozenTime;
+// use Cake\I18n\FrozenTime;
 use Cake\ORM\Entity;
 
 /**
@@ -36,4 +36,11 @@ class Post extends Entity
 		'*' => true,
 		'id' => false
 	];
+	
+	public function getUdated()
+	{
+		$_updated = $this->updated;
+		if (is_numeric($this->updated)) $_updated = date('Y-m-d H:i:s', $this->updated);
+		return $_updated;
+	}
 }

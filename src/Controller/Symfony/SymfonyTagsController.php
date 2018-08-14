@@ -12,7 +12,11 @@ use App\Controller\AppController;
  */
 class SymfonyTagsController extends AppController
 {
-
+	public function initialize()
+	{
+		$this->layout = 'start';
+	}
+	
 	/**
 	 * Index method
 	 *
@@ -23,7 +27,7 @@ class SymfonyTagsController extends AppController
 		$dataTags = $this->paginate($this->SymfonyTags);
 
 		$this->set(compact('dataTags'));
-		$this->render('//Symfony/Tag/index');
+		$this->render('/Symfony/Tag/index');
 	}
 
 	/**
@@ -38,7 +42,7 @@ class SymfonyTagsController extends AppController
 		$data = $this->SymfonyTags->get($id, ['contain' => []]);
 
 		$this->set('data', $data);
-		$this->render('//Symfony/Tag/view');
+		$this->render('/Symfony/Tag/view');
 	}
 
 	/**
@@ -59,7 +63,7 @@ class SymfonyTagsController extends AppController
 			$this->Flash->error(__('The symfony demo tag could not be saved. Please, try again.'));
 		}
 		$this->set(compact('data'));
-		$this->render('//Symfony/Tag/add');
+		$this->render('/Symfony/Tag/add');
 	}
 
 	/**
@@ -82,7 +86,7 @@ class SymfonyTagsController extends AppController
 			$this->Flash->error(__('The symfony demo tag could not be saved. Please, try again.'));
 		}
 		$this->set(compact('data'));
-		$this->render('//Symfony/Tag/edit');
+		$this->render('/Symfony/Tag/edit');
 	}
 
 	/**

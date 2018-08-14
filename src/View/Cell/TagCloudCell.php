@@ -2,18 +2,18 @@
 
 namespace App\View\Cell;
 
-use App\Model\Table\Yii\TagTable;
-use App\Model\Table\Yii\PostTable;
-use App\Model\Table\Yii\CommentTable;
-// use App\Model\Entity\Yii\Comment;
+// use App\Model\Table\YiiTagTable;
+// use App\Model\Table\YiiPostTable;
+// use App\Model\Table\YiiCommentTable;
+// use App\Model\Entity\YiiComment;
 
 use Cake\View\Cell;
 
 /**
  * Class TagCloudCell
  * @package App\View\Cell
- * @property TagTable Tags
- * @property PostTable Posts
+ * @property YiiTagTable YiiTag
+ * @property YiiPostTable YiiPost
  */
 class TagCloudCell extends Cell
 {
@@ -33,16 +33,16 @@ class TagCloudCell extends Cell
 	 */
 	public function display()
 	{
-		$this->loadModel('Tag');
-		// $this->loadModel('Post');
-		// $this->loadModel('Comment');
+		$this->loadModel('YiiTag');
+		// $this->loadModel('YiiPost');
+		// $this->loadModel('YiiComment');
 
-		$tags = $this->Tag->find();
+		$tags = $this->YiiTag->find();
 		// $tags = Tag::model()->findTagWeights($this->maxTags);
-		$tags = $this->Tag->findTagWeights($this->maxTags);
+		$tags = $this->YiiTag->findTagWeights($this->maxTags);
 
 		// $posts = $this->YiiPost->find()->order(['id' => 'desc'])->limit(5);
-		// $pendingComments = $this->Comment->find()->where('status='.Comment::STATUS_PENDING)->count();
+		// $pendingComments = $this->YiiComment->find()->where('status='.YiiComment::STATUS_PENDING)->count();
 
 		// $this->set(compact('pendingComments', 'posts','tags'));
 		$this->set(compact('tags'));

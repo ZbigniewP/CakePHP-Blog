@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Yii\Comment[]|\Cake\Collection\CollectionInterface $tblComment
+ * @var \App\Model\Entity\YiiComment[]|\Cake\Collection\CollectionInterface $tblComment
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">

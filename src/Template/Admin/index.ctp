@@ -13,12 +13,6 @@
 	</thead>
 	<tbody>
 		<?php foreach ($posts as $post): ?>
-<?php
-// echo "<pre>";
-// print_r($post);
-// echo "</pre>";
-// exit();
-?>
 			<tr>
 				<td><?= $post->id ?></td>
 				<td><?= isset($post->title)?$post->title:$post->name ?></td>

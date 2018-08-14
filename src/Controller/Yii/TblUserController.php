@@ -6,7 +6,7 @@ use App\Controller\AppController;
 /**
  * TblUser Controller
  *
- * @property \App\Model\Table\Yii\UserTable $TblUser
+ * @property \App\Model\Table\YiiUserTable $TblUser
  *
  * @method \App\Model\Entity\Yii\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */

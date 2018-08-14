@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \App\View\AppView $this
- * @var \App\Model\Entity\Yii\Post $tblPost
+ * @var \App\Model\Entity\TblPost $dataPost
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -13,7 +13,7 @@
     </ul>
 </nav>
 <div class="tblPost form large-9 medium-8 columns content">
-    <?= $this->Form->create($tblPost) ?>
+    <?= $this->Form->create($dataPost) ?>
     <fieldset>
         <legend><?= __('Add Tbl Post') ?></legend>
         <?php

@@ -13,7 +13,11 @@ use App\Controller\AppController;
  */
 class SymfonyUserController extends AppController
 {
-
+	public function initialize()
+	{
+		$this->layout = 'start';
+	}
+	
 	/**
 	 * Index method
 	 *
@@ -26,7 +30,7 @@ class SymfonyUserController extends AppController
 		$users = $this->paginate($this->SymfonyUser);
 
 		$this->set(compact('users'));
-		$this->render('//Symfony/User/index');
+		$this->render('/Symfony/User/index');
 	}
 
 	/**
@@ -42,7 +46,7 @@ class SymfonyUserController extends AppController
 
 		$this->set('data', $user);
 
-		$this->render('//Symfony/User/view');
+		$this->render('/Symfony/User/view');
 	}
 
 	/**
@@ -63,7 +67,7 @@ class SymfonyUserController extends AppController
 			$this->Flash->error(__('The symfony demo user could not be saved. Please, try again.'));
 		}
 		$this->set(compact('user'));
-		$this->render('//Symfony/User/add');
+		$this->render('/Symfony/User/add');
 	}
 
 	/**
@@ -86,7 +90,7 @@ class SymfonyUserController extends AppController
 			$this->Flash->error(__('The symfony demo user could not be saved. Please, try again.'));
 		}
 		$this->set(compact('user'));
-		$this->render('//Symfony/User/edit');
+		$this->render('/Symfony/User/edit');
 	}
 
 	/**

@@ -16,7 +16,7 @@ class TblPostTableTest extends TestCase
      *
      * @var \App\Model\Table\TblPostTable
      */
-    public $TblPost;
+    public $dataPost;
 
     /**
      * Fixtures

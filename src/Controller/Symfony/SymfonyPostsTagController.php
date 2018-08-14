@@ -12,7 +12,11 @@ use App\Controller\AppController;
  */
 class SymfonyPostsTagController extends AppController
 {
-
+	public function initialize()
+	{
+		$this->layout = 'start';
+	}
+	
 	/**
 	 * Index method
 	 *
@@ -25,7 +29,7 @@ class SymfonyPostsTagController extends AppController
 
 		$this->set(compact('dataPostsTag'));
 
-		$this->render('//Symfony/PostsTag/index');
+		$this->render('/Symfony/PostsTag/index');
 	}
 
 	/**
@@ -48,7 +52,7 @@ class SymfonyPostsTagController extends AppController
 		$this->set('data', $data[0]);
 		// $this->set(compact('data'));
 
-		$this->render('//Symfony/PostsTag/view');
+		$this->render('/Symfony/PostsTag/view');
 	}
 
 	/**
@@ -73,7 +77,7 @@ class SymfonyPostsTagController extends AppController
 
 		$this->set(compact('dataPostsTag', 'dataPost', 'dataTags'));
 
-		$this->render('//Symfony/PostsTag/add');
+		$this->render('/Symfony/PostsTag/add');
 	}
 
 	/**
@@ -106,7 +110,7 @@ class SymfonyPostsTagController extends AppController
 		$dataTags = $this->SymfonyPostsTag->SymfonyTags->find('list', ['limit' => 30]);
 		$this->set(compact('dataPostsTag', 'dataPost', 'dataTags'));
 
-		$this->render('//Symfony/PostsTag/edit');
+		$this->render('/Symfony/PostsTag/edit');
 	}
 
 	/**

@@ -1,6 +1,4 @@
 <?php 
-// $this->theme='yiiDEMO';
-$this->title='Blog yii';
 $this->start('content');
 ?>
 <div class="container">

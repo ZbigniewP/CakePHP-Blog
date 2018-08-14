@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Entity\Yii;
+namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
@@ -16,31 +16,40 @@ use Cake\ORM\Entity;
  * @property int $update_time
  * @property int $author_id
  *
- * @property \App\Model\Entity\Page $page
- * @property \App\Model\Entity\Yii\User $tbl_user
+ * @property \App\Model\Entity\Articles $articles
+ * @property \App\Model\Entity\TblUser $tbl_user
  */
 class TblPost extends Entity
 {
+	const STATUS_DRAFT = 1;
+	const STATUS_PUBLISHED = 2;
+	const STATUS_ARCHIVED = 3;
 
-    /**
-     * Fields that can be mass assigned using newEntity() or patchEntity().
-     *
-     * Note that when '*' is set to true, this allows all unspecified fields to
-     * be mass assigned. For security purposes, it is advised to set '*' to false
-     * (or remove it), and explicitly make individual fields accessible as needed.
-     *
-     * @var array
-     */
-    protected $_accessible = [
-        'page_id' => true,
-        'title' => true,
-        'content' => true,
-        'tags' => true,
-        'status' => true,
-        'create_time' => true,
-        'update_time' => true,
-        'author_id' => true,
-        'page' => true,
-        'tbl_user' => true
-    ];
+	/**
+	 * Fields that can be mass assigned using newEntity() or patchEntity().
+	 *
+	 * Note that when '*' is set to true, this allows all unspecified fields to
+	 * be mass assigned. For security purposes, it is advised to set '*' to false
+	 * (or remove it), and explicitly make individual fields accessible as needed.
+	 *
+	 * @var array
+	 */
+	protected $_accessible = [
+		'*' => true,
+		'id' => false
+	];
+	// protected $_accessible = [
+	// 	'author_id' => true,
+	// 	'content' => true,
+	// 	'create_time' => true,
+	// 	'page_id' => true,
+	// 	'status' => true,
+	// 	'tags' => true,
+	// 	'title' => true,
+	// 	'update_time' => true,
+
+	// 	'articles' => true,
+	// 	'tbl_user' => true
+	// ];
+
 }

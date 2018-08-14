@@ -2,18 +2,18 @@
 
 namespace App\View\Cell;
 
-use App\Model\Table\Yii\TagTable;
-use App\Model\Table\Yii\PostTable;
-use App\Model\Table\Yii\CommentTable;
-use App\Model\Entity\Yii\Comment;
+// use App\Model\Table\YiiTagTable;
+// use App\Model\Table\YiiPostTable;
+// use App\Model\Table\YiiCommentTable;
+// use App\Model\Entity\YiiComment;
 
 use Cake\View\Cell;
 
 /**
  * Class UserMenuCell
  * @package App\View\Cell
- * @property TagTable Tags
- * @property PostTable Post
+ * @property YiiTagTable YiiTag
+ * @property YiiPostTable YiiPost
  */
 class UserMenuCell extends Cell
 {
@@ -31,13 +31,13 @@ class UserMenuCell extends Cell
 	 */
 	public function display()
 	{
-		$this->loadModel('Tag');
-        // $this->loadModel('Post');
-        $this->loadModel('Comment');
+		$this->loadModel('YiiTag');
+        // $this->loadModel('YiiPost');
+        $this->loadModel('YiiComment');
 
 		$tags = $this->Tag->find();
         // $posts = $this->YiiPost->find()->order(['id' => 'desc'])->limit(5);
-        $pendingComments = $this->Comment->find()->where('status='.Comment::STATUS_PENDING)->count();
+        $pendingComments = $this->YiiComment->find()->where('status='.YiiComment::STATUS_PENDING)->count();
 
         // $this->set(compact('pendingComments', 'posts','tags'));
         $this->set(compact('pendingComments', 'tags'));

@@ -28,15 +28,10 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 	<?= $this->Html->meta('icon') ?>
 	<!-- Bootstrap core CSS -->
 	<?= $this->Html->css(['bootstrap', 'bootstrap-theme']); ?>
-	<?= $this->Html->css('base.css') ?>
-	<?= $this->Html->css('style.css') ?>
-	<?= $this->Html->css('home.css') ?>
 
-	<link href="https://fonts.googleapis.com/css?family=Raleway:500i|Roboto:300,400,700|Roboto+Mono" rel="stylesheet">
 	<style>
 		body {padding-top: 50px;}
 		.sidebar {margin-top: 50px;}
-		.paginator li {padding-left:0;}
 	</style>
 </head>
 <body>
@@ -59,7 +54,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 					<li><?= $this->Html->link('Pages', ['controller' => 'pages', 'action' => 'display']) ?></li>
 				<?php if ($this->request->session()->read('Auth.User')): ?>
 					<li><?= $this->Html->link('Admin', ['controller' => 'admin', 'action' => 'index']) ?></li>
-					<li><?= $this->Html->link('Admin Yii', ['controller' => 'yii/post', 'action' => 'admin']) ?></li>
+					<li><?= $this->Html->link('Admin Yii', ['controller' => 'YiiPost', 'action' => 'admin']) ?></li>
 				<?php else: ?>
 					<li><?= $this->Html->link('Login', ['controller' => 'users', 'action' => 'login']) ?></li>
 				<?php endif; ?>

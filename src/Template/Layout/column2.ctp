@@ -14,7 +14,7 @@ $this->start('content');
 	<div class="span-6 last">
 		<div id="sidebar">
 		<?php if ($this->request->session()->read('Auth.User')) echo $this->cell('UserMenu'); ?>
-		<?= $this->cell('TagCloud')?>
+		<?= $this->cell('TagCloud') ?>
 		<?= $this->cell('RecentComments') ?>
 
 		<div class="portlet">

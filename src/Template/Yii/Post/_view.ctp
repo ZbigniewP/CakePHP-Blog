@@ -16,7 +16,7 @@ echo $this->Markdown->parse($this->Text->truncate($data->content, 450, ['ellipsi
 // implode(', ', $data->tagLinks) 
 $_tagLinks = null;
 foreach ($data->getTagLinks() as $key => $value) {
-	$_tagLinks .= $this->Html->link($value['label'],$value['url']). ', ';
+	$_tagLinks .= $this->Html->link($value['label'], $value['url']) . ', ';
 }
 ?>
 	</div>

@@ -223,6 +223,6 @@ if (Configure::read('debug')) {
 
 Plugin::load('Markdown');
 
-// Plugin::load('Bake');
-// Plugin::load('Migrations');
-// Plugin::load('WyriHaximus/TwigView', ['bootstrap' => true,]);
+Plugin::load('Bake');
+Plugin::load('Migrations');
+Plugin::load('WyriHaximus/TwigView', ['bootstrap' => true,]);

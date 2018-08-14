@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Entity\Yii;
+namespace App\Model\Entity;
 
 use Cake\I18n\FrozenTime;
 use Cake\ORM\Entity;
@@ -18,11 +18,11 @@ use Cake\Routing\Router;
  * @property int $user_id
  * @property FrozenTime $created
  *
- * @property Tags $category
- * @property Users $user
- * @property Comments[] $comments
+ * @property YiiTags $category
+ * @property YiiUser $user
+ * @property YiiComments[] $comments
  */
-class Post extends Entity
+class YiiPost extends Entity
 {
 	const STATUS_DRAFT = 1;
 	const STATUS_PUBLISHED = 2;
@@ -54,7 +54,7 @@ class Post extends Entity
 	 */
 	public function getUrl()
 	{
-		return Router::url(['controller' => '/yii/post', 'action' => 'view', 'id' => $this->id, 'title' => $this->title]);
+		return Router::url(['controller' => 'YiiPost', 'action' => 'view', 'id' => $this->id, 'title' => $this->title],true);
 	}
 
 	/**
@@ -64,7 +64,7 @@ class Post extends Entity
 	{
 		// $links[] = $this->Html->link($tag, ['yii/post/index', 'tag' => $tag]);
 		foreach (YiiTag::string2array($this->tags) as $tag)
-			$links[] = ['label' => $tag, 'url' => Router::url(['controller' => '/yii/post', 'action' => 'index', 'tag' => $tag])];
+			$links[] = ['label' => $tag, 'url' => Router::url(['controller' => 'YiiPost', 'action' => 'index', 'tag' => $tag],true)];
 		return $links;
 	}
 }

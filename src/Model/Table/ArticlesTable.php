@@ -12,12 +12,12 @@ use Cake\Validation\Validator;
 class ArticlesTable extends Table
 {
 
-    /**
-     * Returns the database connection name to use by default.
-     *
-     * @return string
-     */
-    public static function defaultConnectionName() { return 'default'; }
+	/**
+	 * Returns the database connection name to use by default.
+	 *
+	 * @return string
+	 */
+	public static function defaultConnectionName() { return 'default'; }
 // public static function defaultConnectionName()
 // {
 //     return 'db_cake';
@@ -53,21 +53,21 @@ class ArticlesTable extends Table
 // }
 
 	public function initialize(array $config)
-    {
+	{
 		parent::initialize($config);
 
-        $this->setTable('articles');
-        $this->setDisplayField('name');
+		$this->setTable('articles');
+		$this->setDisplayField('name');
 		$this->setPrimaryKey('id');
 		
-        $this->addBehavior('Timestamp', [
-            'events' => [
-                'Model.beforeSave' => [
-                    'created_at' => 'new',
-                    'modified_at' => 'always'
-                ]
-            ]
-        ]);
+		$this->addBehavior('Timestamp', [
+			'events' => [
+				'Model.beforeSave' => [
+					'created_at' => 'new',
+					'modified_at' => 'always'
+				]
+			]
+		]);
 		// $this->hasMany('Comments')
 		// 	->setConditions(['approved' => true]);
 
@@ -108,11 +108,11 @@ class ArticlesTable extends Table
 	public function validationDefault(Validator $validator)
 	{
 		$validator
-		->notEmpty('title')
-		->minLength('title', 10)
-		->maxLength('title', 255)
-		->notEmpty('body')
-		->minLength('body', 10);
+			->notEmpty('title')
+			->minLength('title', 10)
+			->maxLength('title', 255)
+			->notEmpty('body')
+			->minLength('body', 10);
 		
 		return $validator;
 	}

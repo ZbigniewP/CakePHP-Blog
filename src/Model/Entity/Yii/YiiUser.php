@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Model\Entity\Yii;
+namespace App\Model\Entity;
 
 use Cake\Auth\DefaultPasswordHasher;
 use Cake\ORM\Entity;
 
 /**
- * User Entity
+ * YiiUser Entity
  *
  * @property int $id
  * @property string $username
  * @property string $password
  *
- * @property Post[] $posts
+ * @property YiiPost[] $posts
  */
-class Users extends Entity
+class YiiUser extends Entity
 {
 
     /**

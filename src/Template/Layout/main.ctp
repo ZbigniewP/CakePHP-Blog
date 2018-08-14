@@ -53,13 +53,17 @@ $this_menu = [
 	<meta name="language" content="en" />
 	
 	<?= $this->Html->meta('icon') ?>
+
 	<!-- blueprint CSS framework -->
-	<?= $this->Html->css('yii/screen.css',['media' => 'screen, projection']) ?>
-	<?= $this->Html->css('yii/print.css',['media' => 'print']) ?>
+	<?= $this->Html->css('yii/screen.css', ['media' => 'screen, projection']) ?>
+
+	<?= $this->Html->css('yii/print.css', ['media' => 'print']) ?>
+
 	<!--[if lt IE 8]>
-	<?= $this->Html->css('yii/ie.css',['media' => 'screen, projection']) ?>
+	<?= $this->Html->css('yii/ie.css', ['media' => 'screen, projection']) ?>
+
 	<![endif]-->
-	<?= $this->Html->css(['yii/main.css','yii/form.css']) ?>
+	<?= $this->Html->css(['yii/main.css', 'yii/form.css']) ?>
 	
 	<title><?= $this->fetch('title'); ?> | MyDomain.com</title>
 </head>
@@ -74,10 +78,10 @@ $this_menu = [
 
 	<div id="mainmenu">
 		<ul>
-		<?php foreach($this_menu['items'] as  $_key => $_val): ?>
-			<li><?= $this->Html->link($_val['label'], $_val['url']) ?></li>
-		<?php endforeach; ?>
-		</ul>
+	<?php foreach($this_menu['items'] as  $_key => $_val): ?>
+		<li><?= $this->Html->link($_val['label'], $_val['url']) ?></li>
+	<?php endforeach; ?>
+	</ul>
 	</div><!-- mainmenu -->
 	<div class="breadcrumbs">
 		<?= $this->Breadcrumbs->render(['class'=>'breadcrumbs']) ?><!-- breadcrumbs -->

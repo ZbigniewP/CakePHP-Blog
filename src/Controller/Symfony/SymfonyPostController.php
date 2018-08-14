@@ -18,6 +18,11 @@ use Cake\Http\Response;
  */
 class SymfonyPostController extends AppController
 {
+	public function initialize()
+	{
+		$this->layout = 'start';
+	}
+
 	/**
 	 * Index method
 	 *
@@ -41,7 +46,8 @@ class SymfonyPostController extends AppController
 // print_r($dataPost);
 // echo "</pre>";
 // exit();
-		$this->render('//Symfony/Post/index');
+
+$this->render('/Symfony/Post/index');
 	}
 
 	/**
@@ -57,7 +63,7 @@ class SymfonyPostController extends AppController
 
 		$this->set('data', $dataPost);
 
-		$this->render('//Symfony/Post/view');
+		$this->render('/Symfony/Post/view');
 	}
 
 	/**
@@ -80,7 +86,7 @@ class SymfonyPostController extends AppController
 		$user = $this->SymfonyPost->SymfonyUser->find('list', ['limit' => 30]);
 		$this->set(compact('data', 'user'));
 
-		$this->render('//Symfony/Post/add');
+		$this->render('/Symfony/Post/add');
 	}
 
 	/**

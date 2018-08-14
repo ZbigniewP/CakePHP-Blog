@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Table\Yii;
+namespace App\Model\Table;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -9,18 +9,18 @@ use Cake\Validation\Validator;
 /**
  * YiiComment Model
  *
- * @property \App\Model\Table\Yii\PostTable|\Cake\ORM\Association\BelongsTo $YiiPost
+ * @property \App\Model\Table\YiiPostTable|\Cake\ORM\Association\BelongsTo $YiiPost
  *
- * @method \App\Model\Entity\Yii\Comment get($primaryKey, $options = [])
- * @method \App\Model\Entity\Yii\Comment newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Yii\Comment[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Comment|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Yii\Comment|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Yii\Comment patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Comment[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Yii\Comment findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\YiiComment get($primaryKey, $options = [])
+ * @method \App\Model\Entity\YiiComment newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\YiiComment[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\YiiComment|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\YiiComment|bool saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\YiiComment patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\YiiComment[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\YiiComment findOrCreate($search, callable $callback = null, $options = [])
  */
-class CommentTable extends Table
+class YiiCommentTable extends Table
 {
 
 	/**

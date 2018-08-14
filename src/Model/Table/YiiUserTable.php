@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Table\Yii;
+namespace App\Model\Table;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
@@ -18,7 +18,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Yii\User[] patchEntities($entities, array $data, array $options = [])
  * @method \App\Model\Entity\Yii\User findOrCreate($search, callable $callback = null, $options = [])
  */
-class UserTable extends Table
+class YiiUserTable extends Table
 {
 
 	/**
@@ -32,10 +32,10 @@ class UserTable extends Table
 		parent::initialize($config);
 
 		$this->setTable('tbl_user');
-		$this->setDisplayField('id');
+		$this->setDisplayField('username');
 		$this->setPrimaryKey('id');
 
-		$this->hasMany('Post', ['foreignKey' => 'author_id']);
+		$this->hasMany('YiiPost', ['foreignKey' => 'author_id']);
 	}
 
 	/**

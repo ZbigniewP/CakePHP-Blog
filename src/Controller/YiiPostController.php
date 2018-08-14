@@ -1,281 +1,127 @@
 <?php
-
 namespace App\Controller;
 
-use App\Model\Table\Yii\PostTable;
-// use App\Model\Table\Yii\TagTable;
-use App\Model\Entity\Yii\Post;
-
-use Cake\Http\Response;
-use Cake\Network\Exception\NotFoundException;
-
+use App\Controller\AppController;
+// use App\Model\Entity\TblPost;
+// use App\Model\Table\TblPostTable;
+// use Cake\Datasource\Exception\RecordNotFoundException;
+// use Cake\Event\Event;
+// use Cake\Http\Response;
 /**
- * Class PostController
- * @package App\Controller
- * @property PostTable $Post
+ * TblPost Controller
+ *
+ * @property \App\Model\Table\TblPostTable $dataPost
+ *
+ * @method \App\Model\Entity\TblPost[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class YiiPostController extends AppController
 {
-
-	// public $paginate = ['limit' => 5];
 	public $paginate = [
-		'contain' => ['User', 'Comment'],
+		// 'contain' => ['TblComment', 'TblUser'],
+		'contain' => ['YiiComment', 'YiiUser'],
 		'limit' => 5
 	];
 
-	/**
-	 * Initialize
-	 * @return void
-	 */
 	public function initialize()
 	{
-		parent::initialize();
-		$this->loadModel('Post');
-		// $this->viewBuilder()->setLayout('yiipost');
-		$this->layout='column2';
-		// $this->layout='main';
-	}
-
-	public function index()
-	{
-		$dataProvider = $this->paginate($this->Post->find()->where('status='.Post::STATUS_PUBLISHED));
-
-		$this->set(compact('dataProvider'));
-		$this->set('_serialize', ['dataProvider']);
-		$this->render('index');
-
-		// $criteria = new CDbCriteria(array(
-		// 	'condition' => 'status=' . Post::STATUS_PUBLISHED,
-		// 	'order' => 'update_time DESC',
-		// 	'with' => 'commentCount',
-		// ));
-		// if (isset($_GET['tag']))
-		// 	$criteria->addSearchCondition('tags', $_GET['tag']);
-
-		// $dataProvider = new CActiveDataProvider('Post', array(
-		// 	'pagination' => array(
-		// 		'pageSize' => Yii::app()->params['postsPerPage'],
-		// 	),
-		// 	'criteria' => $criteria,
-		// ));
-
-		// $this->render('index', array(
-		// 	'dataProvider' => $dataProvider,
-		// ));
-	}
-
-	public function view($tag = null)
-	{
-		$errors = [];
-
-		$comment = $this->Post->YiiComment->newEntity();
-		if ($this->request->is(['post'])) {
-			// $comment = $this->Post->YiiComment->patchEntity($comment, $this->request->getData());
-			// if ($this->Post->YiiComment->save($comment)) {
-			// }
-			$this->Flash->error(__('The post could not be saved. Please, try again.'));
-		}
-// echo "<pre>";
-// print_r($_GET);
-// echo "</pre>";
-// exit();
-		if(isset($_GET['tag'])) {
-			// $data = $this->Post->find()->where(['tags LIKE' => $tag])->contain(['Users','YiiComment'])->first();//'YiiTag',
-			// $data = $this->Post->find()->where(['tags LIKE' => '%'.$tag.'%'])->first();
-			// $data = $this->Post->find()->where(['tags LIKE' => '%'.$tag.'%'])->first();
-			// $data = $this->Post->find()->contain(['Users','YiiComment']);//->first()->like('Post.tags', $tag)
-			// $this->set(compact('data', 'errors'));
-			// $this->set('_serialize', ['data']);
-// *  $settings = [
-// *    'Articles' => [
-// *      'finder' => 'popular'
-// *    ]
-// *  ];
-// *  $results = $paginator->paginate($table, $settings);
-
-// * $query = $this->Articles->find('popular')->matching('Tags', function ($q) {
-// *   return $q->where(['name' => 'CakePHP'])
-// * });
-// * $results = $paginator->paginate($query);
-
-// * $articles = $paginator->paginate($articlesQuery, ['scope' => 'articles']);
-// * $tags = $paginator->paginate($tagsQuery, ['scope' => 'tags']);
-
-			// $module = $this->paginate($this->Post->find()->where(['tags LIKE' => '%'.$tag.'%']));
-			// $comment = $this->Post->YiiComment;
-			$dataProvider = $this->paginate($this->Post->find()->contain(['Users']));
-			$this->set(compact('dataProvider', 'comment', 'errors'));
-			$this->set('_serialize', ['dataProvider']);
-			// $this->render('index');
-		} else {
-			$dataProvider = $this->paginate($this->Post->find()->contain(['Users']));//->first()'YiiTag',,'YiiComment'
-			// $module = $this->Post->find()->like('Post.tags', $tag)->contain(['Users','YiiComment'])->first();
-			$this->set(compact('dataProvider', 'comment', 'errors'));
-			$this->set('_serialize', ['dataProvider']);
-			// $this->render('index');
-		}
-$this->layout='column2';
-// $this->render('view', 'yii');
-// $this->render('index', 'column1');
-$this->render('index');
-// $this->render('index', 'main');
-// $post = $this->loadModel();
-// $comment = $this->newComment($post);
-
-		// $this->render('view', 'dev_error');
-		
-	}
-
-	public function category($tag)
-	{
-		$module = $this->paginate($this->Post->find()->where(['tags LIKE' => $tag]));
-		// $module = $this->paginate($this->Post->find()->like('Post.tags', $tag));
-		$this->set(compact('module'));
-		$this->set('_serialize', ['module']);
-		$this->render('comments.index','comments');
+		$this->layout = 'start';
 	}
 
 	/**
 	 * Index method
 	 *
-	 * @return Response|void
+	 * @return \Cake\Http\Response|void
 	 */
-	public function admin()
+	public function index()
 	{
-		$module = $this->paginate($this->Post->find()->contain(['YiiLookup']));
-		$this->set(compact('module'));
-		$this->set('_serialize', ['module']);
+		// $dataPost = $this->paginate($this->TblPost);
+		$dataPost = $this->paginate($this->YiiPost);
+
+		$this->set(compact('dataPost'));
+		$this->render('/Yii/TblPost/index');
 	}
-	public function author(){
-		// return $this->Flash->error(__(print_r($_GET)));
-		return $this->redirect(['action' => 'view']);
-	} 
+
+	/**
+	 * View method
+	 *
+	 * @param string|null $id Tbl Post id.
+	 * @return \Cake\Http\Response|void
+	 * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+	 */
+	public function view($id = null)
+	{
+		// $dataPost = $this->TblPost->get($id, ['contain' => ['TblComment', 'TblUser']]);
+		$dataPost = $this->YiiPost->get($id, ['contain' => ['YiiComment', 'YiiUser']]);
+
+		$this->set('dataPost', $dataPost);
+		$this->render('/Yii/TblPost/view');
+	}
 
 	/**
 	 * Add method
 	 *
-	 * @return Response|null Redirects on successful add, renders view otherwise.
+	 * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
 	 */
-	public function create()
+	public function add()
 	{
-		$post = $this->Post->newEntity();
-		if ($this->request->is(['patch', 'post', 'put'])) {
-			$post = $this->Posts->patchEntity($post, $this->request->getData());
-			// if ($this->Posts->save($post)) {
-			// 	$this->Flash->success(__('The post has been saved.'));
+		$dataPost = $this->TblPost->newEntity();
+		if ($this->request->is('post')) {
+			$dataPost = $this->TblPost->patchEntity($dataPost, $this->request->getData());
+			if ($this->TblPost->save($dataPost)) {
+				$this->Flash->success(__('The tbl post has been saved.'));
 
-			// 	return $this->redirect(['action' => 'index']);
-			// }
-			$this->Flash->error(__('The post could not be saved. Please, try again.'));
+				return $this->redirect(['action' => 'index']);
+			}
+			$this->Flash->error(__('The tbl post could not be saved. Please, try again.'));
 		}
-		$tags = $this->Post->Tags->find('list');
-		$status = $this->Post->Lookup->find('list');
-		$users = $this->Post->Users->find('list');
-
-		$this->set(compact('post', 'status', 'tags', 'users'));
-		$this->set('_serialize', ['post', 'status', 'tags', 'users']);
-		$this->render('index');
+		// $pages = $this->TblPost->Pages->find('list', ['limit' => 200]);
+		$pages = $this->TblPost->TblComment->find('list', ['limit' => 200]);
+		$tblUser = $this->TblPost->TblUser->find('list', ['limit' => 200]);
+		$this->set(compact('dataPost', 'pages', 'tblUser'));
 	}
 
 	/**
 	 * Edit method
 	 *
-	 * @param int $id Admin id.
-	 * @return Response|null Redirects on successful edit, renders view otherwise.
-	 * @throws NotFoundException When record not found.
+	 * @param string|null $id Tbl Post id.
+	 * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+	 * @throws \Cake\Network\Exception\NotFoundException When record not found.
 	 */
-	public function update($id)
+	public function edit($id = null)
 	{
-		$post = $this->Post->get($id, ['contain' => ['YiiTag']]);
+		$dataPost = $this->TblPost->get($id, ['contain' => []]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
-			$post = $this->Posts->patchEntity($post, $this->request->getData());
-			// if ($this->Posts->save($post)) {
-			// 	$this->Flash->success(__('The post has been saved.'));
+			$dataPost = $this->TblPost->patchEntity($dataPost, $this->request->getData());
+			if ($this->TblPost->save($dataPost)) {
+				$this->Flash->success(__('The tbl post has been saved.'));
 
-			// 	return $this->redirect(['action' => 'index']);
-			// }
-			$this->Flash->error(__('The post could not be saved. Please, try again.'));
+				return $this->redirect(['action' => 'index']);
+			}
+			$this->Flash->error(__('The tbl post could not be saved. Please, try again.'));
 		}
-		$tags = $this->Post->Tags->find('list');
-		$status = $this->Post->Lookup->find('list');
-		$users = $this->Post->Users->find('list');
-
-		$this->set(compact('post', 'status', 'tags', 'users'));
-		$this->set('_serialize', ['post', 'status', 'tags', 'users']);
-
-		$this->render('update', array('model' => $model));
+		// $pages = $this->TblPost->Pages->find('list', ['limit' => 200]);
+		$pages = $this->TblPost->TblComment->find('list', ['limit' => 200]);
+		$tblUser = $this->TblPost->TblUser->find('list', ['limit' => 200]);
+		$this->set(compact('dataPost', 'pages', 'tblUser'));
 	}
 
 	/**
 	 * Delete method
 	 *
-	 * @param int $id Admin id.
-	 * @return Response|null Redirects to index.
+	 * @param string|null $id Tbl Post id.
+	 * @return \Cake\Http\Response|null Redirects to index.
 	 * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
 	 */
-	public function delete($id)
+	public function delete($id = null)
 	{
-		$this->request->allowMethod(['delete', 'post']);
-		$post = $this->Posts->get($id);
-		if ($this->Posts->delete($post)) {
-			$this->Flash->success(__('The post has been deleted.'));
+		$this->request->allowMethod(['post', 'delete']);
+		$dataPost = $this->TblPost->get($id);
+		if ($this->TblPost->delete($dataPost)) {
+			$this->Flash->success(__('The tbl post has been deleted.'));
 		} else {
-			$this->Flash->error(__('The post could not be deleted. Please, try again.'));
+			$this->Flash->error(__('The tbl post could not be deleted. Please, try again.'));
 		}
 
-		return $this->redirect(['action' => 'admin']);
-	}
-	
-	// /**
-	//  * Login
-	//  * @return Response|null
-	//  */
-	// public function login()
-	// {
-	// 	if ($this->request->is('post')) {
-	// 		$user = $this->Auth->identify();
-	// 		if ($user) {
-	// 			$this->Auth->setUser($user);
-	// 			return $this->redirect($this->Auth->redirectUrl());
-	// 		}
-	// 		$this->Flash->error(__('Invalid username or password, try again'));
-	// 		return $this->redirect(['controller' => 'post', 'action' => 'login']);
-	// 'authError' => __d('cake', 'You are not authorized to access that location.')
-	// 	}
-	// }
-
-	// /**
-	//  * logout
-	//  * @return Response|null
-	//  */
-	// public function logout()
-	// {
-	// 	return $this->redirect($this->Auth->logout());
-	// }
-		/**
-	 * Creates a new comment.
-	 * This method attempts to create a new comment based on the user input.
-	 * If the comment is successfully created, the browser will be redirected
-	 * to show the created comment.
-	 * @param Post the post that the new comment belongs to
-	 * @return Comment the comment instance
-	 */
-	protected function newComment($post)
-	{
-		// $comment = new Comment;
-		$comment = $this->Post->YiiComment->newEntity();
-		if (isset($_POST['ajax']) && $_POST['ajax'] === 'comment-form') {
-			echo CActiveForm::validate($comment);
-			Yii::app()->end();
-		}
-		if (isset($_POST['Comment'])) {
-			$comment->attributes = $_POST['Comment'];
-			if ($post->addComment($comment)) {
-				if ($comment->status == YiiComment::STATUS_PENDING)
-					Yii::app()->user->setFlash('commentSubmitted', 'Thank you for your comment. Your comment will be posted once it is approved.');
-				$this->refresh();
-			}
-		}
-		return $comment;
+		return $this->redirect(['action' => 'index']);
 	}
 }
