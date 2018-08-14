@@ -1,5 +1,5 @@
 <?php
-namespace App\Model\Table\Yii;
+namespace App\Model\Table;
 
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;

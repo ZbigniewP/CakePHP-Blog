@@ -13,13 +13,13 @@
                 ['confirm' => __('Are you sure you want to delete # {0}?', $tblLookup->id)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Tbl Lookup'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Lookup'), ['action' => 'index']) ?></li>
     </ul>
 </nav>
 <div class="tblLookup form large-9 medium-8 columns content">
     <?= $this->Form->create($tblLookup) ?>
     <fieldset>
-        <legend><?= __('Edit Tbl Lookup') ?></legend>
+        <legend><?= __('Edit Lookup') ?></legend>
         <?php
             echo $this->Form->control('position');
             echo $this->Form->control('code');

@@ -7,10 +7,10 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Tbl Tag'), ['action' => 'edit', $tblTag->id]) ?> </li>
+        <li><?= $this->Html->link(__('Edit Tag'), ['action' => 'edit', $tblTag->id]) ?> </li>
         <li><?= $this->Form->postLink(__('Delete Tbl Tag'), ['action' => 'delete', $tblTag->id], ['confirm' => __('Are you sure you want to delete # {0}?', $tblTag->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Tbl Tag'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Tbl Tag'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Tag'), ['action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Tag'), ['action' => 'add']) ?> </li>
     </ul>
 </nav>
 <div class="tblTag view large-9 medium-8 columns content">

@@ -7,9 +7,9 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
 	<ul class="side-nav">
 		<li class="heading"><?= __('Actions') ?></li>
-		<li><?= $this->Html->link(__('New Tbl Post'), ['action' => 'add']) ?></li>
-		<li><?= $this->Html->link(__('List Tbl User'), ['controller' => 'TblUser', 'action' => 'index']) ?></li>
-		<li><?= $this->Html->link(__('New Tbl User'), ['controller' => 'TblUser', 'action' => 'add']) ?></li>
+		<li><?= $this->Html->link(__('New Post'), ['action' => 'add']) ?></li>
+		<li><?= $this->Html->link(__('List User'), ['controller' => 'TblUser', 'action' => 'index']) ?></li>
+		<li><?= $this->Html->link(__('New User'), ['controller' => 'TblUser', 'action' => 'add']) ?></li>
 	</ul>
 </nav>
 <div class="tblPost index large-9 medium-8 columns content">
@@ -21,7 +21,7 @@
 				<!-- <th scope="col"><?= $this->Paginator->sort('page_id') ?></th> -->
 				<th scope="col"><?= $this->Paginator->sort('title') ?></th>
 				<th scope="col"><?= $this->Paginator->sort('status') ?></th>
-				<th scope="col"><?= $this->Paginator->sort('create_time') ?></th>
+				<!-- <th scope="col"><?= $this->Paginator->sort('create_time') ?></th> -->
 				<th scope="col"><?= $this->Paginator->sort('update_time') ?></th>
 				<th scope="col"><?= $this->Paginator->sort('author_id') ?></th>
 				<th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -34,8 +34,8 @@
 				<!-- <td><?= $this->Number->format($data->page_id) ?></td> -->
 				<td><?= h($data->title) ?></td>
 				<td><?= $this->Number->format($data->status) ?></td>
-				<td><?= h($data->create_time) ?></td>
-				<td><?= h($data->update_time) ?></td>
+				<!-- <td><?= date('Y-m-d H:i', $data->create_time) ?></td> -->
+				<td><?= date('Y-m-d H:i', $data->update_time) ?></td>
 				<td><?= $data->has('yii_user') ? $this->Html->link($data->yii_user->username, ['controller' => 'TblUser', 'action' => 'view', $data->yii_user->id]) : $data->author_id ?></td>
 				<td class="actions">
 					<?= $this->Html->link(__('View'), ['action' => 'view', $data->id]) ?>

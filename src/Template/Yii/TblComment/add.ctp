@@ -7,7 +7,7 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Tbl Comment'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Comment'), ['action' => 'index']) ?></li>
     </ul>
 </nav>
 <div class="tblComment form large-9 medium-8 columns content">

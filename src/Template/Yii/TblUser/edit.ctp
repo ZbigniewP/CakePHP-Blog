@@ -13,13 +13,13 @@
                 ['confirm' => __('Are you sure you want to delete # {0}?', $tblUser->id)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Tbl User'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List User'), ['action' => 'index']) ?></li>
     </ul>
 </nav>
 <div class="tblUser form large-9 medium-8 columns content">
     <?= $this->Form->create($tblUser) ?>
     <fieldset>
-        <legend><?= __('Edit Tbl User') ?></legend>
+        <legend><?= __('Edit User') ?></legend>
         <?php
             echo $this->Form->control('username');
             echo $this->Form->control('password');

@@ -7,9 +7,9 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Tbl Post'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Tbl User'), ['controller' => 'TblUser', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tbl User'), ['controller' => 'TblUser', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Post'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List User'), ['controller' => 'TblUser', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New User'), ['controller' => 'TblUser', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="tblPost form large-9 medium-8 columns content">

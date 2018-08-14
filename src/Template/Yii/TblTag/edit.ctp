@@ -13,13 +13,13 @@
                 ['confirm' => __('Are you sure you want to delete # {0}?', $tblTag->id)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Tbl Tag'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Tag'), ['action' => 'index']) ?></li>
     </ul>
 </nav>
 <div class="tblTag form large-9 medium-8 columns content">
     <?= $this->Form->create($tblTag) ?>
     <fieldset>
-        <legend><?= __('Edit Tbl Tag') ?></legend>
+        <legend><?= __('Edit Tag') ?></legend>
         <?php
             echo $this->Form->control('name');
             echo $this->Form->control('frequency');

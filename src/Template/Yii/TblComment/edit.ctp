@@ -13,13 +13,13 @@
                 ['confirm' => __('Are you sure you want to delete # {0}?', $tblComment->id)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Tbl Comment'), ['action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('List Comment'), ['action' => 'index']) ?></li>
     </ul>
 </nav>
 <div class="tblComment form large-9 medium-8 columns content">
     <?= $this->Form->create($tblComment) ?>
     <fieldset>
-        <legend><?= __('Edit Tbl Comment') ?></legend>
+        <legend><?= __('Edit Comment') ?></legend>
         <?php
             echo $this->Form->control('type');
             echo $this->Form->control('content');
