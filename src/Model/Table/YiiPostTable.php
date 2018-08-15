@@ -63,7 +63,7 @@ class YiiPostTable extends Table
 		// 	'foreignKey' => 'name',
 		// ]);
 		$this->hasMany('TblTag', [
-			'foreignKey' => 'name',
+			'foreignKey' => 'name'
 		]);
 // ,['groupField'=>'type','keyField'=>'type','valueField'=>'PostStatus']
 // 'params' => ['YiiLookup.type'=>'PostStatus']

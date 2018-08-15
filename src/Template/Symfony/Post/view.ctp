@@ -19,8 +19,8 @@
 	<h3><?= h($data->title) ?></h3>
 	<table class="vertical-table">
 		<tr>
-			<th scope="row"><?= __('Symfony Demo') ?></th>
-			<td><?= $data->has('symfony_user') ? $this->Html->link($data->symfony_user->id, ['controller' => 'SymfonyUser', 'action' => 'view', $data->symfony_user->id]) : '' ?></td>
+			<th scope="row"><?= __('Author') ?></th>
+			<td><?= $data->has('symfony_user') ? $this->Html->link($data->symfony_user->fullName, ['controller' => 'SymfonyUser', 'action' => 'view', $data->symfony_user->id]) : $this->Number->format($data->author_id) ?></td>
 		</tr>
 		<tr>
 			<th scope="row"><?= __('Title') ?></th>
@@ -34,10 +34,10 @@
 			<th scope="row"><?= __('Summary') ?></th>
 			<td><?= h($data->summary) ?></td>
 		</tr>
-		<tr>
+		<!-- <tr>
 			<th scope="row"><?= __('Id') ?></th>
 			<td><?= $this->Number->format($data->id) ?></td>
-		</tr>
+		</tr> -->
 		<tr>
 			<th scope="row"><?= __('Status') ?></th>
 			<td><?= $this->Number->format($data->status) ?></td>
@@ -51,4 +51,12 @@
 			<td><?= h($data->updatedAt) ?></td>
 		</tr>
 	</table>
+	<div class="row">
+		<h4><?= __('Content') ?></h4>
+		<?= $this->Markdown->parse($data->content) ?>
+	</div>
+	<div class="row">
+		<h4><?= __('Tags') ?></h4>
+		<?= $this->Text->autoParagraph(h($data->tags)); ?>
+	</div>
 </div>

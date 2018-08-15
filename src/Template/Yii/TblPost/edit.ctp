@@ -18,14 +18,14 @@
 	<fieldset>
 		<legend><?= __('Edit Post') ?></legend>
 		<?php
+			// echo $this->Form->control('create_time');
 			// echo $this->Form->control('page_id');
+			// echo $this->Form->control('update_time');
+			echo $this->Form->control('status', ['options' => $postStatus]);
+			echo $this->Form->control('tags', ['options' => $tags]);
+			echo $this->Form->control('author_id', ['options' => $postUser]);
 			echo $this->Form->control('title');
 			echo $this->Form->control('content');
-			echo $this->Form->control('tags');
-			echo $this->Form->control('status', ['options' => $postStatus]);
-			// echo $this->Form->control('create_time');
-			// echo $this->Form->control('update_time');
-			echo $this->Form->control('author_id', ['options' => $postUser]);
 		?>
 	</fieldset>
 	<?= $this->Form->button(__('Submit')) ?>

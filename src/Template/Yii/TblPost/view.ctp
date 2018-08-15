@@ -59,7 +59,5 @@
 	<div class="row">
 		<h4><?= __('Comments') ?>
 		<?= count($data->tbl_comment); ?></h4>
-		
 	</div>
-	
 </div>

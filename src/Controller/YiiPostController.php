@@ -53,7 +53,8 @@ class YiiPostController extends AppController
 		$data = $this->YiiPost->get($id, ['contain' => ['TblComment', 'TblUser']]);
 		$status = $this->YiiPost->TblLookup
 			->find('list', ['keyField' => 'code', 'valueField' => 'name'])
-			->where(['type' => 'PageStatus', 'code' => $data->status])
+			->where(['type' => 'PostStatus', 'code' => $data->status])
+			// ->order('name')
 			->toList();
 		$data->status = $status[0];
 
@@ -78,14 +79,16 @@ class YiiPostController extends AppController
 			$this->Flash->error(__('The tbl post could not be saved. Please, try again.'));
 		}
 		// $pages = $this->TblPost->Pages->find('list', ['limit' => 30]);
-		// $pages = $this->YiiPost->TblComment->find('list', ['limit' => 30]);
-		$dataUser = $this->YiiPost->TblUser->find('list', ['limit' => 30]);
-		$status = $this->YiiPost->TblLookup
+		// $comments = $this->YiiPost->TblComment->find('list', ['limit' => 30])->order('create_time');
+		$tags = $this->YiiPost->TblTag->find('list', ['limit' => 30])->order('name');
+		$postUser = $this->YiiPost->TblUser->find('list', ['limit' => 30])->order('username');
+		$postStatus = $this->YiiPost->TblLookup
 			->find('list', ['keyField' => 'code', 'valueField' => 'name'])
-			->where(['type' => 'PageStatus'])
+			->where(['type' => 'PostStatus'])
+			->order('name')
 			->toList();
 
-		$this->set(compact('data', 'dataUser', 'status'));//'pages',
+		$this->set(compact('data', 'postUser', 'postStatus','tags'));//'pages',
 	}
 
 	/**
@@ -111,9 +114,9 @@ class YiiPostController extends AppController
 			$this->Flash->error(__('The tbl post could not be saved. Please, try again.'));
 		}
 		// $pages = $this->TblPost->Articles->find('list', ['limit' => 30]);
-		$comments = $this->YiiPost->TblComment->find('list', ['limit' => 30]);
-		$postUser = $this->YiiPost->TblUser->find('list', ['limit' => 30]);
-		$postStatus = $this->YiiPost->TblLookup->find('list', ['limit' => 30]);
+		$comments = $this->YiiPost->TblComment->find('list', ['limit' => 30])->order('create_time');
+		$postUser = $this->YiiPost->TblUser->find('list', ['limit' => 30])->order('username');
+		$postStatus = $this->YiiPost->TblLookup->find('list', ['limit' => 30])->order('name');
 		$this->set(compact('data', 'comments', 'postStatus', 'postUser'));
 	}
 
