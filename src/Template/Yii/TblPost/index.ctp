@@ -17,17 +17,17 @@
 	</ul>
 </nav>
 <div class="tblPost index large-9 medium-8 columns content">
-	<h3><?= __('Post') ?></h3>
+	<h3><?= __('Yii Post') ?></h3>
 	<table cellpadding="0" cellspacing="0">
 		<thead>
 			<tr>
 				<!-- <th scope="col"><?= $this->Paginator->sort('id') ?></th> -->
-				<!-- <th scope="col"><?= $this->Paginator->sort('page_id') ?></th> -->
 				<th scope="col"><?= $this->Paginator->sort('title') ?></th>
-				<th scope="col"><?= $this->Paginator->sort('status') ?></th>
+				<th scope="col"><?= $this->Paginator->sort('author_id') ?></th>
 				<!-- <th scope="col"><?= $this->Paginator->sort('create_time') ?></th> -->
 				<th scope="col"><?= $this->Paginator->sort('update_time') ?></th>
-				<th scope="col"><?= $this->Paginator->sort('author_id') ?></th>
+				<!-- <th scope="col"><?= $this->Paginator->sort('page_id') ?></th> -->
+				<th scope="col"><?= $this->Paginator->sort('status') ?></th>
 				<th scope="col" class="actions"><?= __('Actions') ?></th>
 			</tr>
 		</thead>
@@ -35,13 +35,13 @@
 			<?php foreach ($dataPost as $data): ?>
 			<tr>
 				<!-- <td><?= $this->Number->format($data->id) ?></td> -->
-				<!-- <td><?= $this->Number->format($data->page_id) ?></td> -->
 				<td><?= h($data->title) ?></td>
-				<!-- <td><?= $this->Number->format($data->status) ?></td> -->
-				<td><?= $data->has('tbl_lookup') ? $this->Html->link($data->tbl_lookup->name, ['controller' => 'TblLookup', 'action' => 'view', $data->tbl_lookup->id]) : $this->Number->format($data->status) ?></td>
+				<td><?= $data->has('tbl_user') ? $this->Html->link($data->tbl_user->username, ['controller' => 'TblUser', 'action' => 'view', $data->tbl_user->id]) : $this->Number->format($data->author_id) ?></td>
 				<!-- <td><?= date('Y-m-d H:i', $data->create_time) ?></td> -->
 				<td><?= date('Y-m-d H:i', $data->update_time) ?></td>
-				<td><?= $data->has('tbl_user') ? $this->Html->link($data->tbl_user->username, ['controller' => 'TblUser', 'action' => 'view', $data->tbl_user->id]) : $this->Number->format($data->author_id) ?></td>
+				<!-- <td><?= $this->Number->format($data->page_id) ?></td> -->
+				<!-- <td><?= $this->Number->format($data->status) ?></td> -->
+				<td><?= $data->has('tbl_lookup') ? $this->Html->link($data->tbl_lookup->name, ['controller' => 'TblLookup', 'action' => 'view', $data->tbl_lookup->id]) : $this->Number->format($data->status) ?></td>
 				<td class="actions">
 					<?= $this->Html->link(__('View'), ['action' => 'view', $data->id]) ?>
 					<?= $this->Html->link(__('Edit'), ['action' => 'edit', $data->id]) ?>

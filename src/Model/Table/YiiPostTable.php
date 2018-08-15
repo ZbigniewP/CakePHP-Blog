@@ -38,8 +38,23 @@ class YiiPostTable extends Table
 		$this->setDisplayField('title');
 		$this->setPrimaryKey('id');
 
-		$this->addBehavior('Timestamp');
+		// $this->addBehavior('Timestamp');
+		$this->addBehavior('Timestamp', [
+			'events' => [
+				'Model.beforeSave' => [
+					'create_time' => 'new',
+					'update_time' => 'always'
+				]
+			]
+		]);
 		$this->addBehavior('CounterCache', ['YiiTag' => ['frequency']]);
+		// $this->addAssociations([
+		// 	'belongsTo' => [
+		// 		'TblUser' => ['className' => 'App\Model\Table\TblUserTable']
+		// 	],
+		// 	'hasMany' => ['TblComment'],
+		// 	'belongsToMany' => ['TblTag']
+		// ]);
 
 		// $this->belongsTo('YiiUser', [
 		// 	'foreignKey' => 'author_id',
@@ -59,12 +74,13 @@ class YiiPostTable extends Table
 			'joinType' => 'INNER'
 		]);
 
-		// $this->hasMany('YiiTag', [
+		// $this->belongsToMany('YiiTag', [
 		// 	'foreignKey' => 'name',
 		// ]);
-		$this->hasMany('TblTag', [
+		$this->belongsToMany('TblTag', [
 			'foreignKey' => 'name'
 		]);
+		
 // ,['groupField'=>'type','keyField'=>'type','valueField'=>'PostStatus']
 // 'params' => ['YiiLookup.type'=>'PostStatus']
 // ->where(['YiiLookup.type' =>'PostStatus']),['conditions' => ['type=' => 'PostStatus']]
@@ -74,13 +90,9 @@ class YiiPostTable extends Table
 		// 	'conditions' => ['type' => 'PostStatus']
 		// ]);
 		$this->belongsTo('TblLookup', ['key' => 'code', 'foreignKey' => 'status', 'where' => 'PostStatus']);
+
 		// $this->belongsTo('Articles', [
 		//     'foreignKey' => 'page_id'
-		// ]);
-
-		// $this->belongsTo('YiiUser', [
-		// 	'foreignKey' => 'author_id',
-		// 	'joinType' => 'INNER'
 		// ]);
 	}
 

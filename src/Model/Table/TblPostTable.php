@@ -23,7 +23,6 @@ use Cake\Validation\Validator;
  */
 class TblPostTable extends Table
 {
-
 	/**
 	 * Initialize method
 	 *
@@ -39,6 +38,14 @@ class TblPostTable extends Table
 		$this->setPrimaryKey('id');
 
 		// $this->addBehavior('Timestamp');
+		$this->addBehavior('Timestamp', [
+			'events' => [
+				'Model.beforeSave' => [
+					'create_time' => 'new',
+					'update_time' => 'always'
+				]
+			]
+		]);
 		// $this->addBehavior('CounterCache', ['TblTag' => ['frequency']]);
 
 		// $this->belongsTo('Articles', [

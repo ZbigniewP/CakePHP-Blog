@@ -16,7 +16,7 @@
 	</ul>
 </nav>
 <div class="tblUser index large-9 medium-8 columns content">
-	<h3><?= __('User') ?></h3>
+	<h3><?= __('Yii User') ?></h3>
 	<table cellpadding="0" cellspacing="0">
 		<thead>
 			<tr>

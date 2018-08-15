@@ -23,13 +23,13 @@
 		<thead>
 			<tr>
 				<!-- <th scope="col"><?= $this->Paginator->sort('id') ?></th> -->
-				<th scope="col"><?= $this->Paginator->sort('author_id') ?></th>
 				<th scope="col"><?= $this->Paginator->sort('title') ?></th>
+				<th scope="col"><?= $this->Paginator->sort('author_id') ?></th>
 				<!-- <th scope="col"><?= $this->Paginator->sort('slug') ?></th> -->
 				<!-- <th scope="col"><?= $this->Paginator->sort('summary') ?></th> -->
 				<th scope="col"><?= $this->Paginator->sort('publishedAt') ?></th>
-				<!-- <th scope="col"><?= $this->Paginator->sort('status') ?></th> -->
 				<th scope="col"><?= $this->Paginator->sort('updatedAt') ?></th>
+				<th scope="col"><?= $this->Paginator->sort('status') ?></th>
 				<th scope="col" class="actions"><?= __('Actions') ?></th>
 			</tr>
 		</thead>
@@ -37,13 +37,14 @@
 			<?php foreach ($dataPost as $data): ?>
 			<tr>
 				<!-- <td><?= $this->Number->format($data->id) ?></td> -->
-				<td><?= $data->has('symfony_user') ? $this->Html->link($data->symfony_user->fullName, ['controller' => 'SymfonyUser', 'action' => 'view', $data->author_id]) : '' ?></td>
 				<td><?= h($data->title) ?></td>
+				<td><?= $data->has('symfony_user') ? $this->Html->link($data->symfony_user->fullName, ['controller' => 'SymfonyUser', 'action' => 'view', $data->author_id]) : '' ?></td>
 				<!-- <td><?= h($data->slug) ?></td> -->
 				<!-- <td><?= h($data->summary) ?></td> -->
 				<td><?= h($data->publishedAt) ?></td>
-				<!-- <td><?= $this->Number->format($data->status) ?></td> -->
 				<td><?= h($data->updatedAt) ?></td>
+				<!-- <td><?= $this->Number->format($data->status) ?></td> -->
+				<td><?= $data->has('tbl_lookup') ? $this->Html->link($data->tbl_lookup->name, ['controller' => 'TblLookup', 'action' => 'view', $data->tbl_lookup->id]) : $this->Number->format($data->status) ?></td>
 				<td class="actions">
 					<?= $this->Html->link(__('View'), ['action' => 'view', $data->id]) ?>
 					<?= $this->Html->link(__('Edit'), ['action' => 'edit', $data->id]) ?>
