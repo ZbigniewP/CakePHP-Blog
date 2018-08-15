@@ -13,10 +13,7 @@
 					by <?= $this->Html->link($post->user->username, ['controller' => 'Posts', 'action' => 'author', 'id' => $post->user->id]) ?> on <em><?= $post->created->format('F jS Y, H:i') ?></em>
 				</small>
 			</p>
-			<p><?php
-			// echo $this->Text->truncate($post->content, 450, ['ellipsis' => '...', 'exact' => false]);
-			echo $this->Markdown->parse($this->Text->truncate($post->content, 450, ['ellipsis' => '...', 'exact' => false])) 
-			?></p>
+			<p><?= $this->Markdown->parse($this->Text->truncate($post->content, 450, ['ellipsis' => '...', 'exact' => false])) ?></p>
 			<p class="text-right"><?= $this->Html->link('Read more...', ['controller' => 'Posts', 'action' => 'view', 'slug' => $post->slug], ['class' => 'btn btn-primary']) ?></p>
 		</article>
 		<hr />

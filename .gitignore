@@ -41,3 +41,4 @@ nbproject/*
 
 /tmp/
 /config/
+*.sqlite

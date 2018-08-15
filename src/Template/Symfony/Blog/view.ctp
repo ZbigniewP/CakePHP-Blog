@@ -12,10 +12,7 @@
 	</div>
 
 	<article>
-		<?php
-		// echo $post->content;
-		echo $this->Markdown->parse($post->content); 
-		?>
+		<?= $this->Markdown->parse($post->content) ?>
 	</article>
 
 	<hr />
@@ -53,10 +50,7 @@
 					</div>
 					<div class="col-md-10">
 						<p><strong><?= $comment->username ?></strong> <?= $comment->created->timeAgoInWords() ?></p>
-						<p><?php
-						// echo $comment->content;
-						echo $this->Markdown->parse($comment->content) 
-						?></p>
+						<p><?= $this->Markdown->parse($comment->content) ?></p>
 					</div>
 				</div>
 				<hr />

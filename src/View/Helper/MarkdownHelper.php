@@ -20,8 +20,8 @@ class MarkdownHelper extends Helper
 	 */
 	public function parse($content)
 	{
-		if (is_resource($content) && get_resource_type($content) == 'stream')
-			$content = stream_get_contents($content);
+if (is_resource($content) && get_resource_type($content) == 'stream') $content = stream_get_contents($content);
+
 		if (!$this->parser) {
 			$this->parser = new CommonMarkConverter();
 		}

@@ -12,10 +12,7 @@
 	</div>
 
 	<article>
-		<?php
-		// echo $post->content;
-		echo $this->Markdown->parse($post->content); 
-		?>
+		<?= $this->Markdown->parse($post->content) ?>
 	</article>
 
 	<hr />
@@ -31,7 +28,7 @@
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
-					<?= $this->Form->control('username', ['class' => 'form-control', 'placeholder' => 'Your username', 'label' => false]) ?>
+					<?= $this->Form->control('username', ['class' => 'form-control', 'placeholder' => 'Your username', 'label' => false, 'type' => 'text']) ?>
 				</div>
 			</div>
 			<?= $this->Form->control('post_id', ['type' => 'hidden', 'value' => $post->id]) ?>
@@ -53,10 +50,7 @@
 					</div>
 					<div class="col-md-10">
 						<p><strong><?= $comment->username ?></strong> <?= $comment->created->timeAgoInWords() ?></p>
-						<p><?php
-						// echo $comment->content;
-						echo $this->Markdown->parse($comment->content) 
-						?></p>
+						<p><?= $this->Markdown->parse($comment->content) ?></p>
 					</div>
 				</div>
 				<hr />

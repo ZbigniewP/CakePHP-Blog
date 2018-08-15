@@ -13,10 +13,7 @@
 					by <?= $this->Html->link($data->user->username, ['controller' => 'SymfonyBlog', 'action' => 'author', 'id' => $data->user->id]) ?> on <em><?= $data->created->format('F jS Y, H:i') ?></em>
 				</small>
 			</p>
-			<p><?php
-			// echo $this->Text->truncate($data->content, 450, ['ellipsis' => '...', 'exact' => false]);
-			echo $this->Markdown->parse($this->Text->truncate($data->content, 450, ['ellipsis' => '...', 'exact' => false])) 
-			?></p>
+			<p><?= $this->Markdown->parse($this->Text->truncate($data->content, 450, ['ellipsis' => '...', 'exact' => false])) ?></p>
 			<p class="text-right"><?= $this->Html->link('Read more...', ['controller' => 'SymfonyBlog', 'action' => 'view', 'slug' => $data->slug], ['class' => 'btn btn-primary']) ?></p>
 		</article>
 		<hr />
