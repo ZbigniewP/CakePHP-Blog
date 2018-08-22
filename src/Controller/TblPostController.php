@@ -24,9 +24,11 @@ class TblPostController extends AppController
 
 	public function initialize()
 	{
-		$this->layout = 'column2';
+		// $this->layout = 'column2';
 		// $this->viewBuilder()->setLayout('bootstrap');
+		$this->viewBuilder()->setLayout('column2');
 		$this->viewBuilder()->setTemplatePath('Yii/TblPost');
+		// $this->viewBuilder()->set('title','Yii Demo');
 	}
 
 	/**
@@ -36,7 +38,6 @@ class TblPostController extends AppController
 	 */
 	public function index()
 	{
-		// $dataPost = $this->paginate($this->TblPost);
 		$dataPost = $this->paginate($this->TblPost);
 		$this->set(compact('dataPost'));
 	}

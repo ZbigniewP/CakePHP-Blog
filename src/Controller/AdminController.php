@@ -24,7 +24,7 @@ class AdminController extends AppController
 	{
 		parent::initialize();
 		$this->loadModel('Posts');
-		$this->viewBuilder()->setLayout('admin');
+		// $this->viewBuilder()->setLayout('admin');
 	}
 
 	/**

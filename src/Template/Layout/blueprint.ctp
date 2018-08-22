@@ -21,6 +21,8 @@ $this_menu = [
 	],
 ];
 
+$this->Blocks->set('title', 'Yii Demo');
+
 // $this->Breadcrumbs->add([
 // 	['title' => 'Home','url'=>'/'], 
 // 	['title' => 'aaa','url'=>'/'], 
@@ -78,14 +80,16 @@ $this_menu = [
 
 	<div id="mainmenu">
 		<ul>
-	<?php foreach($this_menu['items'] as  $_key => $_val): ?>
-		<li><?= $this->Html->link($_val['label'], $_val['url']) ?></li>
-	<?php endforeach; ?>
-	</ul>
+		<?php foreach($this_menu['items'] as  $_key => $_val): ?>
+			<li><?= $this->Html->link($_val['label'], $_val['url']) ?></li>
+		<?php endforeach; ?>
+		</ul>
 	</div><!-- mainmenu -->
+
 	<div class="breadcrumbs">
 		<?= $this->Breadcrumbs->render(['class'=>'breadcrumbs']) ?><!-- breadcrumbs -->
 	</div>
+
 	<?= $this->Flash->render() ?>
 	<?= $this->fetch('content'); ?>
 	

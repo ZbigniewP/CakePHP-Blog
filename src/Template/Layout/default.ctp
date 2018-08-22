@@ -57,8 +57,8 @@ use Cake\Network\Exception\NotFoundException;
 		</div>
 	</header>
 
-	<div class="row"><div class="columns large-12">
-		<div class="container">
+	<div class="row">
+		<div class="container"><div class="columns large-12">
 			<?= $this->Flash->render(); ?>
 			<?= $this->fetch('content'); ?>
 		</div>

@@ -25,6 +25,10 @@ class AppView extends View
 			]
 		]);
 		$this->loadHelper('Markdown.Markdown');
+
+$this->Breadcrumbs->add('Cake', '/cake');
+$this->Breadcrumbs->add('Yii', '/yii');
+$this->Breadcrumbs->add('Symfony', '/symfony');
 	}
 // * - `beforeRender`
 // * - `afterRender`
