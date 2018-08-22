@@ -8,7 +8,7 @@
 	<ul class="side-nav">
 		<li class="heading"><?= __('Actions') ?></li>
 		<li><?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?></li>
-		<li><?= $this->Html->link(__('List Comment'), ['controller' => 'SymfonyComment','action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('List Comments'), ['controller' => 'SymfonyComment','action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('List Posts'), ['controller' => 'SymfonyPost', 'action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('New Post'), ['controller' => 'SymfonyPost', 'action' => 'add']) ?> </li>
@@ -20,7 +20,7 @@
 	<fieldset>
 		<legend><?= __('Edit User') ?></legend>
 		<?php
-			echo $this->Form->control('fullName');
+			echo $this->Form->control('full_name');
 			echo $this->Form->control('username');
 			echo $this->Form->control('email');
 			echo $this->Form->control('password');

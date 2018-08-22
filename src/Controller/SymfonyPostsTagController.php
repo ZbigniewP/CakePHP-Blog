@@ -14,7 +14,7 @@ class SymfonyPostsTagController extends AppController
 {
 	public function initialize()
 	{
-		$this->layout = 'bootstrap';
+		// $this->layout = 'bootstrap';
 	}
 	
 	/**
@@ -24,7 +24,7 @@ class SymfonyPostsTagController extends AppController
 	 */
 	public function index()
 	{
-		$this->paginate = ['limit' => 10, 'contain' => ['SymfonyPost', 'SymfonyTags']];
+		$this->paginate = ['limit' => 10, 'contain' => ['post', 'tag']];
 		$dataPostsTag = $this->paginate($this->SymfonyPostsTag);
 
 		$this->set(compact('dataPostsTag'));
@@ -42,9 +42,9 @@ class SymfonyPostsTagController extends AppController
 	public function view($id = null)
 	{
 
-		// $data = $this->SymfonyPostsTag->get($id, ['contain' => ['SymfonyPost', 'SymfonyTags']]);
+		// $data = $this->SymfonyPostsTag->get($id, ['contain' => ['post', 'tag']]);
 		$data = $this->SymfonyPostsTag->find()
-			->contain(['SymfonyPost', 'SymfonyTags'])
+			->contain(['SymfonyPost', 'tag'])
 			->where(['post_id' => $id])
 			->all()
 			->toList();
@@ -72,8 +72,8 @@ class SymfonyPostsTagController extends AppController
 			}
 			$this->Flash->error(__('The symfony demo post tag could not be saved. Please, try again.'));
 		}
-		$dataPost = $this->SymfonyPostsTag->SymfonyPost->find('list', ['limit' => 30]);
-		$dataTags = $this->SymfonyPostsTag->SymfonyTags->find('list', ['limit' => 30]);
+		$dataPost = $this->SymfonyPostsTag->post->find('list', ['limit' => 30]);
+		$dataTags = $this->SymfonyPostsTag->tag->find('list', ['limit' => 30]);
 
 		$this->set(compact('dataPostsTag', 'dataPost', 'dataTags'));
 
@@ -90,7 +90,7 @@ class SymfonyPostsTagController extends AppController
 	public function edit($id = null)
 	{
 		$data = $this->SymfonyPostsTag->find()
-			->contain(['SymfonyPost', 'SymfonyTags'])
+			->contain(['post', 'tag'])
 			->where(['post_id' => $id])
 			->all()
 			->toList();
@@ -106,8 +106,8 @@ class SymfonyPostsTagController extends AppController
 			}
 			$this->Flash->error(__('The symfony demo post tag could not be saved. Please, try again.'));
 		}
-		$dataPost = $this->SymfonyPostsTag->SymfonyPost->find('list', ['limit' => 30]);
-		$dataTags = $this->SymfonyPostsTag->SymfonyTags->find('list', ['limit' => 30]);
+		$dataPost = $this->SymfonyPostsTag->post->find('list', ['limit' => 30]);
+		$dataTags = $this->SymfonyPostsTag->tag->find('list', ['limit' => 30]);
 		$this->set(compact('dataPostsTag', 'dataPost', 'dataTags'));
 
 		$this->render('/Symfony/PostsTag/edit');

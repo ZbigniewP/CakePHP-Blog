@@ -7,7 +7,7 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
 	<ul class="side-nav">
 		<li class="heading"><?= __('Actions') ?></li>
-		<li><?= $this->Html->link(__('List Comment'), ['action' => 'index']) ?></li>
+		<li><?= $this->Html->link(__('List Comments'), ['action' => 'index']) ?></li>
 		<li><?= $this->Html->link(__('List Posts'), ['controller' => 'SymfonyPost', 'action' => 'index']) ?></li>
 		<li><?= $this->Html->link(__('New Post'), ['controller' => 'SymfonyPost', 'action' => 'add']) ?></li>
 	</ul>

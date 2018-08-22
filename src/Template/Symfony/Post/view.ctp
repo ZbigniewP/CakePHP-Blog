@@ -20,7 +20,7 @@
 	<table class="vertical-table">
 		<tr>
 			<th scope="row"><?= __('Author') ?></th>
-			<td><?= $data->has('symfony_user') ? $this->Html->link($data->symfony_user->fullName, ['controller' => 'SymfonyUser', 'action' => 'view', $data->symfony_user->id]) : $this->Number->format($data->author_id) ?></td>
+			<td><?= $data->has('author') ? $this->Html->link($data->author->full_name, ['controller' => 'SymfonyUser', 'action' => 'view', $data->author->id]) : $this->Number->format($data->author_id) ?></td>
 		</tr>
 		<tr>
 			<th scope="row"><?= __('Title') ?></th>
@@ -43,12 +43,12 @@
 			<td><?= $this->Number->format($data->status) ?></td>
 		</tr>
 		<tr>
-			<th scope="row"><?= __('PublishedAt') ?></th>
-			<td><?= h($data->publishedAt) ?></td>
+			<th scope="row"><?= __('Published') ?></th>
+			<td><?= h($data->published_at) ?></td>
 		</tr>
 		<tr>
-			<th scope="row"><?= __('UpdatedAt') ?></th>
-			<td><?= h($data->updatedAt) ?></td>
+			<th scope="row"><?= __('Updated') ?></th>
+			<td><?= h($data->updated_at) ?></td>
 		</tr>
 	</table>
 	<div class="row">
@@ -56,7 +56,15 @@
 		<?= $this->Markdown->parse($data->content) ?>
 	</div>
 	<div class="row">
-		<h4><?= __('Tags') ?></h4>
-		<?= $this->Text->autoParagraph(h($data->tags)); ?>
+		<h4><?= __('Tags') ?>(<?= count($data->tags) ?>)</h4>
+		<?php
+		//$this->Text->autoParagraph(h($data->tags)); 
+		?>
+	</div>
+	<div class="row">
+		<h4><?= __('Comments') ?>(<?= count($data->comments) ?>)</h4>
+		<?php
+		//$this->Text->autoParagraph(h($data->tags)); 
+		?>
 	</div>
 </div>

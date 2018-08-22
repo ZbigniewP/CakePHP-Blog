@@ -8,7 +8,7 @@ use Cake\Auth\DefaultPasswordHasher;
  * SymfonyUser Entity
  *
  * @property int $id
- * @property string $fullName
+ * @property string $full_name
  * @property string $username
  * @property string $email
  * @property string $password
@@ -27,7 +27,7 @@ class SymfonyUser extends Entity
 	 * @var array
 	 */
 	// protected $_accessible = [
-	//     'fullName' => true,
+	//     'full_name' => true,
 	//     'username' => true,
 	//     'email' => true,
 	//     'password' => true,

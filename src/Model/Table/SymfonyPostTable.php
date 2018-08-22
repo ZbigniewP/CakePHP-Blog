@@ -19,7 +19,7 @@ use Cake\Validation\Validator;
 /**
  * Symfony\Post Model
  *
- * @property \App\Model\Table\SymfonyUserTable|\Cake\ORM\Association\BelongsTo $SymfonyUser
+ * @property \App\Model\Table\SymfonyUserTable|\Cake\ORM\Association\BelongsTo $author
  *
  * @method \App\Model\Entity\SymfonyPost get($primaryKey, $options = [])
  * @method \App\Model\Entity\SymfonyPost newEntity($data = null, array $options = [])
@@ -33,94 +33,107 @@ use Cake\Validation\Validator;
 class SymfonyPostTable extends Table
 {
 
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
-    public function initialize(array $config)
-    {
-        parent::initialize($config);
+	/**
+	 * Initialize method
+	 *
+	 * @param array $config The configuration for the Table.
+	 * @return void
+	 */
+	public function initialize(array $config)
+	{
+		parent::initialize($config);
 
-        $this->setTable('symfony_demo_post');
-        $this->setDisplayField('title');
-        $this->setPrimaryKey('id');
+		$this->setTable('symfony_demo_post');
+		$this->setDisplayField('title');
+		$this->setPrimaryKey('id');
 
-        $this->belongsTo('SymfonyUser', [
-            'foreignKey' => 'author_id',
-            'joinType' => 'INNER'
-        ]);
-    }
+		$this->belongsTo('author', ['className' => 'App\Model\Table\SymfonyUserTable',
+			'foreignKey' => 'author_id',
+			'joinType' => 'INNER'
+		]);
+		$this->belongsTo('statusType', ['className' => 'App\Model\Table\TblLookupTable',
+			'key' => 'code',
+			'foreignKey' => 'status',
+			'where' => ['type' => 'PostStatus']
+		]);
+		$this->hasMany('comments', ['className' => 'App\Model\Table\SymfonyCommentTable',
+			'foreignKey' => 'post_id',
+			'joinType' => 'INNER'
+		]);
+		$this->hasMany('tags', ['className' => 'App\Model\Table\SymfonyPostsTagTable',
+			'foreignKey' => 'post_id',
+			'joinType' => 'INNER'
+		]);
+	}
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator)
-    {
-        $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
+	/**
+	 * Default validation rules.
+	 *
+	 * @param \Cake\Validation\Validator $validator Validator instance.
+	 * @return \Cake\Validation\Validator
+	 */
+	public function validationDefault(Validator $validator)
+	{
+		$validator
+			->integer('id')
+			->allowEmpty('id', 'create');
 
-        $validator
-            ->scalar('title')
-            ->requirePresence('title', 'create')
-            ->notEmpty('title');
+		$validator
+			->scalar('title')
+			->requirePresence('title', 'create')
+			->notEmpty('title');
 
-        $validator
-            ->scalar('slug')
-            ->requirePresence('slug', 'create')
-            ->notEmpty('slug');
+		$validator
+			->scalar('slug')
+			->requirePresence('slug', 'create')
+			->notEmpty('slug');
 
-        $validator
-            ->scalar('summary')
-            ->requirePresence('summary', 'create')
-            ->notEmpty('summary');
+		$validator
+			->scalar('summary')
+			->requirePresence('summary', 'create')
+			->notEmpty('summary');
 
-        $validator
-            ->requirePresence('content', 'create')
-            ->notEmpty('content');
+		$validator
+			->requirePresence('content', 'create')
+			->notEmpty('content');
 
-        $validator
-            ->dateTime('publishedAt')
-            ->requirePresence('publishedAt', 'create')
-            ->notEmpty('publishedAt');
+		$validator
+			->dateTime('publishedAt')
+			->requirePresence('publishedAt', 'create')
+			->notEmpty('publishedAt');
 
-        $validator
-            ->integer('status')
-            ->allowEmpty('status');
+		$validator
+			->integer('status')
+			->allowEmpty('status');
 
-        $validator
-            ->dateTime('updatedAt')
-            ->allowEmpty('updatedAt');
+		$validator
+			->dateTime('updatedAt')
+			->allowEmpty('updatedAt');
 
-        return $validator;
-    }
+		return $validator;
+	}
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['author_id'], 'SymfonyUser'));
+	/**
+	 * Returns a rules checker object that will be used for validating
+	 * application integrity.
+	 *
+	 * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+	 * @return \Cake\ORM\RulesChecker
+	 */
+	public function buildRules(RulesChecker $rules)
+	{
+		$rules->add($rules->existsIn(['author_id'], 'author'));
 
-        return $rules;
-    }
+		return $rules;
+	}
 
-    /**
-     * Returns the database connection name to use by default.
-     *
-     * @return string
-     */
-    public static function defaultConnectionName()
-    {
-        return 'db_symfony';
-    }
+	/**
+	 * Returns the database connection name to use by default.
+	 *
+	 * @return string
+	 */
+	public static function defaultConnectionName()
+	{
+		return 'db_symfony';
+	}
 }

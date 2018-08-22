@@ -14,7 +14,7 @@ class SymfonyTagsController extends AppController
 {
 	public function initialize()
 	{
-		$this->layout = 'bootstrap';
+		// $this->layout = 'bootstrap';
 	}
 	
 	/**

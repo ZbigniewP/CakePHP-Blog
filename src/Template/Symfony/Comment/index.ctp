@@ -7,7 +7,7 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
 	<ul class="side-nav">
 		<li class="heading"><?= __('Actions') ?></li>
-		<li><?= $this->Html->link(__('List Comment'), ['controller' => 'SymfonyComment','action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('List Comments'), ['controller' => 'SymfonyComment','action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('List Posts Tag'), ['controller' => 'SymfonyPostsTag', 'action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('List Posts'), ['controller' => 'SymfonyPost', 'action' => 'index']) ?></li>
 		<li><?= $this->Html->link(__('List Tags'), ['controller' => 'SymfonyTags', 'action' => 'index']) ?> </li>
@@ -24,8 +24,8 @@
 				<!-- <th scope="col"><?= $this->Paginator->sort('id') ?></th> -->
 				<th scope="col"><?= $this->Paginator->sort('post_id') ?></th>
 				<th scope="col"><?= $this->Paginator->sort('author_id') ?></th>
-				<th scope="col"><?= $this->Paginator->sort('publishedAt') ?></th>
-				<th scope="col"><?= $this->Paginator->sort('status') ?></th>
+				<th scope="col"><?= $this->Paginator->sort('published_at') ?></th>
+				<!-- <th scope="col"><?= $this->Paginator->sort('status') ?></th> -->
 				<th scope="col" class="actions"><?= __('Actions') ?></th>
 			</tr>
 		</thead>
@@ -33,11 +33,19 @@
 			<?php foreach ($dataComment as $data): ?>
 			<tr>
 				<!-- <td><?= $this->Number->format($data->id) ?></td> -->
-				<td><?= $data->has('symfony_post') ? $this->Html->link($data->symfony_post->title, ['controller' => 'SymfonyPost', 'action' => 'view', $data->symfony_post->id]) : $data->post_id ?></td>
+				<td colspan="3">
+					<div>
+					<?= $data->has('post') ? $this->Html->link($data->post->title, ['controller' => 'SymfonyPost', 'action' => 'view', $data->post->id]) : $this->Number->format($data->post_id) ?>
+					</div>
+				<!-- </td> -->
 				<!-- <td><?= $this->Number->format($data->author_id) ?></td> -->
-				<td><?= $data->has('symfony_user') ? $this->Html->link($data->symfony_user->fullName, ['controller' => 'SymfonyUser', 'action' => 'view', $data->author_id]) : $data->author_id ?></td>
-				<td><?= h($data->publishedAt) ?></td>
-				<td><?= $this->Number->format($data->status) ?></td>
+				<!-- <td> -->
+					<?= $data->has('user') ? $this->Html->link($data->user->full_name, ['controller' => 'SymfonyUser', 'action' => 'view', $data->user->id]) : $this->Number->format($data->author_id) ?>
+				<!-- </td>
+				<td> -->
+					<span class="right"><?= h($data->published_at) ?></span>
+				</td>
+				<!-- <td><?= $this->Number->format($data->status) ?></td> -->
 				<td class="actions">
 					<?= $this->Html->link(__('View'), ['action' => 'view', $data->id]) ?>
 					<?= $this->Html->link(__('Edit'), ['action' => 'edit', $data->id]) ?>

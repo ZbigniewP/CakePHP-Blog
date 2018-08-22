@@ -9,8 +9,8 @@ use Cake\Validation\Validator;
 /**
  * SymfonyComment Model
  *
- * @property \App\Model\Table\SymfonyPostTable|\Cake\ORM\Association\BelongsTo $SymfonyPost
- * @property \App\Model\Table\SymfonyUserTable|\Cake\ORM\Association\BelongsTo $SymfonyUser
+ * @property \App\Model\Table\SymfonyPostTable|\Cake\ORM\Association\BelongsTo $post
+ * @property \App\Model\Table\SymfonyUserTable|\Cake\ORM\Association\BelongsTo $user
  *
  * @method \App\Model\Entity\Symfony\Comment get($primaryKey, $options = [])
  * @method \App\Model\Entity\Symfony\Comment newEntity($data = null, array $options = [])
@@ -24,80 +24,80 @@ use Cake\Validation\Validator;
 class SymfonyCommentTable extends Table
 {
 
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
-    public function initialize(array $config)
-    {
-        parent::initialize($config);
+	/**
+	 * Initialize method
+	 *
+	 * @param array $config The configuration for the Table.
+	 * @return void
+	 */
+	public function initialize(array $config)
+	{
+		parent::initialize($config);
 
-        $this->setTable('symfony_demo_comment');
-        $this->setDisplayField('id');
-        $this->setPrimaryKey('id');
+		$this->setTable('symfony_demo_comment');
+		$this->setDisplayField('id');
+		$this->setPrimaryKey('id');
 
-        $this->belongsTo('SymfonyPost', [
-            'foreignKey' => 'post_id',
-            'joinType' => 'INNER'
-        ]);
-        $this->belongsTo('SymfonyUser', [
-            'foreignKey' => 'author_id',
-            'joinType' => 'INNER'
-        ]);
-    }
+		$this->belongsTo('post', ['className' => 'App\Model\Table\SymfonyPostTable',
+			'foreignKey' => 'post_id',
+			'joinType' => 'INNER'
+		]);
+		$this->belongsTo('user', ['className' => 'App\Model\Table\SymfonyUserTable',
+			'foreignKey' => 'author_id',
+			'joinType' => 'INNER'
+		]);
+	}
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
-    public function validationDefault(Validator $validator)
-    {
-        $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
+	/**
+	 * Default validation rules.
+	 *
+	 * @param \Cake\Validation\Validator $validator Validator instance.
+	 * @return \Cake\Validation\Validator
+	 */
+	public function validationDefault(Validator $validator)
+	{
+		$validator
+			->integer('id')
+			->allowEmpty('id', 'create');
 
-        $validator
-            ->requirePresence('content', 'create')
-            ->notEmpty('content');
+		$validator
+			->requirePresence('content', 'create')
+			->notEmpty('content');
 
-        $validator
-            ->dateTime('publishedAt')
-            ->requirePresence('publishedAt', 'create')
-            ->notEmpty('publishedAt');
+		$validator
+			->dateTime('publishedAt')
+			->requirePresence('publishedAt', 'create')
+			->notEmpty('publishedAt');
 
-        $validator
-            ->integer('status')
-            ->allowEmpty('status');
+		$validator
+			->integer('status')
+			->allowEmpty('status');
 
-        return $validator;
-    }
+		return $validator;
+	}
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['post_id'], 'SymfonyPost'));
-        $rules->add($rules->existsIn(['author_id'], 'SymfonyUser'));
+	/**
+	 * Returns a rules checker object that will be used for validating
+	 * application integrity.
+	 *
+	 * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+	 * @return \Cake\ORM\RulesChecker
+	 */
+	public function buildRules(RulesChecker $rules)
+	{
+		$rules->add($rules->existsIn(['post_id'], 'post'));
+		$rules->add($rules->existsIn(['author_id'], 'user'));
 
-        return $rules;
-    }
+		return $rules;
+	}
 
-    /**
-     * Returns the database connection name to use by default.
-     *
-     * @return string
-     */
-    public static function defaultConnectionName()
-    {
-        return 'db_symfony';
-    }
+	/**
+	 * Returns the database connection name to use by default.
+	 *
+	 * @return string
+	 */
+	public static function defaultConnectionName()
+	{
+		return 'db_symfony';
+	}
 }

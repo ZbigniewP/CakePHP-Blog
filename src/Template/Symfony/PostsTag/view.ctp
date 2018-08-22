@@ -20,12 +20,12 @@
 	<table class="vertical-table">
 		<tr>
 			<th scope="row"><?= __('Post') ?></th>
-			<td><?= $data->has('symfony_post') ? $this->Html->link($data->symfony_post->title, ['controller' => 'SymfonyPost', 'action' => 'view', $data->symfony_post->id]) : $data->post_id ?></td>
+			<td><?= $data->has('post') ? $this->Html->link($data->post->title, ['controller' => 'SymfonyPost', 'action' => 'view', $data->post->id]) : $data->post_id ?></td>
 		</tr>
 		<tr>
 			<th scope="row"><?= __('Tag') ?></th>
 			<!-- <td><?= $this->Number->format($data->tag_id) ?></td> -->
-			<td><?= $data->has('symfony_tag') ? $this->Html->link($data->symfony_tag->name, ['controller' => 'SymfonyTags', 'action' => 'view', $data->tag_id]) : $data->tag_id ?></td>
+			<td><?= $data->has('tag') ? $this->Html->link($data->tag->name, ['controller' => 'SymfonyTags', 'action' => 'view', $data->tag->id]) : $data->tag_id ?></td>
 		</tr>
 	</table>
 </div>

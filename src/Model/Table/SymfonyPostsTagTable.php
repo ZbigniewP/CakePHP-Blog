@@ -9,8 +9,8 @@ use Cake\Validation\Validator;
 /**
  * SymfonyPostsTag Model
  *
- * @property \App\Model\Table\SymfonyPostTable|\Cake\ORM\Association\BelongsTo $SymfonyPost
- * @property \App\Model\Table\SymfonyTagsTable|\Cake\ORM\Association\BelongsTo $SymfonyTags
+ * @property \App\Model\Table\SymfonyPostTable|\Cake\ORM\Association\BelongsTo $post
+ * @property \App\Model\Table\SymfonyTagsTable|\Cake\ORM\Association\BelongsTo $tag
  *
  * @method \App\Model\Entity\SymfonyPostsTag get($primaryKey, $options = [])
  * @method \App\Model\Entity\SymfonyPostsTag newEntity($data = null, array $options = [])
@@ -38,11 +38,11 @@ class SymfonyPostsTagTable extends Table
 		$this->setDisplayField('post_id');
 		$this->setPrimaryKey(['post_id', 'tag_id']);
 
-		$this->belongsTo('SymfonyPost', [
+		$this->belongsTo('post', ['className' => 'App\Model\Table\SymfonyPostTable',
 			'foreignKey' => 'post_id',
 			'joinType' => 'INNER'
 		]);
-		$this->belongsTo('SymfonyTags', [
+		$this->belongsTo('tag', ['className' => 'App\Model\Table\SymfonyTagsTable',
 			'foreignKey' => 'tag_id',
 			'joinType' => 'INNER'
 		]);
@@ -57,8 +57,8 @@ class SymfonyPostsTagTable extends Table
 	 */
 	public function buildRules(RulesChecker $rules)
 	{
-		$rules->add($rules->existsIn(['post_id'], 'SymfonyPost'));
-		$rules->add($rules->existsIn(['tag_id'], 'SymfonyTags'));
+		$rules->add($rules->existsIn(['post_id'], 'post'));
+		$rules->add($rules->existsIn(['tag_id'], 'tag'));
 
 		return $rules;
 	}

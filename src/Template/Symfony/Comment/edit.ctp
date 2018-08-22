@@ -13,7 +13,7 @@
 				['confirm' => __('Are you sure you want to delete # {0}?', $data->id)]
 			)
 		?></li>
-		<li><?= $this->Html->link(__('List Comment'), ['action' => 'index']) ?></li>
+		<li><?= $this->Html->link(__('List Comments'), ['action' => 'index']) ?></li>
 		<li><?= $this->Html->link(__('List Posts'), ['controller' => 'SymfonyPost', 'action' => 'index']) ?></li>
 		<li><?= $this->Html->link(__('New Post'), ['controller' => 'SymfonyPost', 'action' => 'add']) ?></li>
 	</ul>
@@ -23,10 +23,11 @@
 	<fieldset>
 		<legend><?= __('Edit Comment') ?></legend>
 		<?php
-			echo $this->Form->control('post_id', ['options' => $post]);
-			echo $this->Form->control('author_id');
-			echo $this->Form->control('publishedAt');
+			echo $this->Form->control('post_id', ['options' => $posts]);
+			echo $this->Form->control('author_id', ['options' => $users]);
+			echo $this->Form->control('published_at');
 			echo $this->Form->control('status');
+			echo $this->Form->control('content');
 		?>
 	</fieldset>
 	<?= $this->Form->button(__('Submit')) ?>

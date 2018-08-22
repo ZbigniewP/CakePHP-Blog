@@ -32,11 +32,10 @@ class SymfonyUserTable extends Table
 		parent::initialize($config);
 		
 		$this->setTable('symfony_demo_user');
-		// $this->setDisplayField('id');
-		$this->setDisplayField('fullName');
+		$this->setDisplayField('full_name');
 		$this->setPrimaryKey('id');
 
-		$this->hasMany('SymfonyPost', ['foreignKey' => 'author_id']);
+		$this->hasMany('post', ['foreignKey' => 'author_id']);
 	}
 
 	/**
@@ -52,10 +51,10 @@ class SymfonyUserTable extends Table
 			->allowEmpty('id', 'create');
 
 		$validator
-			->scalar('fullName')
-			->maxLength('fullName', 255)
-			->requirePresence('fullName', 'create')
-			->notEmpty('fullName');
+			->scalar('full_name')
+			->maxLength('full_name', 255)
+			->requirePresence('full_name', 'create')
+			->notEmpty('full_name');
 
 		$validator
 			->scalar('username')

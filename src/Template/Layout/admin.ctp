@@ -26,7 +26,7 @@
 					</button>
 					<?= $this->Html->link('Blog', ['controller' => 'Admin'], ['class' => 'navbar-brand']) ?>
 				</div>
-				<div class="collapse navbar-collapse navbar-ex1-collapse navbar-right">
+				<div class="collapse navbar-collapse navbar-right">
 					<ul class="nav navbar-nav">
 						<li><?= $this->Html->link('Pages', '/pages') ?></li>
 						<li><?= $this->Html->link('Back to front', '/blog') ?></li>
@@ -35,8 +35,11 @@
 				</div>
 			</div>
 		</div>
-
+<div class="breadcrumbs">
+	<?= $this->Breadcrumbs->render(['class'=>'breadcrumbs']) ?><!-- breadcrumbs -->
+</div>
 		<div class="container">
+
 			<?= $this->Flash->render(); ?>
 			<?= $this->fetch('content'); ?>
 		</div>

@@ -59,8 +59,9 @@ use Cake\Network\Exception\NotFoundException;
 
 	<div class="row">
 		<div class="container"><div class="columns large-12">
-			<?= $this->Flash->render(); ?>
-			<?= $this->fetch('content'); ?>
+			<?= $this->Breadcrumbs->render(['class'=>'breadcrumbs']) ?><!-- breadcrumbs -->
+			<?= $this->Flash->render(); ?><!-- messages -->
+			<?= $this->fetch('content'); ?><!-- content -->
 		</div>
 	</div></div>
 

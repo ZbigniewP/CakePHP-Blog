@@ -14,7 +14,7 @@ class SymfonyCommentController extends AppController
 {
 	public function initialize()
 	{
-		$this->layout = 'bootstrap';
+		// $this->layout = 'bootstrap';
 	}
 	
 	/**
@@ -24,7 +24,7 @@ class SymfonyCommentController extends AppController
 	 */
 	public function index()
 	{
-		$this->paginate = ['contain' => ['SymfonyPost', 'SymfonyUser']];
+		$this->paginate = ['contain' => ['post', 'user']];
 		$dataComment = $this->paginate($this->SymfonyComment);
 
 		$this->set(compact('dataComment'));
@@ -41,7 +41,7 @@ class SymfonyCommentController extends AppController
 	 */
 	public function view($id = null)
 	{
-		$data = $this->SymfonyComment->get($id, ['contain' => ['SymfonyPost', 'SymfonyUser']]);
+		$data = $this->SymfonyComment->get($id, ['contain' => ['post', 'user']]);
 
 		$this->set('data', $data);
 
@@ -66,8 +66,8 @@ class SymfonyCommentController extends AppController
 			$this->Flash->error(__('The symfony demo comment could not be saved. Please, try again.'));
 		}
 		
-		$post = $this->SymfonyComment->SymfonyPost->find('list', ['limit' => 30]);
-		$user = $this->SymfonyComment->SymfonyUser->find('list', ['limit' => 30]);
+		$post = $this->SymfonyComment->post->find('list', ['limit' => 30]);
+		$user = $this->SymfonyComment->user->find('list', ['limit' => 30]);
 
 		$this->set(compact('data', 'post', 'user'));
 
@@ -93,8 +93,8 @@ class SymfonyCommentController extends AppController
 			}
 			$this->Flash->error(__('The symfony demo comment could not be saved. Please, try again.'));
 		}
-		$post = $this->SymfonyComment->SymfonyPost->find('list', ['limit' => 30]);
-		$user = $this->SymfonyComment->SymfonyUser->find('list', ['limit' => 30]);
+		$post = $this->SymfonyComment->post->find('list', ['limit' => 30]);
+		$user = $this->SymfonyComment->user->find('list', ['limit' => 30]);
 		$this->set(compact('data', 'post', 'user'));
 
 		$this->render('/Symfony/Comment/edit');

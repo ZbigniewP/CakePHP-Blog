@@ -15,7 +15,7 @@ class SymfonyUserController extends AppController
 {
 	public function initialize()
 	{
-		$this->viewBuilder()->setLayout('bootstrap');
+		// $this->viewBuilder()->setLayout('bootstrap');
 		$this->viewBuilder()->setTemplatePath('Symfony/User');
 	}
 	

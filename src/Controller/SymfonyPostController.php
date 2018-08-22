@@ -20,7 +20,7 @@ class SymfonyPostController extends AppController
 {
 	public function initialize()
 	{
-		$this->viewBuilder()->setLayout('bootstrap');
+		// $this->viewBuilder()->setLayout('bootstrap');
 		$this->viewBuilder()->setTemplatePath('Symfony/Post');
 	}
 
@@ -32,12 +32,9 @@ class SymfonyPostController extends AppController
 	public function index()
 	{
 		$this->paginate = [
-			// 'contain' => ['Pages', 'TblUser']
-			// 'contain' => ['Comment', 'User']
-			'contain' => ['SymfonyUser'],
+			'contain' => ['author'],
 			'limit' => 10
 		];
-		// $users = $this->paginate($this->SymfonyUser);
 
 		$dataPost = $this->paginate($this->SymfonyPost);
 
@@ -54,7 +51,7 @@ class SymfonyPostController extends AppController
 	 */
 	public function view($id = null)
 	{
-		$dataPost = $this->SymfonyPost->get($id, ['contain' => ['SymfonyUser']]);
+		$dataPost = $this->SymfonyPost->get($id, ['contain' => ['comments', 'author', 'tags']]); //, 'statusType'
 		$this->set('data', $dataPost);
 	}
 
@@ -75,8 +72,9 @@ class SymfonyPostController extends AppController
 			}
 			$this->Flash->error(__('The symfony demo post could not be saved. Please, try again.'));
 		}
-		$user = $this->SymfonyPost->SymfonyUser->find('list', ['limit' => 30]);
-		$this->set(compact('data', 'user'));
+		$author = $this->SymfonyPost->author->find('list', ['limit' => 30]);
+		$status = $this->SymfonyPost->statusType->find('list', ['limit' => 30])->where(['type' => 'PostStatus']);
+		$this->set(compact('data', 'author', 'status'));
 	}
 
 	/**
@@ -98,8 +96,8 @@ class SymfonyPostController extends AppController
 			}
 			$this->Flash->error(__('The symfony demo post could not be saved. Please, try again.'));
 		}
-		$user = $this->SymfonyPost->SymfonyUser->find('list', ['limit' => 30]);
-		$this->set(compact('post', 'user'));
+		$author = $this->SymfonyPost->author->find('list', ['limit' => 30]);
+		$this->set(compact('post', 'author'));
 	}
 
 	/**

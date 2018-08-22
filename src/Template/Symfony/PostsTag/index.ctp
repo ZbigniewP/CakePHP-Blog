@@ -7,7 +7,7 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
 	<ul class="side-nav">
 		<li class="heading"><?= __('Actions') ?></li>
-		<li><?= $this->Html->link(__('List Comment'), ['controller' => 'SymfonyComment','action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('List Comments'), ['controller' => 'SymfonyComment','action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('List Posts Tag'), ['controller' => 'SymfonyPostsTag', 'action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('List Posts'), ['controller' => 'SymfonyPost', 'action' => 'index']) ?></li>
 		<li><?= $this->Html->link(__('List Tags'), ['controller' => 'SymfonyTags', 'action' => 'index']) ?> </li>
@@ -16,6 +16,7 @@
 		<li><?= $this->Html->link(__('New Post'), ['controller' => 'SymfonyPost', 'action' => 'add']) ?></li>
 	</ul>
 </nav>
+
 <div class="symfonyDemoPostTag index large-9 medium-8 columns content">
 	<h3><?= __('Symfony Post Tag') ?></h3>
 	<table cellpadding="0" cellspacing="0">
@@ -29,8 +30,14 @@
 		<tbody>
 			<?php foreach ($dataPostsTag as $dataPostsTag): ?>
 			<tr>
-				<td><?= $dataPostsTag->has('symfony_post') ? $this->Html->link($dataPostsTag->symfony_post->title, ['controller' => 'SymfonyPost', 'action' => 'view', $dataPostsTag->post_id]) : $dataPostsTag->post_id ?></td>
-				<td><?= $dataPostsTag->has('symfony_tag') ? $this->Html->link($dataPostsTag->symfony_tag->name, ['controller' => 'SymfonyTags', 'action' => 'view', $dataPostsTag->tag_id]) : $dataPostsTag->tag_id ?></td>
+				<td colspan="2">
+					<div>
+					<?= $dataPostsTag->has('post') ? $this->Html->link($dataPostsTag->post->title, ['controller' => 'SymfonyPost', 'action' => 'view', $dataPostsTag->post_id]) : $dataPostsTag->post_id ?>
+				</div>
+				<!-- </td>
+				<td> -->
+					<?= $dataPostsTag->has('tag') ? $this->Html->link($dataPostsTag->tag->name, ['controller' => 'SymfonyTags', 'action' => 'view', $dataPostsTag->tag_id]) : $dataPostsTag->tag_id ?>
+				</td>
 				<!-- <td><?= $this->Number->format($dataPostsTag->tag_id) ?></td> -->
 				<td class="actions">
 					<?= $this->Html->link(__('View'), ['action' => 'view', $dataPostsTag->tag_id]) ?>
@@ -41,6 +48,7 @@
 			<?php endforeach; ?>
 		</tbody>
 	</table>
+
 	<div class="paginator">
 		<ul class="pagination">
 			<?= $this->Paginator->first('<< ' . __('first')) ?>

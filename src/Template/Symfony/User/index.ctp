@@ -7,7 +7,7 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
 	<ul class="side-nav">
 		<li class="heading"><?= __('Actions') ?></li>
-		<li><?= $this->Html->link(__('List Comment'), ['controller' => 'SymfonyComment','action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('List Comments'), ['controller' => 'SymfonyComment','action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('List Posts Tag'), ['controller' => 'SymfonyPostsTag', 'action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('List Posts'), ['controller' => 'SymfonyPost', 'action' => 'index']) ?></li>
 		<li><?= $this->Html->link(__('List Tags'), ['controller' => 'SymfonyTags', 'action' => 'index']) ?> </li>
@@ -21,7 +21,7 @@
 		<thead>
 			<tr>
 				<!-- <th scope="col"><?= $this->Paginator->sort('id') ?></th> -->
-				<th scope="col"><?= $this->Paginator->sort('fullName') ?></th>
+				<th scope="col"><?= $this->Paginator->sort('full_name') ?></th>
 				<!-- <th scope="col"><?= $this->Paginator->sort('username') ?></th> -->
 				<th scope="col"><?= $this->Paginator->sort('email') ?></th>
 				<!-- <th scope="col"><?= $this->Paginator->sort('password') ?></th> -->
@@ -32,7 +32,7 @@
 			<?php foreach ($users as $user): ?>
 			<tr>
 				<!-- <td><?= $this->Number->format($user->id) ?></td> -->
-				<td><?= h($user->fullName) ?></td>
+				<td><?= h($user->full_name) ?></td>
 				<!-- <td><?= h($user->username) ?></td> -->
 				<td><?= h($user->email) ?></td>
 				<!-- <td><?= h($user->password) ?></td> -->

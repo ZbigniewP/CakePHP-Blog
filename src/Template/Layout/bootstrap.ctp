@@ -46,7 +46,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 				</button>
 				<?= $this->Html->link('Blog Cake', '/blog', ['class' => 'navbar-brand']) ?>
 			</div>
-			<div class="collapse navbar-collapse navbar-ex1-collapse navbar-right">
+			<div class="collapse navbar-collapse navbar-right">
 				<ul class="nav navbar-nav">
 					<li><?= $this->Html->link('Yii', '/yii') ?></li>
 					<li><?= $this->Html->link('Symfony', '/symfony') ?></li>
@@ -65,6 +65,9 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 
 	<div class="container">
 		<div class="row">
+<div class="breadcrumbs">
+	<?= $this->Breadcrumbs->render(['class'=>'breadcrumbs']) ?><!-- breadcrumbs -->
+</div>
 			<?= $this->Flash->render() ?>
 			<?= $this->fetch('content'); ?>
 			<?php if ($this->request->params['action'] !== 'login'):

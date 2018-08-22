@@ -1,0 +1,53 @@
+{% extends '../Layout/twig/base.html.twig' %}
+
+{% block body_id 'homepage' %}
+
+{#
+	the homepage is a special page which displays neither a header nor a footer.
+	this is done with the 'trick' of defining empty Twig blocks without any content
+#}
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+
+{% block body %}
+	<div class="page-header">
+		<h1>{{ 'title.homepage' }}|trans</h1>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="jumbotron">
+				<p>
+					{{ 'help.browse_app' }}|trans
+				</p>
+				<p>
+					<a class="btn btn-primary btn-lg" href="{{ Url.build('symfonyBlog') }}">
+						<i class="fa fa-users" aria-hidden="true"></i>
+						{{ 'action.browse_app' }}|trans
+					</a>
+				</p>
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="jumbotron">
+				<p>
+					{{ 'help.browse_admin' }}|trans
+				</p>
+				<p>
+					<a class="btn btn-primary btn-lg" href="{{ Url.build('symfonyAdmin') }}">
+						<i class="fa fa-lock" aria-hidden="true"></i> {{ 'action.browse_admin' }}|trans
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+{{ _view.assign('title', _view.__("I'm title")) }}
+{{ _view.start('header') }}
+    <p>I'm header</p>
+	{{ Html.link('Edit user', {'controller':'Users', 'action': 'edit' ~ '/' ~ user.id}, {'class':'myclass'})|raw }}
+{{ _view.end() }}
+{{ _view.start('footer') }}
+    <p>I'm footer</p>
+{{ _view.end() }}
+{% endblock %}

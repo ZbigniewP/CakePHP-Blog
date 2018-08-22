@@ -18,13 +18,13 @@
 	<fieldset>
 		<legend><?= __('Add Post') ?></legend>
 		<?php
-			echo $this->Form->control('author_id', ['options' => $user]);
+			echo $this->Form->control('author_id', ['options' => $author]);
 			echo $this->Form->control('title');
 			echo $this->Form->control('slug');
 			echo $this->Form->control('summary');
-			echo $this->Form->control('publishedAt');
-			echo $this->Form->control('status');
-			echo $this->Form->control('updatedAt', ['empty' => true]);
+			echo $this->Form->control('published_at');
+			echo $this->Form->control('status', ['options' => $status]);
+			echo $this->Form->control('updated_at', ['empty' => true]);
 		?>
 	</fieldset>
 	<?= $this->Form->button(__('Submit')) ?>

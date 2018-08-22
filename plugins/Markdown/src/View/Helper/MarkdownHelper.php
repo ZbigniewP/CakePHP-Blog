@@ -11,18 +11,19 @@ use League\CommonMark\CommonMarkConverter;
  */
 class MarkdownHelper extends Helper
 {
-    public $parser = false;
+	public $parser = false;
 
-    /**
-     * Parse markdown content
-     * @param $content
-     * @return string
-     */
-    public function parse($content)
-    {
-        if (!$this->parser) {
-            $this->parser = new CommonMarkConverter();
-        }
-        return $this->parser->convertToHtml($content);
-    }
+	/**
+	 * Parse markdown content
+	 * @param $content
+	 * @return string
+	 */
+	public function parse($content)
+	{
+		if ( is_resource($content) && get_resource_type($content) === 'stream' )  $content = stream_get_contents($content);
+		if (!$this->parser) {
+			$this->parser = new CommonMarkConverter();
+		}
+		return $this->parser->convertToHtml($content);
+	}
 }
