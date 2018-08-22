@@ -46,20 +46,23 @@ class TblPostTable extends Table
 				]
 			]
 		]);
-		// $this->addBehavior('CounterCache', ['TblTag' => ['frequency']]);
+		// $this->addBehavior('CounterCache', ['tags' => ['frequency']]);
 
 		// $this->belongsTo('Articles', [
 		// 	'foreignKey' => 'page_id'
 		// ]);
 
-		$this->hasMany('comments', [
+		$this->hasMany('comments', ['className' => 'App\Model\Table\TblCommentTable',
 			'foreignKey' => 'post_id',
 			'joinType' => 'INNER'
 		]);
 
-		// $this->hasMany('TblTag', [
+		// $this->hasMany('tags', [
 		// 	'foreignKey' => 'name',
 		// ]);
+		$this->belongsToMany('tags', ['className' => 'App\Model\Table\TblTagTable',
+			'foreignKey' => 'name'
+		]);
 
 		$this->belongsTo('author', ['className' => 'App\Model\Table\TblUserTable',
 			'foreignKey' => 'author_id',

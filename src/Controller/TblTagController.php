@@ -14,7 +14,8 @@ class TblTagController extends AppController
 {
 	public function initialize()
 	{
-		$this->viewBuilder()->setLayout('bootstrap');
+		// $this->viewBuilder()->setLayout('bootstrap');
+		$this->layout = 'column2';
 		$this->viewBuilder()->setTemplatePath('Yii/TblTag');
 	}
 	

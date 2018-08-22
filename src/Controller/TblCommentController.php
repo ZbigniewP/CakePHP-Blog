@@ -20,6 +20,8 @@ class TblCommentController extends AppController
 
 	public function initialize()
 	{
+		parent::initialize();
+		$this->loadModel('TblComment');
 		// $this->viewBuilder()->setLayout('bootstrap');
 		$this->layout = 'column2';
 		$this->viewBuilder()->setTemplatePath('Yii/TblComment');
@@ -46,14 +48,14 @@ class TblCommentController extends AppController
 	 */
 	public function view($id = null)
 	{
-		$data = $this->TblComment->get($id, ['contain' => ['post']]);
+		$data = $this->TblComment->get($id, ['contain' => ['post'=> ['author','statusType' ],'statusComm'] ]);
 
-		$status = $this->TblComment->statusType
-			->find('list', ['keyField' => 'code', 'valueField' => 'name'])
-			->where(['type' => 'CommentStatus', 'code' => $data->status])
-			->toList();
-		$data->status = $status[0];
-
+		// $status = $this->TblComment->statusType
+		// 	->find('list', ['keyField' => 'code', 'valueField' => 'name'])
+		// 	->where(['type' => 'CommentStatus', 'code' => $data->status])
+		// 	->toList();
+		// $data->status = $status[0];
+pr($data);exit;
 		$this->set('data', $data);
 		
 // 		$status = $this->statusType->find()

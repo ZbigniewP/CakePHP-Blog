@@ -21,8 +21,8 @@
 		<thead>
 			<tr>
 				<!-- <th scope="col"><?= $this->Paginator->sort('id') ?></th> -->
-				<!-- <th scope="col"><?= $this->Paginator->sort('type') ?></th>
-				<th scope="col"><?= $this->Paginator->sort('status') ?></th> -->
+				<!-- <th scope="col"><?= $this->Paginator->sort('type') ?></th> -->
+				<th scope="col"><?= $this->Paginator->sort('status') ?></th>
 				<th scope="col"><?= $this->Paginator->sort('create_time') ?></th>
 				<th scope="col"><?= $this->Paginator->sort('author') ?></th>
 				<!-- <th scope="col"><?= $this->Paginator->sort('email') ?></th> -->
@@ -35,8 +35,8 @@
 			<?php foreach ($dataComment as $data): ?>
 			<tr>
 				<!-- <td><?= $this->Number->format($data->id) ?></td> -->
-				<!-- <td><?= $this->Number->format($data->type) ?></td>
-				<td><?= $this->Number->format($data->status) ?></td> -->
+				<!-- <td><?= $this->Number->format($data->type) ?></td> -->
+				<td><?= $data->has('status_type') ? $this->Html->link($data->status_type->name, ['controller' => 'TblLookup', 'action' => 'view', $data->status_type->id]) :$this->Number->format($data->status) ?></td>
 				<td><?= date('Y-m-d H:i', $data->create_time) ?></td>
 				<td><?= h($data->author) ?></td>
 				<!-- <td><?= h($data->email) ?></td> -->

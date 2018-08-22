@@ -47,13 +47,12 @@ class TblCommentTable extends Table
 			'foreignKey' => 'author',
 			'joinType' => 'INNER'
 		]);
-        // $this->belongsTo('statusType', ['foreignKey' => 'status', 'where' =>'type=CommentStatus']);
+        $this->hasOne('statusComm', ['className' => 'App\Model\Table\TblLookupTable', 'foreignKey' => 'code']);
 		$this->belongsTo('statusType', ['className' => 'App\Model\Table\TblLookupTable',
 			'key' => 'code',
 			'foreignKey' => 'status',
-			'where' => 'CommentStatus'
+			'where' => ['type' => 'CommentStatus']
 		]);
-
 	}
 
 	/**

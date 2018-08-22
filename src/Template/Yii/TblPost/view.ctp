@@ -24,7 +24,7 @@
 		</tr>
 		<tr>
 			<th scope="row"><?= __('Author') ?></th>
-			<td><?= $data->has('tbl_user') ? $this->Html->link($data->tbl_user->username, ['controller' => 'TblUser', 'action' => 'view', $data->tbl_user->id]) : $this->Number->format($data->author_id) ?></td>
+			<td><?= $data->has('author') ? $this->Html->link($data->author->username, ['controller' => 'TblUser', 'action' => 'view', $data->author->id]) : $this->Number->format($data->author_id) ?></td>
 		</tr>
 		<!-- <tr>
 			<th scope="row"><?= __('Id') ?></th>
@@ -36,7 +36,7 @@
 		</tr> -->
 		<tr>
 			<th scope="row"><?= __('Status') ?></th>
-			<td><?= h($data->status) ?></td>
+			<td><?= $data->has('status_type') ? $this->Html->link($data->status_type->name, ['controller' => 'TblLookup', 'action' => 'view', $data->status_type->id]) : h($data->status) ?></td>
 			<!-- <td><?= $this->Number->format($data->status) ?></td> -->
 		</tr>
 		<tr>
@@ -58,6 +58,6 @@
 	</div>
 	<div class="row">
 		<h4><?= __('Comments') ?>
-		<?= count($data->tbl_comment); ?></h4>
+		<?= count($data->comments); ?></h4>
 	</div>
 </div>

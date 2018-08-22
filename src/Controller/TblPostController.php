@@ -51,13 +51,13 @@ class TblPostController extends AppController
 	public function view($id = null)
 	{
 		// $data = $this->TblPost->get($id, ['contain' => ['comments', 'author']]);
-		$data = $this->TblPost->get($id, ['contain' => ['comments', 'author']]);
-		$status = $this->TblPost->statusType
-			->find('list', ['keyField' => 'code', 'valueField' => 'name'])
-			->where(['type' => 'PostStatus', 'code' => $data->status])
-			// ->order('name')
-			->toList();
-		$data->status = $status[0];
+		$data = $this->TblPost->get($id, ['contain' => ['comments', 'author', 'statusType']]);
+		// $status = $this->TblPost->statusType
+		// 	->find('list', ['keyField' => 'code', 'valueField' => 'name'])
+		// 	->where(['type' => 'PostStatus', 'code' => $data->status])
+		// 	// ->order('name')
+		// 	->toList();
+		// $data->status = $status[0];
 
 		$this->set('data', $data);
 	}
@@ -81,8 +81,11 @@ class TblPostController extends AppController
 		}
 		// $pages = $this->TblPost->Pages->find('list', ['limit' => 30]);
 		// $comments = $this->TblPost->comments->find('list', ['limit' => 30])->order('create_time');
-		$tags = $this->TblPost->TblTag->find('list', ['limit' => 30])->order('name');
+
+		$tags = $this->TblPost->tags->find('list', ['limit' => 30])->order('name');
+
 		$postUser = $this->TblPost->author->find('list', ['limit' => 30])->order('username');
+
 		$postStatus = $this->TblPost->statusType
 			->find('list', ['keyField' => 'code', 'valueField' => 'name'])
 			->where(['type' => 'PostStatus'])

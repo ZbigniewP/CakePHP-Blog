@@ -53,7 +53,7 @@ class YiiPostTable extends Table
 		// 		'author' => ['className' => 'App\Model\Table\TblUserTable']
 		// 	],
 		// 	'hasMany' => ['comments'],
-		// 	'belongsToMany' => ['TblTag']
+		// 	'belongsToMany' => ['tags']
 		// ]);
 
 		// $this->belongsTo('YiiUser', [
@@ -74,10 +74,7 @@ class YiiPostTable extends Table
 			'joinType' => 'INNER'
 		]);
 
-		// $this->belongsToMany('YiiTag', [
-		// 	'foreignKey' => 'name',
-		// ]);
-		$this->belongsToMany('TblTag', [
+		$this->belongsToMany('tags', [
 			'foreignKey' => 'name'
 		]);
 		

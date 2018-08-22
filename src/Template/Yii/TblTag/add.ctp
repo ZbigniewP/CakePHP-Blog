@@ -11,7 +11,7 @@
     </ul>
 </nav>
 <div class="tblTag form large-9 medium-8 columns content">
-    <?= $this->Form->create($dataTag) ?>
+    <?= $this->Form->create($data) ?>
     <fieldset>
         <legend><?= __('Add Tbl Tag') ?></legend>
         <?php
