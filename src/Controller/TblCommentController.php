@@ -48,14 +48,22 @@ class TblCommentController extends AppController
 	 */
 	public function view($id = null)
 	{
-		$data = $this->TblComment->get($id, ['contain' => ['post'=> ['author','statusType' ],'statusComm'] ]);
+		// $data = $this->TblComment->get($id, ['contain' => ['post' => ['author', 'statusType'], 'statusType']]);
+		$data = $this->TblComment->get($id, ['contain'=>['post'=>['author']]]);
 
-		// $status = $this->TblComment->statusType
-		// 	->find('list', ['keyField' => 'code', 'valueField' => 'name'])
-		// 	->where(['type' => 'CommentStatus', 'code' => $data->status])
-		// 	->toList();
-		// $data->status = $status[0];
-pr($data);exit;
+		$statusComm = $this->TblComment->statusType
+			->find('list', ['keyField' => 'code', 'valueField' => 'name'])
+			->where(['type' => 'CommentStatus', 'code' => $data->status])
+			->toList();
+
+		$statusPost = $this->TblComment->statusType
+			->find('list', ['keyField' => 'code', 'valueField' => 'name'])
+			->where(['type' => 'PostStatus', 'code' => $data->post->status])
+			->toList();
+			
+		$data->status = $statusComm[0];
+		$data->post->status = $statusPost[0];
+
 		$this->set('data', $data);
 		
 // 		$status = $this->statusType->find()
