@@ -3,7 +3,7 @@ namespace App\View;
 
 use WyriHaximus\TwigView\View\TwigView;
 
-class AppView extends TwigView
+class SymfonyView extends TwigView
 {
     public function initialize()
     {

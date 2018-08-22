@@ -1,6 +1,6 @@
 <h1>Edit post</h1>
 
-<p><?= $this->Html->link('< Back to posts', ['controller' => 'Admin', 'action' => 'index']) ?></p>
+<p><?= $this->Html->link('< Back to posts', ['action' => 'index']) ?></p>
 
 <?= $this->Form->create($post); ?>
 <div class="row">

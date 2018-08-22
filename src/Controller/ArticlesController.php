@@ -8,6 +8,12 @@ class ArticlesController extends AppController
 
 	public function index()
 	{
+		$posts = [];
+		$posts = $this->paginate($this->Articles);
+// pr($posts);exit;
+		$this->set(compact('posts'));
+		$this->set('_serialize', ['posts']);
+
 // $this->theme = 'yiiDEMO';
 // $this->title = 'Blog yii';
 		$this->layout = 'column1';

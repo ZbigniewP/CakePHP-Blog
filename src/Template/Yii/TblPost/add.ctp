@@ -8,7 +8,7 @@
 	<ul class="side-nav">
 		<li class="heading"><?= __('Actions') ?></li>
 		<li><?= $this->Html->link(__('List Post'), ['action' => 'index']) ?></li>
-		<li><?= $this->Html->link(__('List User'), ['controller' => 'TblUser', 'action' => 'index']) ?></li>
+		<li><?= $this->Html->link(__('List Users'), ['controller' => 'TblUser', 'action' => 'index']) ?></li>
 		<li><?= $this->Html->link(__('New User'), ['controller' => 'TblUser', 'action' => 'add']) ?></li>
 	</ul>
 </nav>

@@ -1,40 +1,40 @@
-<h1>Manage posts</h1>
+<h1><?=__('Manage posts') ?></h1>
 
-<p><?= $this->Html->link('Add a new post', ['controller' => 'Admin', 'action' => 'add'], ['class' => 'btn btn-primary']) ?></p>
+<p><?= $this->Html->link(__('Add a new post'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?></p>
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>ID</th>
-			<th width="50%">Name</th>
-			<th>Category</th>
-			<th>Publication date</th>
+			<th scope="col"><?= __('id') ?></th>
+			<th width="50%" scope="col"><?= $this->Paginator->sort('title') ?></th>
+			<th scope="col"><?= $this->Paginator->sort('category') ?></th>
+			<th scope="col"><?= $this->Paginator->sort('created') ?></th>
 			<th>Actions</th>
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach ($posts as $post): ?>
+		<?php foreach ($posts as $data) : ?>
 			<tr>
-				<td><?= $post->id ?></td>
-				<td><?= isset($post->title)?$post->title:$post->name ?></td>
-				<td nowrap><?= isset($post->tags)?$post->tags:$post->category->name ?></td>
-				<td align="right" nowrap><?= isset($post->update_time)?strftime('%c', $post->update_time):$post->created ?></td>
+				<td><?= $data->id ?></td>
+				<td><?= $data->has('title') ? $data->title : $data->name ?></td>
+				<td nowrap><?= $data->has('tags') ? $data->tags : $data->has('category') ? $data->category->name : '' ?></td>
+				<td align="right" nowrap><?= $data->has('update_time') ? strftime('%c', $data->update_time) : $data->created ?></td>
 				<td align="right" nowrap width="180px"><span class="btn-group">
 <?php
 echo $this->Html->link(
-	'<span class="glyphicon glyphicon-eye-close"></span>',
-	['controller' => 'Posts', 'action' => 'view', 'slug' => $post->slug],
+	'<span class="glyphicon glyphicon-eye-close"></span>' . __('View'),
+	['action' => 'view', 'slug' => $data->slug],
 	['title' => 'View', 'class' => 'btn btn-default', 'escapeTitle' => false]
-),
+) . PHP_EOL,
 	$this->Html->link(
-	'<span class="glyphicon glyphicon-edit"></span>',
-	['controller' => 'Admin', 'action' => 'edit', 'id' => $post->id],
+	'<span class="glyphicon glyphicon-edit"></span>' . __('Edit'),
+	['action' => 'edit', 'id' => $data->id],
 	['title' => 'Edit', 'class' => 'btn btn-primary', 'escapeTitle' => false]
-),
+) . PHP_EOL,
 	$this->Form->postLink(
-	__('<span class="glyphicon glyphicon-trash"></span>'),
-	['controller' => 'Admin', 'action' => 'delete', $post->id],
+	'<span class="glyphicon glyphicon-trash"></span>' . __('Delete'),
+	['action' => 'delete', $data->id],
 	['title' => 'Delete', 'class' => 'btn btn-danger', 'escapeTitle' => false, 'confirm' => __('Are you sure  ?')]
-);
+) . PHP_EOL;
 ?>
 					</span>
 				</td>
@@ -43,7 +43,7 @@ echo $this->Html->link(
 	</tbody>
 </table>
 
-<?php if ($this->Paginator->counter() !== '1 of 1'): ?>
+<?php if (isset($this->Paginator) && $this->Paginator->counter() !== '1 of 1') : ?>
 	<div class="paginator">
 		<ul class="pagination">
 			<?= $this->Paginator->prev('«') ?>

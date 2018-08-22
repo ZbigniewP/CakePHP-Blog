@@ -1,6 +1,6 @@
 <?php 
 // $this->theme='yiiDEMO';
-$this->title='Blog yii';
+$this->title = 'Blog yii';
 
 $this->start('content');
 ?>
@@ -32,7 +32,6 @@ $this->start('content');
 		</div><!-- sidebar -->
 	</div>
 </div>
-<?php
-$this->end();
-echo $this->render('/layout/main'); 
-?>
+<?php $this->end() ?>
+
+<?= $this->render('/layout/main') ?>

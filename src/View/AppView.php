@@ -24,7 +24,7 @@ class AppView extends View
 				'inputContainerError' => '<div class="form-group{{required}} has-error">{{content}}</div>'
 			]
 		]);
-		// $this->loadHelper('Markdown.Markdown');
+		$this->loadHelper('Markdown.Markdown');
 	}
 // * - `beforeRender`
 // * - `afterRender`

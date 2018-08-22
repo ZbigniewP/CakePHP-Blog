@@ -11,7 +11,7 @@
 		<li><?= $this->Form->postLink(__('Delete Post'), ['action' => 'delete', $data->id], ['confirm' => __('Are you sure you want to delete # {0}?', $data->id)]) ?> </li>
 		<li><?= $this->Html->link(__('List Post'), ['action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('New Post'), ['action' => 'add']) ?> </li>
-		<li><?= $this->Html->link(__('List User'), ['controller' => 'TblUser', 'action' => 'index']) ?> </li>
+		<li><?= $this->Html->link(__('List Users'), ['controller' => 'TblUser', 'action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('New User'), ['controller' => 'TblUser', 'action' => 'add']) ?> </li>
 	</ul>
 </nav>
