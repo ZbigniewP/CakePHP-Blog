@@ -39,4 +39,4 @@ Router::scope('/yii', function (RouteBuilder $routes) {
 Plugin::routes();
 
 Plugin::load('Bake');
-Plugin::load('Migrations');
+// Plugin::load('Migrations');
