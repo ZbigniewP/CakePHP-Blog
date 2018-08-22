@@ -20,7 +20,7 @@ class SymfonyPostController extends AppController
 {
 	public function initialize()
 	{
-		$this->viewBuilder()->setLayout('start');
+		$this->viewBuilder()->setLayout('bootstrap');
 		$this->viewBuilder()->setTemplatePath('Symfony/Post');
 	}
 

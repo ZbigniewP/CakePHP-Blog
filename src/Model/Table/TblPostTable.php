@@ -52,23 +52,24 @@ class TblPostTable extends Table
 		// 	'foreignKey' => 'page_id'
 		// ]);
 
-		// $this->hasMany('TblComment', [
-		// 	'foreignKey' => 'post_id',
-		// ]);
-		// $this->hasMany('TblComment', [
-		// 	'foreignKey' => 'post_id',
-		// 	'joinType' => 'INNER'
-		// ]);
+		$this->hasMany('comments', [
+			'foreignKey' => 'post_id',
+			'joinType' => 'INNER'
+		]);
 
 		// $this->hasMany('TblTag', [
 		// 	'foreignKey' => 'name',
 		// ]);
 
-		// $this->belongsTo('TblUser', [
-		// 	'foreignKey' => 'author_id',
-		// 	'joinType' => 'INNER'
-		// ]);
-		$this->belongsTo('TblLookup', ['key' => 'status', 'foreignKey' => 'code', 'where' => 'PostStatus']);
+		$this->belongsTo('author', ['className' => 'App\Model\Table\TblUserTable',
+			'foreignKey' => 'author_id',
+			'joinType' => 'INNER'
+		]);
+		$this->belongsTo('statusType', ['className' => 'App\Model\Table\TblLookupTable',
+			'key' => 'code',
+			'foreignKey' => 'status',
+			'where' => ['type' => 'PostStatus']
+		]);
 	}
 
 	/**

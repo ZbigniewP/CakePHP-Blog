@@ -13,10 +13,10 @@ exit();
 				Category : 
 <?php
 foreach (explode(',', $data->tags) as $tag) :
-	echo $this->Html->link($tag . ',', ['controller' => 'YiiPost', 'action' => 'view', 'tag' => trim($tag)]);
+	echo $this->Html->link($tag . ',', ['controller' => 'TblPost', 'action' => 'view', 'tag' => trim($tag)]);
 endforeach;
 // $this->Html->link($data->category->name, ['controller' => 'Posts', 'action' => 'category', 'slug' => $data->category->slug])
-?> by <?= $this->Html->link($data->yii_user->username, ['controller' => 'YiiPost', 'action' => 'author', 'id' => $data->yii_user->id]) 
+?> by <?= $this->Html->link($data->yii_user->username, ['controller' => 'TblPost', 'action' => 'author', 'id' => $data->yii_user->id]) 
 ?> on <em><?= date('F jS Y, H:i', $data->update_time) ?></em>
 			</small>
 		</p>

@@ -35,7 +35,7 @@ class TblLookupTable extends Table
 		$this->setDisplayField('name');
 		$this->setPrimaryKey('id');
 
-		// $this->hasMany('TblComment', ['foreignKey' => 'status', 'where' => ['type' => 'CommentStatus']]);
+		// $this->hasMany('comments', ['foreignKey' => 'status', 'where' => ['type' => 'CommentStatus']]);
 		// $this->hasMany('TblPost', ['foreignKey' => 'status', 'where' => ['type' => 'PostStatus']]);
 	}
 

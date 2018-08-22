@@ -12,9 +12,16 @@ use App\Controller\AppController;
  */
 class TblCommentController extends AppController
 {
+	public $paginate = [
+		// 'contain' => ['post', 'statusType', 'user'],
+		'contain' => ['post', 'statusType'],
+		'limit' => 5
+	];
+
 	public function initialize()
 	{
-		$this->viewBuilder()->setLayout('start');
+		// $this->viewBuilder()->setLayout('bootstrap');
+		$this->layout = 'column2';
 		$this->viewBuilder()->setTemplatePath('Yii/TblComment');
 	}
 
@@ -25,9 +32,8 @@ class TblCommentController extends AppController
 	 */
 	public function index()
 	{
-		$this->paginate = ['contain' => ['TblPost']];
 		$dataComment = $this->paginate($this->TblComment);
-// pr($dataComment);exit;
+
 		$this->set(compact('dataComment'));
 	}
 
@@ -40,9 +46,9 @@ class TblCommentController extends AppController
 	 */
 	public function view($id = null)
 	{
-		$data = $this->TblComment->get($id, ['contain' => ['TblPost']]);
+		$data = $this->TblComment->get($id, ['contain' => ['post']]);
 
-		$status = $this->TblComment->TblLookup
+		$status = $this->TblComment->statusType
 			->find('list', ['keyField' => 'code', 'valueField' => 'name'])
 			->where(['type' => 'CommentStatus', 'code' => $data->status])
 			->toList();
@@ -50,7 +56,7 @@ class TblCommentController extends AppController
 
 		$this->set('data', $data);
 		
-// 		$status = $this->TblLookup->find()
+// 		$status = $this->statusType->find()
 // 			// ->contain()
 // 			// ->where(['type' => 'CommentStatus'])
 // 			->all()
@@ -77,9 +83,9 @@ class TblCommentController extends AppController
 			$this->Flash->error(__('The tbl comment could not be saved. Please, try again.'));
 		}
 
-		$dataPost = $this->TblComment->TblPost->find('list', ['limit' => 30]);
+		$dataPost = $this->TblComment->post->find('list', ['limit' => 30]);
 		// $author = $this->TblComment->TblUser->find('list', ['limit' => 30]);
-		$status = $this->TblComment->TblLookup
+		$status = $this->TblComment->statusType
 			->find('list', ['keyField' => 'code', 'valueField' => 'name'])
 			->where(['type' => 'CommentStatus']);
 		// $this->set(compact('data', 'dataPost', 'status','author'));
@@ -105,8 +111,8 @@ class TblCommentController extends AppController
 			}
 			$this->Flash->error(__('The tbl comment could not be saved. Please, try again.'));
 		}
-		$dataPost = $this->TblComment->TblPost->find('list', ['limit' => 30]);
-		$status = $this->TblComment->TblLookup
+		$dataPost = $this->TblComment->post->find('list', ['limit' => 30]);
+		$status = $this->TblComment->statusType
 			->find('list', ['keyField' => 'code', 'valueField' => 'name'])
 			->where(['type' => 'CommentStatus']);
 		$this->set(compact('data', 'dataPost', 'status'));

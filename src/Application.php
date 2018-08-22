@@ -47,5 +47,11 @@ class Application extends BaseApplication
 
 		return $middleware;
 	}
-	
+
+	// public function bootstrap()
+	// {
+	// 	parent::bootstrap();
+
+	// 	$this->addPlugin('YiiDEMO');
+	// }
 }

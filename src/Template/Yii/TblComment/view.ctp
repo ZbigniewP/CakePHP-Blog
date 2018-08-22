@@ -48,12 +48,12 @@
 		</tr>
 		<tr>
 			<th scope="row"><?= __('Post') ?></th>
-			<td><?= $data->has('tbl_post') ? $this->Html->link($data->tbl_post->title, ['controller' => 'YiiPost', 'action' => 'view', $data->tbl_post->id]) : $this->Number->format($data->post_id) ?></td>
+			<td><?= $data->has('post') ? $this->Html->link($data->post->title, ['controller' => 'TblPost', 'action' => 'view', $data->post->id]) : $this->Number->format($data->post_id) ?></td>
 		</tr>
 	</table>
 	<div class="row">
-		<h4><?= h($data->tbl_post->title) ?></h4>
-		<?= $this->Markdown->parse($data->tbl_post->content) ?>
+		<h4><?= h($data->post->title) ?></h4>
+		<?= $this->Markdown->parse($data->post->content) ?>
 	</div>
 	<div class="row">
 		<h4><?= __('Content') ?></h4>

@@ -6,4 +6,4 @@
 </div>
 <?php $this->end() ?>
 
-<?= $this->render('/layout/main') ?>
+<?= $this->render('/layout/blueprint') ?>

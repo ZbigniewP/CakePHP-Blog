@@ -9,7 +9,7 @@
 		<li class="heading"><?= __('Actions') ?></li>
 		<li><?= $this->Html->link(__('List Comments'), ['controller' => 'TblComment','action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('List Lookup'), ['controller' => 'TblLookup', 'action' => 'index']) ?> </li>
-		<li><?= $this->Html->link(__('List Posts'), ['controller' => 'YiiPost', 'action' => 'index']) ?></li>
+		<li><?= $this->Html->link(__('List Posts'), ['controller' => 'TblPost', 'action' => 'index']) ?></li>
 		<li><?= $this->Html->link(__('List Tags'), ['controller' => 'TblTag', 'action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('List Users'), ['controller' => 'TblUser', 'action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('New Comment'), ['action' => 'add']) ?></li>
@@ -41,7 +41,7 @@
 				<td><?= h($data->author) ?></td>
 				<!-- <td><?= h($data->email) ?></td> -->
 				<!-- <td><?= h($data->url) ?></td> -->
-				<td><?= $data->has('tbl_post') ? $this->Html->link($data->tbl_post->title, ['controller' => 'YiiPost', 'action' => 'view', $data->tbl_post->id]) : $this->Number->format($data->post_id) ?></td>
+				<td><?= $data->has('post') ? $this->Html->link($data->post->title, ['controller' => 'TblPost', 'action' => 'view', $data->post->id]) : $this->Number->format($data->post_id) ?></td>
 				<td class="actions">
 					<?= $this->Html->link(__('View'), ['action' => 'view', $data->id]) ?>
 					<?= $this->Html->link(__('Edit'), ['action' => 'edit', $data->id]) ?>

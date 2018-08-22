@@ -14,7 +14,7 @@ class SymfonyCommentController extends AppController
 {
 	public function initialize()
 	{
-		$this->layout = 'start';
+		$this->layout = 'bootstrap';
 	}
 	
 	/**

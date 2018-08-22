@@ -13,11 +13,13 @@
 				Category : 
 <?php
 foreach (explode(',', $data->tags) as $tag) :
-	echo $this->Html->link($tag . ',', ['controller' => 'YiiPost', 'action' => 'view', 'tag' => trim($tag)]);
+	echo $this->Html->link($tag . ',', ['controller' => 'YiiAdmin', 'action' => 'view', 'tag' => trim($tag)]);
 endforeach;
 // $this->Html->link($data->category->name, ['controller' => 'Posts', 'action' => 'category', 'slug' => $data->category->slug])
-?> by <?= $this->Html->link($data->yii_user->username, ['controller' => 'YiiPost', 'action' => 'author', 'id' => $data->yii_user->id]) 
-?> on <em><?= date('F jS Y, H:i', $data->update_time) ?></em>
+?> 
+by <?= $this->Html->link($data->user->username, ['controller' => 'YiiAdmin', 'action' => 'author', 'id' => $data->user->id]) 
+?> 
+on <em><?= date('F jS Y, H:i', $data->update_time) ?></em>
 			</small>
 		</p>
 	</div>

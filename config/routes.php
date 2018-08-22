@@ -27,20 +27,24 @@ Router::scope('/admin', function (RouteBuilder $routes) {
     $routes->connect('/delete/:id', ['controller' => 'Admin', 'action' => 'delete'], ['pass' => ['id'], 'id' => '\d+']);
     $routes->fallbacks(DashedRoute::class);
 });
+
 Router::scope('/yii', function (RouteBuilder $routes) {
-    $routes->connect('/', ['controller' => 'YiiBlog', 'action' => 'index']);
+    // $routes->connect('/', ['controller' => 'YiiBlog', 'action' => 'index']);
+    $routes->connect('/', ['controller' => 'TblPost', 'action' => 'index']);
     // $routes->connect('/category/:tag', ['controller' => 'YiiBlog', 'action' => 'category'], ['pass' => ['tag'], 'tag' => '[a-z0-9\-]+']);
     // $routes->connect('/author/:id', ['controller' => 'YiiBlog', 'action' => 'author'], ['pass' => ['id'], 'id' => '[0-9]+']);
     $routes->connect('/:tag', ['controller' => 'YiiBlog', 'action' => 'view'], ['pass' => ['slug'], 'tag' => '[a-z0-9\-]+']);
     $routes->fallbacks(DashedRoute::class);
 });
 Router::scope('/symfony', function (RouteBuilder $routes) {
-    $routes->connect('/', ['controller' => 'SymfonyBlog', 'action' => 'index']);
+    // $routes->connect('/', ['controller' => 'SymfonyBlog', 'action' => 'index']);
+    $routes->connect('/', ['controller' => 'SymfonyPost', 'action' => 'index']);
     // $routes->connect('/category/:slug', ['controller' => 'SymfonyBlog', 'action' => 'category'], ['pass' => ['slug'], 'slug' => '[a-z0-9\-]+']);
     // $routes->connect('/author/:id', ['controller' => 'SymfonyBlog', 'action' => 'author'], ['pass' => ['id'], 'id' => '[0-9]+']);
     // $routes->connect('/:slug', ['controller' => 'SymfonyBlog', 'action' => 'view'], ['pass' => ['slug'], 'slug' => '[a-z0-9\-]+']);
     $routes->fallbacks(DashedRoute::class);
 });
+
 // Router::scope('/TblUser', function (RouteBuilder $routes) {
 //     $routes->connect('/', ['controller' => 'TblUser', 'action' => 'index']);
 //     $routes->fallbacks(DashedRoute::class);

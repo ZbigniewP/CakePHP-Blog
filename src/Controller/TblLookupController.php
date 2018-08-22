@@ -13,7 +13,7 @@ use App\Controller\AppController;
 class TblLookupController extends AppController
 {
 	public $paginate = [
-		// 'contain' => ['TblComment', 'TblPost'],
+		// 'contain' => ['comments', 'TblPost'],
 		// 'limit' => 5,
 		// 'sort' => ['type','position'],
 		// 'group' => 'type'
@@ -21,7 +21,8 @@ class TblLookupController extends AppController
 
 	public function initialize()
 	{
-		$this->viewBuilder()->setLayout('start');
+		// $this->viewBuilder()->setLayout('bootstrap');
+		$this->layout = 'column2';
 		$this->viewBuilder()->setTemplatePath('Yii/TblLookup');
 	}
 	
@@ -81,9 +82,7 @@ class TblLookupController extends AppController
 	 */
 	public function edit($id = null)
 	{
-		$tblLookup = $this->TblLookup->get($id, [
-			'contain' => []
-		]);
+		$tblLookup = $this->TblLookup->get($id, ['contain' => []]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
 			$tblLookup = $this->TblLookup->patchEntity($tblLookup, $this->request->getData());
 			if ($this->TblLookup->save($tblLookup)) {

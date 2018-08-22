@@ -1,25 +1,32 @@
 <?php /** @var \App\View\AppView $this */ ?>
 <div class="col-md-8">
-
-	<div class="page-header">
-		<h1><?= $post->name; ?></h1>
+<?php if(isset($data)): ?>
+	<header class="page-header">
+		<h1><?= $data->name; ?></h1>
 		<p>
 			<small>
-				Category : <?= $this->Html->link($post->category->name, ['controller' => 'Posts', 'action' => 'category', 'slug' => $post->category->slug]) ?>,
-				by <?= $this->Html->link($post->user->username, ['controller' => 'Posts', 'action' => 'author', 'id' => $post->user->id]) ?> on <em><?= $post->created->format('F jS Y, H:i') ?></em>
+				<?php if($data->has('category')): ?>
+				Category : <?= $this->Html->link($data->category->name, 
+				['controller' => 'Posts', 'action' => 'category', 'slug' => $data->category->slug]) ?>,
+				<?php endif ?>
+				<?php if($data->has('user')): ?>
+				by <?= $this->Html->link($data->user->username, 
+				['controller' => 'Posts', 'action' => 'author', 'id' => $data->user->id]) ?> 
+				<?php endif ?>
+				on <em><?= $data->created->format('F jS Y, H:i') ?></em>
 			</small>
 		</p>
-	</div>
+	</header>
 
 	<article>
-		<?= $this->Markdown->parse($post->content) ?>
+		<?= $this->Markdown->parse($data->content) ?>
 	</article>
 
 	<hr />
 
 	<section class="comments">
 
-		<h3>Comment this post</h3>
+		<h3><?=__('Comment this post') ?></h3>
 
 		<?= $this->Form->create($comment); ?>
 		<div class="row">
@@ -31,7 +38,7 @@
 					<?= $this->Form->control('username', ['class' => 'form-control', 'placeholder' => 'Your username', 'label' => false, 'type' => 'text']) ?>
 				</div>
 			</div>
-			<?= $this->Form->control('post_id', ['type' => 'hidden', 'value' => $post->id]) ?>
+			<?= $this->Form->control('post_id', ['type' => 'hidden', 'value' => $data->id]) ?>
 		</div>
 		<div class="form-group">
 			<?= $this->Form->control('content', ['class' => 'form-control', 'placeholder' => 'Your comment', 'label' => false]) ?>
@@ -41,9 +48,9 @@
 		</div>
 		<?= $this->Form->end(); ?>
 
-		<?php if ($post->comments): ?>
-			<h3><?= count($post->comments) ?> Commentaires</h3>
-			<?php foreach ($post->comments as $comment): ?>
+<?php if ($data->has('comments')): ?>
+			<h3><?= count($data->comments) ?> Commentaires</h3>
+			<?php foreach ($data->comments as $comment): ?>
 				<div class="row">
 					<div class="col-md-2">
 						<img src="http://lorempicsum.com/futurama/100/100/<?= mt_rand(1, 9) ?>" width="100%">
@@ -55,7 +62,9 @@
 				</div>
 				<hr />
 			<?php endforeach; ?>
-		<?php endif; ?>
+<?php endif; ?>
 	</section>
-
+<?php else : ?>
+	<h1><?= $this->Html->link(__d('cake', 'New {0}',$this->name), ['action' => 'add'], ['class' => 'btn btn-primary']) ?></h1>
+<?php endif ?>
 </div>

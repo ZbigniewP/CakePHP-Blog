@@ -9,20 +9,22 @@
 	foreach ($module as $data): 
 ?>
 		<article>
-			<h2><?= $this->Html->link($data->title, ['controller' => 'YiiPost', 'action' => 'view', 'id' => $data->id]) ?></h2>
+			<h2><?= $this->Html->link($data->title, ['controller' => 'YiiAdmin', 'action' => 'view', 'id' => $data->id]) ?></h2>
 			<p>
 				<small>
 					Category : 
 <?php
 foreach (explode(',', $data->tags) as $tag) :
-	echo $this->Html->link($tag . ',', ['controller' => 'YiiPost', 'action' => 'view', 'tag' => trim($tag)]);
+	echo $this->Html->link($tag . ',', ['controller' => 'YiiAdmin', 'action' => 'view', 'tag' => trim($tag)]);
 endforeach;
-?> by <?= $this->Html->link($data->yii_user->username, ['controller' => 'YiiPost', 'action' => 'author', 'id' => $data->yii_user->id]) 
-?> on <em><?= date('F jS Y, H:i', $data->update_time) ?></em>
+?> 
+by <?= $this->Html->link($data->user->username, ['controller' => 'YiiAdmin', 'action' => 'author', 'id' => $data->user->id]) 
+?> 
+on <em><?= date('F jS Y, H:i', $data->update_time) ?></em>
 				</small>
 			</p>
 			<p><?= $this->Markdown->parse($this->Text->truncate($data->content, 450, ['ellipsis' => '...', 'exact' => false])) ?></p>
-			<p class="text-right"><?= $this->Html->link('Read more...', ['controller' => 'YiiPost', 'action' => 'view', 'id' => $data->id], ['class' => 'btn btn-primary']) ?></p>
+			<p class="text-right"><?= $this->Html->link('Read more...', ['controller' => 'YiiAdmin', 'action' => 'view', 'id' => $data->id], ['class' => 'btn btn-primary']) ?></p>
 		</article>
 		<hr />
 	<?php endforeach; ?>

@@ -22,7 +22,12 @@ class PostsController extends AppController
 		'contain' => ['Categories', 'Users'],
 		'limit' => 5
 	];
-
+	
+	public function beforeRender(Event $event)
+	{
+		$this->layout = 'bootstrap';
+	}
+	
 	/**
 	 * beforeFilter Event
 	 * @param Event $event current event
@@ -33,7 +38,7 @@ class PostsController extends AppController
 		// parent::beforeFilter($event);
 		// $this->Auth->allow();
 	}
-
+	
 	/**
 	 * Index method
 	 * @return void

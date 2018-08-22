@@ -39,12 +39,21 @@ class TblCommentTable extends Table
 
 		$this->addBehavior('Timestamp');
 
-		$this->belongsTo('TblPost', [
+		$this->belongsTo('post', ['className' => 'App\Model\Table\TblPostTable',
 			'foreignKey' => 'post_id',
 			'joinType' => 'INNER'
 		]);
-		// $this->belongsTo('TblLookup', ['foreignKey' => 'status', 'where' =>'type=CommentStatus']);
-		$this->belongsTo('TblLookup', ['key' => 'status', 'foreignKey' => 'code', 'where' => 'type=CommentStatus']);
+		$this->belongsTo('user', ['className' => 'App\Model\Table\TblUserTable',
+			'foreignKey' => 'author',
+			'joinType' => 'INNER'
+		]);
+        // $this->belongsTo('statusType', ['foreignKey' => 'status', 'where' =>'type=CommentStatus']);
+		$this->belongsTo('statusType', ['className' => 'App\Model\Table\TblLookupTable',
+			'key' => 'code',
+			'foreignKey' => 'status',
+			'where' => 'CommentStatus'
+		]);
+
 	}
 
 	/**

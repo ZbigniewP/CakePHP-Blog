@@ -32,8 +32,8 @@ $this_menu = [
 // $this->Breadcrumbs->defaultConfig['template']['wrapper']='<div class="breadcrumbs"><ul{{attrs}}>{{content}}</ul></div>';
 // 'templateVars'=>['wrapper' => ],
 
-// $this->beginContent('/layouts/main');
-// $this->dispatchEvent('View.beforeRender', ['/layout/main']);
+// $this->beginContent('/layouts/blueprint');
+// $this->dispatchEvent('View.beforeRender', ['/layout/blueprint']);
 // $this->renderLayout($content, 'main');
 
 // echo "<pre>";
@@ -43,7 +43,7 @@ $this_menu = [
 
 // $this->renderLayout();
 
-// $this->dispatchEvent('View.afterRender', ['/layout/main']);
+// $this->dispatchEvent('View.afterRender', ['/layout/blueprint']);
 // $this->endContent() 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

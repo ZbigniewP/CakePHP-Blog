@@ -5,16 +5,6 @@ use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Network\Exception\NotFoundException;
-
-$this->layout = false;
-
-if (!Configure::read('debug')) :
-	throw new NotFoundException(
-		'Please replace src/Template/Pages/home.ctp with your own version or re-enable debug mode.'
-	);
-endif;
-
-$cakeDescription = 'CakePHP: the rapid development PHP framework';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,59 +14,63 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title><?= $this->fetch('title'); ?> | MyDomain.com</title>
-	<?= $this->Html->meta('icon') ?>
-	<!-- Bootstrap core CSS -->
-	<?= $this->Html->css(['bootstrap', 'bootstrap-theme']); ?>
+	<title>Test | Admin panel</title>
+
+	<?= $this->Html->css(['base', 'style', 'home']) ?>
 
 	<style>
-		body {padding-top: 50px;}
-		.sidebar {margin-top: 50px;}
+		/* body {padding-top: 50px;}
+		.sidebar {margin-top: 50px;} */
+		.paginator li {padding-left: 0;}
+		header.row {margin-bottom: 0;}
+		#footer {margin-bottom: 30px; text-align:center;font-size:80%;color: #777;}
 	</style>
 </head>
+
 <body>
 
-	<div class="navbar navbar-inverse navbar-fixed-top">
+	<header class="row">
 		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<?= $this->Html->link('Blog Cake', '/blog', ['class' => 'navbar-brand']) ?>
-			</div>
-			<div class="collapse navbar-collapse navbar-ex1-collapse navbar-right">
-				<ul class="nav navbar-nav">
-					<li><?= $this->Html->link('Yii', '/yiiPost') ?></li>
-					<li><?= $this->Html->link('Symfony', '/symfonyPost') ?></li>
+			<nav class="top-bar expanded" data-topbar="" role="navigation">
+				<ul class="title-area large-3 medium-4 columns">
+					<li class="name"><h1><?= $this->Html->link('Blog', ['controller' => 'Admin'], ['class' => 'navbar-brand']) ?></h1></li>
+				</ul>
+			<nav class="top-bar-section">
+				<ul class="right">
+					<li><?= $this->Html->link('Pages', '/pages') ?></li>
+					<!-- <li><?= $this->Html->link('Pages', ['controller' => 'pages', 'action' => 'display']) ?></li> -->
+
+					<li><?= $this->Html->link('Yii', '/yii') ?></li>
+					<li><?= $this->Html->link('Symfony', '/symfony') ?></li>
 					<li><?= $this->Html->link('SymfonyBlog', '/symfonyBlog') ?></li>
-					<li><?= $this->Html->link('Pages', ['controller' => 'pages', 'action' => 'display']) ?></li>
 				<?php if ($this->request->session()->read('Auth.User')): ?>
 					<li><?= $this->Html->link('Admin', ['controller' => 'admin', 'action' => 'index']) ?></li>
-					<li><?= $this->Html->link('Admin Yii', ['controller' => 'YiiPost', 'action' => 'admin']) ?></li>
+					<li><?= $this->Html->link('Admin Yii', ['controller' => 'YiiAdmin', 'action' => 'admin']) ?></li>
+					<li><?= $this->Html->link('Back to front', '/blog') ?></li>
+					<li><?= $this->Html->link('Logout', ['controller' => 'Users', 'action' => 'logout']) ?></li>
 				<?php else: ?>
 					<li><?= $this->Html->link('Login', ['controller' => 'users', 'action' => 'login']) ?></li>
 				<?php endif; ?>
 				</ul>
-			</div>
+			</nav>
+			</nav>
 		</div>
-	</div>
+	</header>
 
-	<div class="container">
-		<div class="row">
-			<?= $this->Flash->render() ?>
+	<div class="row"><div class="columns large-12">
+		<div class="container">
+			<?= $this->Flash->render(); ?>
 			<?= $this->fetch('content'); ?>
-			<?php if ($this->request->params['action'] !== 'login'):
-			echo $this->cell('Sidebar');
-			endif; ?>
-<?php
-// <div class="col-md-4 sidebar"><pre>, 'home'
-// print_r([$this->request->params['controller']]);
-// </pre></div>
-?>
 		</div>
-	</div>
-	<?= $this->Html->script(['bootstrap']); ?>
+	</div></div>
+
+	<div class="row"><hr /><div class="columns large-12">
+		<div id="footer">
+			Copyright &copy; <?= date('Y')?> by My Company.<br />
+			All Rights Reserved.
+			<?php echo 'CakePHP '. Configure::version() ?>
+		</div><!-- footer -->
+	</div></div>
+
 </body>
 </html>

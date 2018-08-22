@@ -14,17 +14,18 @@ use App\Controller\AppController;
  *
  * @method \App\Model\Entity\TblPost[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
-class YiiPostController extends AppController
+class TblPostController extends AppController
 {
 	public $paginate = [
-		'contain' => ['TblComment', 'TblUser', 'TblLookup'],
+		'contain' => ['comments', 'author', 'statusType'],
 		// 'contain' => ['YiiComment', 'YiiUser'],
 		'limit' => 5
 	];
 
 	public function initialize()
 	{
-		$this->viewBuilder()->setLayout('start');
+		$this->layout = 'column2';
+		// $this->viewBuilder()->setLayout('bootstrap');
 		$this->viewBuilder()->setTemplatePath('Yii/TblPost');
 	}
 
@@ -36,7 +37,7 @@ class YiiPostController extends AppController
 	public function index()
 	{
 		// $dataPost = $this->paginate($this->TblPost);
-		$dataPost = $this->paginate($this->YiiPost);
+		$dataPost = $this->paginate($this->TblPost);
 		$this->set(compact('dataPost'));
 	}
 
@@ -49,9 +50,9 @@ class YiiPostController extends AppController
 	 */
 	public function view($id = null)
 	{
-		// $data = $this->TblPost->get($id, ['contain' => ['TblComment', 'TblUser']]);
-		$data = $this->YiiPost->get($id, ['contain' => ['TblComment', 'TblUser']]);
-		$status = $this->YiiPost->TblLookup
+		// $data = $this->TblPost->get($id, ['contain' => ['comments', 'author']]);
+		$data = $this->TblPost->get($id, ['contain' => ['comments', 'author']]);
+		$status = $this->TblPost->statusType
 			->find('list', ['keyField' => 'code', 'valueField' => 'name'])
 			->where(['type' => 'PostStatus', 'code' => $data->status])
 			// ->order('name')
@@ -68,10 +69,10 @@ class YiiPostController extends AppController
 	 */
 	public function add()
 	{
-		$data = $this->YiiPost->newEntity();
+		$data = $this->TblPost->newEntity();
 		if ($this->request->is('post')) {
-			$data = $this->YiiPost->patchEntity($data, $this->request->getData());
-			if ($this->YiiPost->save($data)) {
+			$data = $this->TblPost->patchEntity($data, $this->request->getData());
+			if ($this->TblPost->save($data)) {
 				$this->Flash->success(__('The tbl post has been saved.'));
 
 				return $this->redirect(['action' => 'index']);
@@ -79,10 +80,10 @@ class YiiPostController extends AppController
 			$this->Flash->error(__('The tbl post could not be saved. Please, try again.'));
 		}
 		// $pages = $this->TblPost->Pages->find('list', ['limit' => 30]);
-		// $comments = $this->YiiPost->TblComment->find('list', ['limit' => 30])->order('create_time');
-		$tags = $this->YiiPost->TblTag->find('list', ['limit' => 30])->order('name');
-		$postUser = $this->YiiPost->TblUser->find('list', ['limit' => 30])->order('username');
-		$postStatus = $this->YiiPost->TblLookup
+		// $comments = $this->TblPost->comments->find('list', ['limit' => 30])->order('create_time');
+		$tags = $this->TblPost->TblTag->find('list', ['limit' => 30])->order('name');
+		$postUser = $this->TblPost->author->find('list', ['limit' => 30])->order('username');
+		$postStatus = $this->TblPost->statusType
 			->find('list', ['keyField' => 'code', 'valueField' => 'name'])
 			->where(['type' => 'PostStatus'])
 			->order('name')
@@ -101,12 +102,12 @@ class YiiPostController extends AppController
 	public function edit($id = null)
 	{
 		// $data = $this->TblPost->get($id, ['contain' => []]);
-		$data = $this->YiiPost->get($id, ['contain' => []]);
+		$data = $this->TblPost->get($id, ['contain' => []]);
 		if ($this->request->is(['patch', 'post', 'put'])) {
 			// $data = $this->TblPost->patchEntity($data, $this->request->getData());
-			$data = $this->YiiPost->patchEntity($data, $this->request->getData());
+			$data = $this->TblPost->patchEntity($data, $this->request->getData());
 			// if ($this->TblPost->save($data)) {
-			if ($this->YiiPost->save($data)) {
+			if ($this->TblPost->save($data)) {
 				$this->Flash->success(__('The tbl post has been saved.'));
 
 				return $this->redirect(['action' => 'index']);
@@ -114,9 +115,9 @@ class YiiPostController extends AppController
 			$this->Flash->error(__('The tbl post could not be saved. Please, try again.'));
 		}
 		// $pages = $this->TblPost->Articles->find('list', ['limit' => 30]);
-		$comments = $this->YiiPost->TblComment->find('list', ['limit' => 30])->order('create_time');
-		$postUser = $this->YiiPost->TblUser->find('list', ['limit' => 30])->order('username');
-		$postStatus = $this->YiiPost->TblLookup->find('list', ['limit' => 30])->order('name');
+		$comments = $this->TblPost->comments->find('list', ['limit' => 30])->order('create_time');
+		$postUser = $this->TblPost->author->find('list', ['limit' => 30])->order('username');
+		$postStatus = $this->TblPost->statusType->find('list', ['limit' => 30])->order('name');
 		$this->set(compact('data', 'comments', 'postStatus', 'postUser'));
 	}
 
@@ -130,8 +131,8 @@ class YiiPostController extends AppController
 	public function delete($id = null)
 	{
 		$this->request->allowMethod(['post', 'delete']);
-		$data = $this->YiiPost->get($id);
-		if ($this->YiiPost->delete($data)) {
+		$data = $this->TblPost->get($id);
+		if ($this->TblPost->delete($data)) {
 			$this->Flash->success(__('The tbl post has been deleted.'));
 		} else {
 			$this->Flash->error(__('The tbl post could not be deleted. Please, try again.'));

@@ -50,9 +50,9 @@ class YiiPostTable extends Table
 		$this->addBehavior('CounterCache', ['YiiTag' => ['frequency']]);
 		// $this->addAssociations([
 		// 	'belongsTo' => [
-		// 		'TblUser' => ['className' => 'App\Model\Table\TblUserTable']
+		// 		'author' => ['className' => 'App\Model\Table\TblUserTable']
 		// 	],
-		// 	'hasMany' => ['TblComment'],
+		// 	'hasMany' => ['comments'],
 		// 	'belongsToMany' => ['TblTag']
 		// ]);
 
@@ -60,7 +60,7 @@ class YiiPostTable extends Table
 		// 	'foreignKey' => 'author_id',
 		// 	'joinType' => 'INNER'
 		// ]);
-		$this->belongsTo('TblUser', [
+		$this->belongsTo('author', [
 			'foreignKey' => 'author_id',
 			'joinType' => 'INNER'
 		]);
@@ -69,7 +69,7 @@ class YiiPostTable extends Table
 		// 	'foreignKey' => 'post_id',
 		// 	'joinType' => 'INNER'
 		// ]);
-		$this->hasMany('TblComment', [
+		$this->hasMany('comments', [
 			'foreignKey' => 'post_id',
 			'joinType' => 'INNER'
 		]);
@@ -89,7 +89,7 @@ class YiiPostTable extends Table
 		// 	'foreignKey' => 'status',
 		// 	'conditions' => ['type' => 'PostStatus']
 		// ]);
-		$this->belongsTo('TblLookup', ['key' => 'code', 'foreignKey' => 'status', 'where' => 'PostStatus']);
+		$this->belongsTo('status', ['key' => 'code', 'foreignKey' => 'status', 'where' => 'PostStatus']);
 
 		// $this->belongsTo('Articles', [
 		//     'foreignKey' => 'page_id'

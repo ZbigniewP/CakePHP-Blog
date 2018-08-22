@@ -9,7 +9,7 @@
 		<li class="heading"><?= __('Actions') ?></li>
 		<li><?= $this->Html->link(__('List Comments'), ['controller' => 'TblComment','action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('List Lookup'), ['controller' => 'TblLookup', 'action' => 'index']) ?> </li>
-		<li><?= $this->Html->link(__('List Posts'), ['controller' => 'YiiPost', 'action' => 'index']) ?></li>
+		<li><?= $this->Html->link(__('List Posts'), ['controller' => 'TblPost', 'action' => 'index']) ?></li>
 		<li><?= $this->Html->link(__('List Tags'), ['controller' => 'TblTag', 'action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('List Users'), ['controller' => 'TblUser', 'action' => 'index']) ?> </li>
 		<li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>

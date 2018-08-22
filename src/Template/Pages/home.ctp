@@ -53,7 +53,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 	</div>
 	<nav class="top-bar expanded" data-topbar="" role="navigation">
 <ul class="title-area large-3 medium-4 columns">
-	<li class="name"><h1><a href="/articles">Articles</a></h1></li>
+	<li class="name"><h1><a href="/"><?=__('Home') ?></a></h1></li>
 </ul>
 <div class="top-bar-section">
 <ul class="right">
@@ -299,6 +299,28 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
 		</ul>
 	</div>
 </div>
-
+<!-- <li class="bullet book">book</li>
+<li class="bullet success">success</li>
+<li class="bullet problem">problem</li>
+<li class="bullet cutlery">cutlery</li>
+<h1>
+<pre class="icon">
+ABCD
+EFGH
+IJKL
+M
+NOP
+QRSTUVWXYZ
+1234567890
+M
+N O u
+</pre></h1><hr>
+<span class="icon docs">
+abcdefgh
+ijklmnop
+qrstuwxyz</span><hr>
+<span class="icon training">abcdefgh
+ijklmnop
+qrstuwxyz</span> -->
 </body>
 </html>

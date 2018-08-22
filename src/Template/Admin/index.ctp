@@ -5,7 +5,7 @@
 	<thead>
 		<tr>
 			<th scope="col"><?= __('id') ?></th>
-			<th width="50%" scope="col"><?= $this->Paginator->sort('title') ?></th>
+			<th scope="col"><?= $this->Paginator->sort('title') ?></th>
 			<th scope="col"><?= $this->Paginator->sort('category') ?></th>
 			<th scope="col"><?= $this->Paginator->sort('created') ?></th>
 			<th>Actions</th>
@@ -19,21 +19,20 @@
 				<td nowrap><?= $data->has('tags') ? $data->tags : $data->has('category') ? $data->category->name : '' ?></td>
 				<td align="right" nowrap><?= $data->has('update_time') ? strftime('%c', $data->update_time) : $data->created ?></td>
 				<td align="right" nowrap width="180px"><span class="btn-group">
-<?php
-echo $this->Html->link(
-	'<span class="glyphicon glyphicon-eye-close"></span>' . __('View'),
+<?= $this->Html->link(
+	'<span class="glyphicon glyphicon-eye-close"></span><span class="hidden">' . __('View') . '</span>',
 	['action' => 'view', 'slug' => $data->slug],
-	['title' => 'View', 'class' => 'btn btn-default', 'escapeTitle' => false]
+	['title' => __('View'), 'class' => 'btn btn-default', 'escapeTitle' => false]
 ) . PHP_EOL,
 	$this->Html->link(
-	'<span class="glyphicon glyphicon-edit"></span>' . __('Edit'),
+	'<span class="glyphicon glyphicon-edit"></span><span class="hidden">' . __('Edit') . '</span>',
 	['action' => 'edit', 'id' => $data->id],
-	['title' => 'Edit', 'class' => 'btn btn-primary', 'escapeTitle' => false]
+	['title' => __('Edit'), 'class' => 'btn btn-primary', 'escapeTitle' => false]
 ) . PHP_EOL,
 	$this->Form->postLink(
-	'<span class="glyphicon glyphicon-trash"></span>' . __('Delete'),
+	'<span class="glyphicon glyphicon-trash"></span><span class="hidden">' . __('Delete') . '</span>',
 	['action' => 'delete', $data->id],
-	['title' => 'Delete', 'class' => 'btn btn-danger', 'escapeTitle' => false, 'confirm' => __('Are you sure  ?')]
+	['title' => __('Delete'), 'class' => 'btn btn-danger', 'escapeTitle' => false, 'confirm' => __('Are you sure  ?')]
 ) . PHP_EOL;
 ?>
 					</span>
